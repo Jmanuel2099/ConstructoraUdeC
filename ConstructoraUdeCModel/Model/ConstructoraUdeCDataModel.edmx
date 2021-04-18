@@ -1,0 +1,1057 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ConstructoraUdeCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BLOCK">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PROJECT" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="COUNTRY" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COUNTRY">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DOCUMENT" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LASTNAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BIRTHDATE" Type="date" Nullable="false" />
+          <Property Name="PHOTO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FINANCIAL_INFORMATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="INCOME_TOTAL" Type="int" />
+          <Property Name="WORK_DATE" Type="nvarchar" MaxLength="100" />
+          <Property Name="TIME_CURRENTE_JOB" Type="nvarchar" MaxLength="10" />
+          <Property Name="FAMILY_REFERENCE_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="FAMILY_REFERENCE_PHONE" Type="nvarchar" MaxLength="10" />
+          <Property Name="PERSONAL_REFERENCE" Type="nvarchar" MaxLength="50" />
+          <Property Name="PERSONAL_REFERENCE_PHONE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUSTOMER" Type="int" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUSTOMER" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="date" Nullable="false" />
+          <Property Name="DEBT_TOTAL" Type="int" Nullable="false" />
+          <Property Name="PAID_VALUE" Type="int" Nullable="false" />
+          <Property Name="TOTAL_SUBSCRIBER" Type="int" Nullable="false" />
+          <Property Name="REQUEST" Type="int" Nullable="false" />
+          <Property Name="RECEIPT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROJECT">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IMAGE" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROPERTY">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDENTIFICATION" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="VALUE" Type="int" Nullable="false" />
+          <Property Name="STATUS" Type="bit" Nullable="false" />
+          <Property Name="BLOCK" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECEIPT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REQUEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REQUEST_DATE" Type="date" Nullable="false" />
+          <Property Name="OFFER" Type="int" Nullable="false" />
+          <Property Name="CUSTOMER" Type="int" Nullable="false" />
+          <Property Name="PROPERTY" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="STATUSREQUEST" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEC_ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="REMOVED" Type="bit" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SEC_SESSION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="LOGIN_DATE" Type="datetime" />
+          <Property Name="IP_ADDRESS" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="TOKEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TOKEN_STATUS" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEC_USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LASTNAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CELLPHONE" Type="nvarchar" MaxLength="30" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ACTIONCITY" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEC_USER_ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="ROLEID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STATUSREQUEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__BLOCK__PROJECT__182C9B23">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
+          <End Role="BLOCK" Type="Self.BLOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="BLOCK">
+              <PropertyRef Name="PROJECT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CITY__COUNTRY__1273C1CD">
+          <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="COUNTRY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CUSTOMER__CITY__1DE57479">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="CITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FINANCIAL__CUSTO__20C1E124">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="FINANCIAL_INFORMATION" Type="Self.FINANCIAL_INFORMATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FINANCIAL_INFORMATION">
+              <PropertyRef Name="CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAYMENT__RECEIPT__2C3393D0">
+          <End Role="RECEIPT" Type="Self.RECEIPT" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RECEIPT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="RECEIPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAYMENT__REQUEST__2D27B809">
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REQUEST">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="REQUEST" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROJECT__CITY__15502E78">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="PROJECT">
+              <PropertyRef Name="CITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROPERTY__BLOCK__1B0907CE">
+          <End Role="BLOCK" Type="Self.BLOCK" Multiplicity="1" />
+          <End Role="PROPERTY" Type="Self.PROPERTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLOCK">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="PROPERTY">
+              <PropertyRef Name="BLOCK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST__CUSTOME__25869641">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUEST">
+              <PropertyRef Name="CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST__PROPERT__267ABA7A">
+          <End Role="PROPERTY" Type="Self.PROPERTY" Multiplicity="1" />
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROPERTY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="REQUEST">
+              <PropertyRef Name="PROPERTY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST__STATUSR__276EDEB3">
+          <End Role="STATUSREQUEST" Type="Self.STATUSREQUEST" Multiplicity="1" />
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATUSREQUEST">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUEST">
+              <PropertyRef Name="STATUSREQUEST" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEC_USER___ROLEI__3A81B327">
+          <End Role="SEC_ROLE" Type="Self.SEC_ROLE" Multiplicity="1" />
+          <End Role="SEC_USER_ROLE" Type="Self.SEC_USER_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_ROLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEC_USER_ROLE">
+              <PropertyRef Name="ROLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEC_USER___USERI__398D8EEE">
+          <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="1" />
+          <End Role="SEC_USER_ROLE" Type="Self.SEC_USER_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEC_USER_ROLE">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEC_USER__ACTION__300424B4">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="SEC_USER">
+              <PropertyRef Name="ACTIONCITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_SEC_SESSION">
+          <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="1" />
+          <End Role="SEC_SESSION" Type="Self.SEC_SESSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEC_SESSION">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConstructoraUdeCModelStoreContainer">
+          <EntitySet Name="BLOCK" EntityType="Self.BLOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COUNTRY" EntityType="Self.COUNTRY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FINANCIAL_INFORMATION" EntityType="Self.FINANCIAL_INFORMATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAYMENT" EntityType="Self.PAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROPERTY" EntityType="Self.PROPERTY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECEIPT" EntityType="Self.RECEIPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REQUEST" EntityType="Self.REQUEST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEC_ROLE" EntityType="Self.SEC_ROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEC_SESSION" EntityType="Self.SEC_SESSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEC_USER" EntityType="Self.SEC_USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEC_USER_ROLE" EntityType="Self.SEC_USER_ROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATUSREQUEST" EntityType="Self.STATUSREQUEST" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BLOCK__PROJECT__182C9B23" Association="Self.FK__BLOCK__PROJECT__182C9B23">
+            <End Role="PROJECT" EntitySet="PROJECT" />
+            <End Role="BLOCK" EntitySet="BLOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CITY__COUNTRY__1273C1CD" Association="Self.FK__CITY__COUNTRY__1273C1CD">
+            <End Role="COUNTRY" EntitySet="COUNTRY" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CUSTOMER__CITY__1DE57479" Association="Self.FK__CUSTOMER__CITY__1DE57479">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FINANCIAL__CUSTO__20C1E124" Association="Self.FK__FINANCIAL__CUSTO__20C1E124">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="FINANCIAL_INFORMATION" EntitySet="FINANCIAL_INFORMATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAYMENT__RECEIPT__2C3393D0" Association="Self.FK__PAYMENT__RECEIPT__2C3393D0">
+            <End Role="RECEIPT" EntitySet="RECEIPT" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAYMENT__REQUEST__2D27B809" Association="Self.FK__PAYMENT__REQUEST__2D27B809">
+            <End Role="REQUEST" EntitySet="REQUEST" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROJECT__CITY__15502E78" Association="Self.FK__PROJECT__CITY__15502E78">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="PROJECT" EntitySet="PROJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROPERTY__BLOCK__1B0907CE" Association="Self.FK__PROPERTY__BLOCK__1B0907CE">
+            <End Role="BLOCK" EntitySet="BLOCK" />
+            <End Role="PROPERTY" EntitySet="PROPERTY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST__CUSTOME__25869641" Association="Self.FK__REQUEST__CUSTOME__25869641">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="REQUEST" EntitySet="REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST__PROPERT__267ABA7A" Association="Self.FK__REQUEST__PROPERT__267ABA7A">
+            <End Role="PROPERTY" EntitySet="PROPERTY" />
+            <End Role="REQUEST" EntitySet="REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST__STATUSR__276EDEB3" Association="Self.FK__REQUEST__STATUSR__276EDEB3">
+            <End Role="STATUSREQUEST" EntitySet="STATUSREQUEST" />
+            <End Role="REQUEST" EntitySet="REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEC_USER___ROLEI__3A81B327" Association="Self.FK__SEC_USER___ROLEI__3A81B327">
+            <End Role="SEC_ROLE" EntitySet="SEC_ROLE" />
+            <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEC_USER___USERI__398D8EEE" Association="Self.FK__SEC_USER___USERI__398D8EEE">
+            <End Role="SEC_USER" EntitySet="SEC_USER" />
+            <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEC_USER__ACTION__300424B4" Association="Self.FK__SEC_USER__ACTION__300424B4">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="SEC_USER" EntitySet="SEC_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_SEC_SESSION" Association="Self.FK1_SEC_SESSION">
+            <End Role="SEC_USER" EntitySet="SEC_USER" />
+            <End Role="SEC_SESSION" EntitySet="SEC_SESSION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConstructoraUdeCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BLOCK">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PROJECT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PROJECT1" Relationship="Self.FK__BLOCK__PROJECT__182C9B23" FromRole="BLOCK" ToRole="PROJECT" />
+          <NavigationProperty Name="PROPERTY" Relationship="Self.FK__PROPERTY__BLOCK__1B0907CE" FromRole="BLOCK" ToRole="PROPERTY" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="COUNTRY1" Relationship="Self.FK__CITY__COUNTRY__1273C1CD" FromRole="CITY" ToRole="COUNTRY" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__CUSTOMER__CITY__1DE57479" FromRole="CITY" ToRole="CUSTOMER" />
+          <NavigationProperty Name="PROJECT" Relationship="Self.FK__PROJECT__CITY__15502E78" FromRole="CITY" ToRole="PROJECT" />
+          <NavigationProperty Name="SEC_USER" Relationship="Self.FK__SEC_USER__ACTION__300424B4" FromRole="CITY" ToRole="SEC_USER" />
+        </EntityType>
+        <EntityType Name="COUNTRY">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK__CITY__COUNTRY__1273C1CD" FromRole="COUNTRY" ToRole="CITY" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DOCUMENT" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BIRTHDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CITY1" Relationship="Self.FK__CUSTOMER__CITY__1DE57479" FromRole="CUSTOMER" ToRole="CITY" />
+          <NavigationProperty Name="FINANCIAL_INFORMATION" Relationship="Self.FK__FINANCIAL__CUSTO__20C1E124" FromRole="CUSTOMER" ToRole="FINANCIAL_INFORMATION" />
+          <NavigationProperty Name="REQUEST" Relationship="Self.FK__REQUEST__CUSTOME__25869641" FromRole="CUSTOMER" ToRole="REQUEST" />
+        </EntityType>
+        <EntityType Name="FINANCIAL_INFORMATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="INCOME_TOTAL" Type="Int32" />
+          <Property Name="WORK_DATE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TIME_CURRENTE_JOB" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FAMILY_REFERENCE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FAMILY_REFERENCE_PHONE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PERSONAL_REFERENCE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PERSONAL_REFERENCE_PHONE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMER" Type="Int32" />
+          <NavigationProperty Name="CUSTOMER1" Relationship="Self.FK__FINANCIAL__CUSTO__20C1E124" FromRole="FINANCIAL_INFORMATION" ToRole="CUSTOMER" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUSTOMER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DEBT_TOTAL" Type="Int32" Nullable="false" />
+          <Property Name="PAID_VALUE" Type="Int32" Nullable="false" />
+          <Property Name="TOTAL_SUBSCRIBER" Type="Int32" Nullable="false" />
+          <Property Name="REQUEST" Type="Int32" Nullable="false" />
+          <Property Name="RECEIPT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RECEIPT1" Relationship="Self.FK__PAYMENT__RECEIPT__2C3393D0" FromRole="PAYMENT" ToRole="RECEIPT" />
+          <NavigationProperty Name="REQUEST1" Relationship="Self.FK__PAYMENT__REQUEST__2D27B809" FromRole="PAYMENT" ToRole="REQUEST" />
+        </EntityType>
+        <EntityType Name="PROJECT">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BLOCK" Relationship="Self.FK__BLOCK__PROJECT__182C9B23" FromRole="PROJECT" ToRole="BLOCK" />
+          <NavigationProperty Name="CITY1" Relationship="Self.FK__PROJECT__CITY__15502E78" FromRole="PROJECT" ToRole="CITY" />
+        </EntityType>
+        <EntityType Name="PROPERTY">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDENTIFICATION" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VALUE" Type="Int32" Nullable="false" />
+          <Property Name="STATUS" Type="Boolean" Nullable="false" />
+          <Property Name="BLOCK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BLOCK1" Relationship="Self.FK__PROPERTY__BLOCK__1B0907CE" FromRole="PROPERTY" ToRole="BLOCK" />
+          <NavigationProperty Name="REQUEST" Relationship="Self.FK__REQUEST__PROPERT__267ABA7A" FromRole="PROPERTY" ToRole="REQUEST" />
+        </EntityType>
+        <EntityType Name="RECEIPT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PAYMENT" Relationship="Self.FK__PAYMENT__RECEIPT__2C3393D0" FromRole="RECEIPT" ToRole="PAYMENT" />
+        </EntityType>
+        <EntityType Name="REQUEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REQUEST_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OFFER" Type="Int32" Nullable="false" />
+          <Property Name="CUSTOMER" Type="Int32" Nullable="false" />
+          <Property Name="PROPERTY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STATUSREQUEST" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER1" Relationship="Self.FK__REQUEST__CUSTOME__25869641" FromRole="REQUEST" ToRole="CUSTOMER" />
+          <NavigationProperty Name="PAYMENT" Relationship="Self.FK__PAYMENT__REQUEST__2D27B809" FromRole="REQUEST" ToRole="PAYMENT" />
+          <NavigationProperty Name="PROPERTY1" Relationship="Self.FK__REQUEST__PROPERT__267ABA7A" FromRole="REQUEST" ToRole="PROPERTY" />
+          <NavigationProperty Name="STATUSREQUEST1" Relationship="Self.FK__REQUEST__STATUSR__276EDEB3" FromRole="REQUEST" ToRole="STATUSREQUEST" />
+        </EntityType>
+        <EntityType Name="SEC_ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="REMOVED" Type="Boolean" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___ROLEI__3A81B327" FromRole="SEC_ROLE" ToRole="SEC_USER_ROLE" />
+        </EntityType>
+        <EntityType Name="SEC_SESSION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="LOGIN_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IP_ADDRESS" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TOKEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TOKEN_STATUS" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SEC_USER" Relationship="Self.FK1_SEC_SESSION" FromRole="SEC_SESSION" ToRole="SEC_USER" />
+        </EntityType>
+        <EntityType Name="SEC_USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CELLPHONE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="USER_PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ACTIONCITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK__SEC_USER__ACTION__300424B4" FromRole="SEC_USER" ToRole="CITY" />
+          <NavigationProperty Name="SEC_SESSION" Relationship="Self.FK1_SEC_SESSION" FromRole="SEC_USER" ToRole="SEC_SESSION" />
+          <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___USERI__398D8EEE" FromRole="SEC_USER" ToRole="SEC_USER_ROLE" />
+        </EntityType>
+        <EntityType Name="SEC_USER_ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="ROLEID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SEC_ROLE" Relationship="Self.FK__SEC_USER___ROLEI__3A81B327" FromRole="SEC_USER_ROLE" ToRole="SEC_ROLE" />
+          <NavigationProperty Name="SEC_USER" Relationship="Self.FK__SEC_USER___USERI__398D8EEE" FromRole="SEC_USER_ROLE" ToRole="SEC_USER" />
+        </EntityType>
+        <EntityType Name="STATUSREQUEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="REQUEST" Relationship="Self.FK__REQUEST__STATUSR__276EDEB3" FromRole="STATUSREQUEST" ToRole="REQUEST" />
+        </EntityType>
+        <Association Name="FK__BLOCK__PROJECT__182C9B23">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
+          <End Role="BLOCK" Type="Self.BLOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="BLOCK">
+              <PropertyRef Name="PROJECT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROPERTY__BLOCK__1B0907CE">
+          <End Role="BLOCK" Type="Self.BLOCK" Multiplicity="1" />
+          <End Role="PROPERTY" Type="Self.PROPERTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLOCK">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="PROPERTY">
+              <PropertyRef Name="BLOCK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CITY__COUNTRY__1273C1CD">
+          <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="COUNTRY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CUSTOMER__CITY__1DE57479">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="CITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PROJECT__CITY__15502E78">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="PROJECT">
+              <PropertyRef Name="CITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEC_USER__ACTION__300424B4">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="SEC_USER">
+              <PropertyRef Name="ACTIONCITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FINANCIAL__CUSTO__20C1E124">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="FINANCIAL_INFORMATION" Type="Self.FINANCIAL_INFORMATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FINANCIAL_INFORMATION">
+              <PropertyRef Name="CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST__CUSTOME__25869641">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUEST">
+              <PropertyRef Name="CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAYMENT__RECEIPT__2C3393D0">
+          <End Role="RECEIPT" Type="Self.RECEIPT" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RECEIPT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="RECEIPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAYMENT__REQUEST__2D27B809">
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REQUEST">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="REQUEST" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST__PROPERT__267ABA7A">
+          <End Role="PROPERTY" Type="Self.PROPERTY" Multiplicity="1" />
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROPERTY">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="REQUEST">
+              <PropertyRef Name="PROPERTY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REQUEST__STATUSR__276EDEB3">
+          <End Role="STATUSREQUEST" Type="Self.STATUSREQUEST" Multiplicity="1" />
+          <End Role="REQUEST" Type="Self.REQUEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATUSREQUEST">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUEST">
+              <PropertyRef Name="STATUSREQUEST" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEC_USER___ROLEI__3A81B327">
+          <End Role="SEC_ROLE" Type="Self.SEC_ROLE" Multiplicity="1" />
+          <End Role="SEC_USER_ROLE" Type="Self.SEC_USER_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_ROLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEC_USER_ROLE">
+              <PropertyRef Name="ROLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1_SEC_SESSION">
+          <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="1" />
+          <End Role="SEC_SESSION" Type="Self.SEC_SESSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEC_SESSION">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEC_USER___USERI__398D8EEE">
+          <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="1" />
+          <End Role="SEC_USER_ROLE" Type="Self.SEC_USER_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEC_USER_ROLE">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConstructoraUdeCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BLOCK" EntityType="Self.BLOCK" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" />
+          <EntitySet Name="COUNTRY" EntityType="Self.COUNTRY" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="FINANCIAL_INFORMATION" EntityType="Self.FINANCIAL_INFORMATION" />
+          <EntitySet Name="PAYMENT" EntityType="Self.PAYMENT" />
+          <EntitySet Name="PROJECT" EntityType="Self.PROJECT" />
+          <EntitySet Name="PROPERTY" EntityType="Self.PROPERTY" />
+          <EntitySet Name="RECEIPT" EntityType="Self.RECEIPT" />
+          <EntitySet Name="REQUEST" EntityType="Self.REQUEST" />
+          <EntitySet Name="SEC_ROLE" EntityType="Self.SEC_ROLE" />
+          <EntitySet Name="SEC_SESSION" EntityType="Self.SEC_SESSION" />
+          <EntitySet Name="SEC_USER" EntityType="Self.SEC_USER" />
+          <EntitySet Name="SEC_USER_ROLE" EntityType="Self.SEC_USER_ROLE" />
+          <EntitySet Name="STATUSREQUEST" EntityType="Self.STATUSREQUEST" />
+          <AssociationSet Name="FK__BLOCK__PROJECT__182C9B23" Association="Self.FK__BLOCK__PROJECT__182C9B23">
+            <End Role="PROJECT" EntitySet="PROJECT" />
+            <End Role="BLOCK" EntitySet="BLOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROPERTY__BLOCK__1B0907CE" Association="Self.FK__PROPERTY__BLOCK__1B0907CE">
+            <End Role="BLOCK" EntitySet="BLOCK" />
+            <End Role="PROPERTY" EntitySet="PROPERTY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CITY__COUNTRY__1273C1CD" Association="Self.FK__CITY__COUNTRY__1273C1CD">
+            <End Role="COUNTRY" EntitySet="COUNTRY" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CUSTOMER__CITY__1DE57479" Association="Self.FK__CUSTOMER__CITY__1DE57479">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PROJECT__CITY__15502E78" Association="Self.FK__PROJECT__CITY__15502E78">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="PROJECT" EntitySet="PROJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEC_USER__ACTION__300424B4" Association="Self.FK__SEC_USER__ACTION__300424B4">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="SEC_USER" EntitySet="SEC_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FINANCIAL__CUSTO__20C1E124" Association="Self.FK__FINANCIAL__CUSTO__20C1E124">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="FINANCIAL_INFORMATION" EntitySet="FINANCIAL_INFORMATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST__CUSTOME__25869641" Association="Self.FK__REQUEST__CUSTOME__25869641">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="REQUEST" EntitySet="REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAYMENT__RECEIPT__2C3393D0" Association="Self.FK__PAYMENT__RECEIPT__2C3393D0">
+            <End Role="RECEIPT" EntitySet="RECEIPT" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAYMENT__REQUEST__2D27B809" Association="Self.FK__PAYMENT__REQUEST__2D27B809">
+            <End Role="REQUEST" EntitySet="REQUEST" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST__PROPERT__267ABA7A" Association="Self.FK__REQUEST__PROPERT__267ABA7A">
+            <End Role="PROPERTY" EntitySet="PROPERTY" />
+            <End Role="REQUEST" EntitySet="REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REQUEST__STATUSR__276EDEB3" Association="Self.FK__REQUEST__STATUSR__276EDEB3">
+            <End Role="STATUSREQUEST" EntitySet="STATUSREQUEST" />
+            <End Role="REQUEST" EntitySet="REQUEST" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEC_USER___ROLEI__3A81B327" Association="Self.FK__SEC_USER___ROLEI__3A81B327">
+            <End Role="SEC_ROLE" EntitySet="SEC_ROLE" />
+            <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK1_SEC_SESSION" Association="Self.FK1_SEC_SESSION">
+            <End Role="SEC_USER" EntitySet="SEC_USER" />
+            <End Role="SEC_SESSION" EntitySet="SEC_SESSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEC_USER___USERI__398D8EEE" Association="Self.FK__SEC_USER___USERI__398D8EEE">
+            <End Role="SEC_USER" EntitySet="SEC_USER" />
+            <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConstructoraUdeCModelStoreContainer" CdmEntityContainer="ConstructoraUdeCEntities">
+          <EntitySetMapping Name="BLOCK">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.BLOCK">
+              <MappingFragment StoreEntitySet="BLOCK">
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PROJECT" ColumnName="PROJECT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CITY">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.CITY">
+              <MappingFragment StoreEntitySet="CITY">
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUNTRY">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.COUNTRY">
+              <MappingFragment StoreEntitySet="COUNTRY">
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DOCUMENT" ColumnName="DOCUMENT" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="BIRTHDATE" ColumnName="BIRTHDATE" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FINANCIAL_INFORMATION">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.FINANCIAL_INFORMATION">
+              <MappingFragment StoreEntitySet="FINANCIAL_INFORMATION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="INCOME_TOTAL" ColumnName="INCOME_TOTAL" />
+                <ScalarProperty Name="WORK_DATE" ColumnName="WORK_DATE" />
+                <ScalarProperty Name="TIME_CURRENTE_JOB" ColumnName="TIME_CURRENTE_JOB" />
+                <ScalarProperty Name="FAMILY_REFERENCE_NAME" ColumnName="FAMILY_REFERENCE_NAME" />
+                <ScalarProperty Name="FAMILY_REFERENCE_PHONE" ColumnName="FAMILY_REFERENCE_PHONE" />
+                <ScalarProperty Name="PERSONAL_REFERENCE" ColumnName="PERSONAL_REFERENCE" />
+                <ScalarProperty Name="PERSONAL_REFERENCE_PHONE" ColumnName="PERSONAL_REFERENCE_PHONE" />
+                <ScalarProperty Name="CUSTOMER" ColumnName="CUSTOMER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENT">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.PAYMENT">
+              <MappingFragment StoreEntitySet="PAYMENT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CUSTOMER" ColumnName="CUSTOMER" />
+                <ScalarProperty Name="PAYMENT_DATE" ColumnName="PAYMENT_DATE" />
+                <ScalarProperty Name="DEBT_TOTAL" ColumnName="DEBT_TOTAL" />
+                <ScalarProperty Name="PAID_VALUE" ColumnName="PAID_VALUE" />
+                <ScalarProperty Name="TOTAL_SUBSCRIBER" ColumnName="TOTAL_SUBSCRIBER" />
+                <ScalarProperty Name="REQUEST" ColumnName="REQUEST" />
+                <ScalarProperty Name="RECEIPT" ColumnName="RECEIPT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJECT">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.PROJECT">
+              <MappingFragment StoreEntitySet="PROJECT">
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROPERTY">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.PROPERTY">
+              <MappingFragment StoreEntitySet="PROPERTY">
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="IDENTIFICATION" ColumnName="IDENTIFICATION" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="BLOCK" ColumnName="BLOCK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECEIPT">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.RECEIPT">
+              <MappingFragment StoreEntitySet="RECEIPT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REQUEST">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.REQUEST">
+              <MappingFragment StoreEntitySet="REQUEST">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQUEST_DATE" ColumnName="REQUEST_DATE" />
+                <ScalarProperty Name="OFFER" ColumnName="OFFER" />
+                <ScalarProperty Name="CUSTOMER" ColumnName="CUSTOMER" />
+                <ScalarProperty Name="PROPERTY" ColumnName="PROPERTY" />
+                <ScalarProperty Name="STATUSREQUEST" ColumnName="STATUSREQUEST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEC_ROLE">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.SEC_ROLE">
+              <MappingFragment StoreEntitySet="SEC_ROLE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEC_SESSION">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.SEC_SESSION">
+              <MappingFragment StoreEntitySet="SEC_SESSION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="LOGIN_DATE" ColumnName="LOGIN_DATE" />
+                <ScalarProperty Name="IP_ADDRESS" ColumnName="IP_ADDRESS" />
+                <ScalarProperty Name="TOKEN" ColumnName="TOKEN" />
+                <ScalarProperty Name="TOKEN_STATUS" ColumnName="TOKEN_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEC_USER">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.SEC_USER">
+              <MappingFragment StoreEntitySet="SEC_USER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="CELLPHONE" ColumnName="CELLPHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="USER_PASSWORD" ColumnName="USER_PASSWORD" />
+                <ScalarProperty Name="ACTIONCITY" ColumnName="ACTIONCITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEC_USER_ROLE">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.SEC_USER_ROLE">
+              <MappingFragment StoreEntitySet="SEC_USER_ROLE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATUSREQUEST">
+            <EntityTypeMapping TypeName="ConstructoraUdeCModel.STATUSREQUEST">
+              <MappingFragment StoreEntitySet="STATUSREQUEST">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

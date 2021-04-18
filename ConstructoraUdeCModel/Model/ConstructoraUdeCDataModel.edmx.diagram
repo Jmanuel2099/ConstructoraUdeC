@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="da8e2132cf9e4b74a0a3cf581ee9115e" Name="Diagram1">
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.BLOCK" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.CITY" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.COUNTRY" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.CUSTOMER" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.FINANCIAL_INFORMATION" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.PAYMENT" Width="1.5" PointX="14.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.PROJECT" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.PROPERTY" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.RECEIPT" Width="1.5" PointX="12" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.REQUEST" Width="1.5" PointX="12" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.SEC_ROLE" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.SEC_SESSION" Width="1.5" PointX="7.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.SEC_USER" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.SEC_USER_ROLE" Width="1.5" PointX="7.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstructoraUdeCModel.STATUSREQUEST" Width="1.5" PointX="9.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__BLOCK__PROJECT__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__PROPERTY__BLOCK__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__CITY__COUNTRY__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__CUSTOMER__CITY__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__PROJECT__CITY__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__SEC_USER__ACTION__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__FINANCIAL__CUSTO__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__REQUEST__CUSTOME__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__PAYMENT__RECEIPT__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__PAYMENT__REQUEST__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__REQUEST__PROPERT__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__REQUEST__STATUSR__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__SEC_USER___ROLEI__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK1_SEC_SESSION" ManuallyRouted="false" />
+        <AssociationConnector Association="ConstructoraUdeCModel.FK__SEC_USER___USERI__398D8EEE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
