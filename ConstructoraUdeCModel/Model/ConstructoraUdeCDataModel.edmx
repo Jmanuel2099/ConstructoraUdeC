@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ConstructoraUdeCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ConstructoraUdeCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BLOCK">
           <Key>
             <PropertyRef Name="CODE" />
@@ -114,9 +114,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="REMOVED" Type="bit" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+          <Property Name="REMOVED" Type="bit" />
         </EntityType>
         <EntityType Name="SEC_SESSION">
           <Key>
@@ -140,6 +140,7 @@
           <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
           <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ACTIONCITY" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="REMOVED" Type="bit" />
         </EntityType>
         <EntityType Name="SEC_USER_ROLE">
           <Key>
@@ -414,8 +415,7 @@
             <End Role="SEC_SESSION" EntitySet="SEC_SESSION" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ConstructoraUdeCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -550,10 +550,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="REMOVED" Type="Boolean" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___ROLEI__3A81B327" FromRole="SEC_ROLE" ToRole="SEC_USER_ROLE" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="REMOVED" Type="Boolean" />
         </EntityType>
         <EntityType Name="SEC_SESSION">
           <Key>
@@ -581,6 +581,7 @@
           <NavigationProperty Name="CITY" Relationship="Self.FK__SEC_USER__ACTION__300424B4" FromRole="SEC_USER" ToRole="CITY" />
           <NavigationProperty Name="SEC_SESSION" Relationship="Self.FK1_SEC_SESSION" FromRole="SEC_USER" ToRole="SEC_SESSION" />
           <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___USERI__398D8EEE" FromRole="SEC_USER" ToRole="SEC_USER_ROLE" />
+          <Property Name="REMOVED" Type="Boolean" />
         </EntityType>
         <EntityType Name="SEC_USER_ROLE">
           <Key>
@@ -981,10 +982,10 @@
           <EntitySetMapping Name="SEC_ROLE">
             <EntityTypeMapping TypeName="ConstructoraUdeCModel.SEC_ROLE">
               <MappingFragment StoreEntitySet="SEC_ROLE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1003,6 +1004,7 @@
           <EntitySetMapping Name="SEC_USER">
             <EntityTypeMapping TypeName="ConstructoraUdeCModel.SEC_USER">
               <MappingFragment StoreEntitySet="SEC_USER">
+                <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />

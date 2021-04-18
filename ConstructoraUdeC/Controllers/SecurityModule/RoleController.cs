@@ -23,7 +23,7 @@ namespace ConstructoraUdeC.Controllers
         public ActionResult Index(string filter = "")
         {
             RoleModelMapper mapper = new RoleModelMapper();
-            IEnumerable<RoleModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
+            IEnumerable<RoleModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter));
             return View(roleList);
         }
 
@@ -62,6 +62,8 @@ namespace ConstructoraUdeC.Controllers
                 case 3:
                     ViewBag.Message = Messages.alreadyExistMessage + model.Name;
                     return View(model);
+                default:
+                    break;
             }
             return RedirectToAction("Index");
         }

@@ -10,3 +10,15 @@ C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\Con
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.CopyComplete
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.pdb
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\bin\Debug\ConstructoraUdeCModel.dll.config
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\bin\Debug\ConstructoraUdeCModel.dll
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\bin\Debug\ConstructoraUdeCModel.pdb
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\bin\Debug\EntityFramework.dll
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\bin\Debug\EntityFramework.xml
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csprojAssemblyReference.cache
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.CoreCompileInputs.cache
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.CopyComplete
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.dll
+C:\Users\Daniel Cuartas\Documents\Proyecto .Net\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.pdb

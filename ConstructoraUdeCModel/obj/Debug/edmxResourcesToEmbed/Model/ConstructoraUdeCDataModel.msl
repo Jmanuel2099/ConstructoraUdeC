@@ -118,10 +118,10 @@
     <EntitySetMapping Name="SEC_ROLE">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.SEC_ROLE">
         <MappingFragment StoreEntitySet="SEC_ROLE">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -140,6 +140,7 @@
     <EntitySetMapping Name="SEC_USER">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.SEC_USER">
         <MappingFragment StoreEntitySet="SEC_USER">
+          <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
