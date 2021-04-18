@@ -1,0 +1,1 @@
+LA tabla SEC_ROLE se le añadio la columna REMOVED de tipo BIT no permite null y DESCRIPTION de tipo NVARCHAR(100) permite null

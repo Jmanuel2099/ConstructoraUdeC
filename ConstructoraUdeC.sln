@@ -15,6 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstructoraUdeCModel", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstructoraUdeCController", "ConstructoraUdeCController\ConstructoraUdeCController.csproj", "{27CDEA24-90AF-4E6A-B17C-6AE197BEF3B6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChangeInDataBase", "ChangeInDataBase", "{B05784C7-AD69-44A5-96B2-7951E0A07893}"
+	ProjectSection(SolutionItems) = preProject
+		ChangeInDataBase.txt = ChangeInDataBase.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
