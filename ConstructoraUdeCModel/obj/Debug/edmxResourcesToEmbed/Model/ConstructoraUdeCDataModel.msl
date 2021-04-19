@@ -4,6 +4,7 @@
     <EntitySetMapping Name="BLOCK">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.BLOCK">
         <MappingFragment StoreEntitySet="BLOCK">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
@@ -14,6 +15,7 @@
     <EntitySetMapping Name="CITY">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.CITY">
         <MappingFragment StoreEntitySet="CITY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
@@ -23,8 +25,10 @@
     <EntitySetMapping Name="COUNTRY">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.COUNTRY">
         <MappingFragment StoreEntitySet="COUNTRY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -76,6 +80,7 @@
     <EntitySetMapping Name="PROJECT">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.PROJECT">
         <MappingFragment StoreEntitySet="PROJECT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
@@ -87,6 +92,7 @@
     <EntitySetMapping Name="PROPERTY">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.PROPERTY">
         <MappingFragment StoreEntitySet="PROPERTY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="IDENTIFICATION" ColumnName="IDENTIFICATION" />
           <ScalarProperty Name="VALUE" ColumnName="VALUE" />
@@ -111,7 +117,7 @@
           <ScalarProperty Name="OFFER" ColumnName="OFFER" />
           <ScalarProperty Name="CUSTOMER" ColumnName="CUSTOMER" />
           <ScalarProperty Name="PROPERTY" ColumnName="PROPERTY" />
-          <ScalarProperty Name="STATUSREQUEST" ColumnName="STATUSREQUEST" />
+          <ScalarProperty Name="STATUS_REQUEST" ColumnName="STATUS_REQUEST" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -159,9 +165,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="STATUSREQUEST">
-      <EntityTypeMapping TypeName="ConstructoraUdeCModel.STATUSREQUEST">
-        <MappingFragment StoreEntitySet="STATUSREQUEST">
+    <EntitySetMapping Name="STATUS_REQUEST">
+      <EntityTypeMapping TypeName="ConstructoraUdeCModel.STATUS_REQUEST">
+        <MappingFragment StoreEntitySet="STATUS_REQUEST">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
           <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />

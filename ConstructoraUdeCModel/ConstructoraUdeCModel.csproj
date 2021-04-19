@@ -51,9 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbModel\DbModelBase.cs" />
+    <Compile Include="DbModel\ParametersModule\CountryDbModel.cs" />
     <Compile Include="DbModel\SecurityModel\RoleDbModel.cs" />
+    <Compile Include="Implementation\ParametersModule\CountryImpModel.cs" />
     <Compile Include="Implementation\SecurityModule\RoleImpModel.cs" />
     <Compile Include="Mapper\GeneralMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\CountryModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
     <Compile Include="Model\BLOCK.cs">
       <DependentUpon>ConstructoraUdeCDataModel.tt</DependentUpon>
@@ -112,41 +115,40 @@
     <Compile Include="Model\SEC_USER_ROLE.cs">
       <DependentUpon>ConstructoraUdeCDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\STATUSREQUEST.cs">
+    <Compile Include="Model\STATUS_REQUEST.cs">
       <DependentUpon>ConstructoraUdeCDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Model\ConstructoraUdeCDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ConstructoraUdeCDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="Model\ConstructoraUdeCDataModel.edmx.diagram">
       <DependentUpon>ConstructoraUdeCDataModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
     <Content Include="Model\ConstructoraUdeCDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ConstructoraUdeCDataModel.Context.cs</LastGenOutput>
       <DependentUpon>ConstructoraUdeCDataModel.edmx</DependentUpon>
+      <LastGenOutput>ConstructoraUdeCDataModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\ConstructoraUdeCDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ConstructoraUdeCDataModel.edmx</DependentUpon>
       <LastGenOutput>ConstructoraUdeCDataModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

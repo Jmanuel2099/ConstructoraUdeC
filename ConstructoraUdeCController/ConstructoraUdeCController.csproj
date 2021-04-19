@@ -42,9 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\DTOBase.cs" />
+    <Compile Include="DTO\ParametersModule\CountryDTO.cs" />
     <Compile Include="DTO\SecurityModule\RoleDTO.cs" />
+    <Compile Include="Implementation\ParametersModule\CountryImpController.cs" />
     <Compile Include="Implementation\SecurityModule\RoleImpController.cs" />
     <Compile Include="Mapper\GeneralMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\CountryDTOMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleDTOMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

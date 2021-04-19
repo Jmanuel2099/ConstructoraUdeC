@@ -39,6 +39,6 @@ namespace ConstructoraUdeCModel.Model
         public virtual DbSet<SEC_SESSION> SEC_SESSION { get; set; }
         public virtual DbSet<SEC_USER> SEC_USER { get; set; }
         public virtual DbSet<SEC_USER_ROLE> SEC_USER_ROLE { get; set; }
-        public virtual DbSet<STATUSREQUEST> STATUSREQUEST { get; set; }
+        public virtual DbSet<STATUS_REQUEST> STATUS_REQUEST { get; set; }
     }
 }

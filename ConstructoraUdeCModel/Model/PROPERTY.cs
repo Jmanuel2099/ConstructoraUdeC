@@ -20,11 +20,12 @@ namespace ConstructoraUdeCModel.Model
             this.REQUEST = new HashSet<REQUEST>();
         }
     
+        public int ID { get; set; }
         public string CODE { get; set; }
         public string IDENTIFICATION { get; set; }
         public int VALUE { get; set; }
         public bool STATUS { get; set; }
-        public string BLOCK { get; set; }
+        public int BLOCK { get; set; }
     
         public virtual BLOCK BLOCK1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

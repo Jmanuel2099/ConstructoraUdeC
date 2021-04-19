@@ -127,13 +127,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParametersModule\CountryController.cs" />
     <Compile Include="Controllers\SecurityModule\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Messages.cs" />
     <Compile Include="Mapper\GeneralMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\CountryModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
+    <Compile Include="Models\ParametersModule\CountryModel.cs" />
     <Compile Include="Models\SecurityModule\RoleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -177,6 +180,10 @@
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -46,6 +46,7 @@ namespace ConstructoraUdeC.Controllers
                 RoleDTO dto = mapper.MapperT2T1(model);
                 int response = capaNegocio.RecordCreation(dto);
                 this.ProcessResponse(response, model);
+                return RedirectToAction("Index");
             }
             return View(model);
         }

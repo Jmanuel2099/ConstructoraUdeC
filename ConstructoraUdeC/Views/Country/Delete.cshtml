@@ -1,0 +1,41 @@
+﻿@model ConstructoraUdeC.Models.ParametersModule.CountryModel
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Delete</h2>
+
+<h3>¿Esta seguro que quiere eliminar este pais?</h3>
+<div>
+    <h4>Pais</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

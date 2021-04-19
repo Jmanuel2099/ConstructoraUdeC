@@ -24,13 +24,13 @@ namespace ConstructoraUdeCModel.Model
         public System.DateTime REQUEST_DATE { get; set; }
         public int OFFER { get; set; }
         public int CUSTOMER { get; set; }
-        public string PROPERTY { get; set; }
-        public int STATUSREQUEST { get; set; }
+        public int PROPERTY { get; set; }
+        public int STATUS_REQUEST { get; set; }
     
         public virtual CUSTOMER CUSTOMER1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PAYMENT> PAYMENT { get; set; }
         public virtual PROPERTY PROPERTY1 { get; set; }
-        public virtual STATUSREQUEST STATUSREQUEST1 { get; set; }
+        public virtual STATUS_REQUEST STATUS_REQUEST1 { get; set; }
     }
 }
