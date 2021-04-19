@@ -53,7 +53,6 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
                     record.LASTNAME = dbModel.Lastname;
                     record.CELLPHONE = dbModel.Cellphone;
                     record.EMAIL = dbModel.Email;
-                    record.USER_PASSWORD = dbModel.Password;
                     record.ACTIONCITY = dbModel.Actioncity;
                     record.REMOVED = dbModel.Removed;
 
@@ -207,6 +206,36 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
                     return recordFinal;
                 }
                 return null;
+            }
+        }
+        public bool AssignRoles(List<int> roles, int userId)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                try
+                {
+                    IList<SEC_USER_ROLE> userRoleList = db.SEC_USER_ROLE.Where(x => x.USERID == userId).ToList();
+                    foreach (var userRole in userRoleList)
+                    {
+                        db.SEC_USER_ROLE.Remove(userRole);
+                    }
+                    foreach (var rolId in roles)
+                    {
+                        db.SEC_USER_ROLE.Add(new SEC_USER_ROLE()
+                        {
+                            USERID = userId,
+                            ROLEID = rolId
+                        });
+
+                    }
+
+                    db.SaveChanges();
+                    return true;
+                }
+                catch(Exception e)
+                {
+                    return false;
+                }
             }
         }
     }

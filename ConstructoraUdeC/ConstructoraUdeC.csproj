@@ -146,6 +146,7 @@
     <Compile Include="Models\GeneralModel.cs" />
     <Compile Include="Models\SecurityModule\RoleModel.cs" />
     <Compile Include="Models\SecurityModule\UserModel.cs" />
+    <Compile Include="Models\SecurityModule\UserRoleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +193,7 @@
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

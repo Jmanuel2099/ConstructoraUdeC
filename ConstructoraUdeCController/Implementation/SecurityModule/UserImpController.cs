@@ -47,7 +47,6 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
         {
             UserDTOMapper mapper = new UserDTOMapper();
             UserDbModel dbModel = mapper.MapperT2T1(dto);
-            dbModel.Password = new Encrypt().CreateMD5(dbModel.Password);
             return model.RecordUpdate(dbModel);
 
         }
@@ -112,6 +111,10 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
 
             UserDTOMapper mapper = new UserDTOMapper();
             return mapper.MapperT1T2(record);
+        }
+        public bool AssignRoles(List<int> roleList, int userId)
+        {
+          return  model.AssignRoles(roleList, userId);
         }
 
 
