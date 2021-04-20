@@ -28,6 +28,13 @@ namespace ConstructoraUdeCModel.Model
         public string EMAIL { get; set; }
         public string USER_PASSWORD { get; set; }
         public int ACTIONCITY { get; set; }
+        public bool REMOVED { get; set; }
+        public Nullable<System.DateTime> REMOVED_DATE { get; set; }
+        public System.DateTime CREATE_DATE { get; set; }
+        public Nullable<System.DateTime> UPDATE_DATE { get; set; }
+        public Nullable<int> REMOVE_USER_ID { get; set; }
+        public Nullable<int> CREATE_USER_ID { get; set; }
+        public Nullable<int> UPDATE_USER_ID { get; set; }
     
         public virtual CITY CITY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

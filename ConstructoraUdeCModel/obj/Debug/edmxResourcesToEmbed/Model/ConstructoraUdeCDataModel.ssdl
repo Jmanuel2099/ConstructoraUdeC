@@ -18,6 +18,7 @@
     <Property Name="CODE" Type="nvarchar" MaxLength="50" />
     <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="COUNTRY" Type="int" Nullable="false" />
+    <Property Name="REMOVED" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="COUNTRY">
     <Key>
@@ -141,6 +142,13 @@
     <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
     <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="ACTIONCITY" Type="int" Nullable="false" />
+    <Property Name="REMOVED" Type="bit" Nullable="false" />
+    <Property Name="REMOVED_DATE" Type="datetime" />
+    <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="REMOVE_USER_ID" Type="int" />
+    <Property Name="CREATE_USER_ID" Type="int" />
+    <Property Name="UPDATE_USER_ID" Type="int" />
   </EntityType>
   <EntityType Name="SEC_USER_ROLE">
     <Key>

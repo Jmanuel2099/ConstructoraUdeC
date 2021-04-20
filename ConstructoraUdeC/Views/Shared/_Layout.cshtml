@@ -17,20 +17,37 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ConstructoraUdeC S.A.S", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Roles", "Index", "Role")</li>
-                    <li>@Html.ActionLink("Paises", "Index", "Country")</li>
+
+                    @if (Session.Count > 0)
+                    {
+                        <li>@Html.ActionLink("Paises", "Index", "Country")</li>
+                        <li>@Html.ActionLink("Ciudades", "Index", "City")</li>
+                        <li>@Html.ActionLink("Roles", "Index", "Role")</li>
+                        <li>@Html.ActionLink("Usuarios", "Index", "User")</li>
+                        <li>@Html.ActionLink("Cerrar sesión", "Logout", "User")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Iniciar sesión", "Login", "User")</li>
+                    }
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+        @if (Session.Count > 0)
+        {
+            <div class="sessionBar">
+                En sessión: <strong>@Session["username"]</strong>
+            </div>
+        }
         @RenderBody()
         <hr />
         <footer>

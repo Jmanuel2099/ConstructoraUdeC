@@ -93,3 +93,7 @@ C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\Construc
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.csproj.CopyComplete
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.pdb
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\SendGrid.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\StarkbankEcdsa.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\SendGrid.pdb
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\SendGrid.xml

@@ -25,7 +25,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
                 try
                 {
                     ///verifica si el rol con el nombre ya existe en algun registro 
-                    if (db.SEC_ROLE.Where(x => x.NAME.ToUpper().Equals(dbModel.Name.ToUpper())).Count() > 0)
+                    if (db.SEC_ROLE.Where(x => x.ID.Equals(dbModel.Id)).Count() > 0)
                     {
                         return 3;
                     }

@@ -10,3 +10,9 @@ C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\obj\Debu
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\obj\Debug\ConstructoraUdeCController.csproj.CopyComplete
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\obj\Debug\ConstructoraUdeCController.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\obj\Debug\ConstructoraUdeCController.pdb
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\SendGrid.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\StarkbankEcdsa.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\SendGrid.pdb
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\SendGrid.xml

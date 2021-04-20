@@ -1,7 +1,7 @@
 ﻿@model ConstructoraUdeC.Models.ParametersModule.CountryModel
 
 @{
-    ViewBag.Title = "Eliminar";
+    ViewBag.Title = "Eliminar un pais";
 }
 
 <h2>Delete</h2>
@@ -34,7 +34,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
             @Html.ActionLink("Regresar", "Index")
         </div>
     }

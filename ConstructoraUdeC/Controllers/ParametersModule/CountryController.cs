@@ -19,7 +19,7 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
     {
         private CountryImpController capaNegocio = new CountryImpController();
 
-        // GET: Role
+        // GET: Country
         public ActionResult Index(string filter = "")
         {
             CountryModelMapper mapper = new CountryModelMapper();
@@ -27,13 +27,13 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return View(roleList);
         }
 
-        // GET: Role/Create
+        // GET: Country/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Role/Create
+        // POST: Country/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -67,7 +67,7 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return RedirectToAction("Index");
         }
 
-        // GET: Role/Edit/5
+        // GET: Country/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,7 +84,7 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return View(model);
         }
 
-        // POST: Role/Edit/5
+        // POST: Country/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -103,7 +103,7 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return View(model);
         }
 
-        // GET: Role/Delete/5
+        // GET: Country/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -120,7 +120,7 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return View(model);
         }
 
-        // POST: Role/Delete/5
+        // POST: Country/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed([Bind(Include = "Id,Code,Name,Removed")] CountryModel model)

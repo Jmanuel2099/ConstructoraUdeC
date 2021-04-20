@@ -5,8 +5,8 @@ C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\bin\Debug\Ent
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\bin\Debug\EntityFramework.xml
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csprojAssemblyReference.cache
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.CoreCompileInputs.cache
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.CopyComplete
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.pdb
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csprojAssemblyReference.cache

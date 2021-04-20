@@ -51,13 +51,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbModel\DbModelBase.cs" />
+    <Compile Include="DbModel\ParametersModule\CityDbModel.cs" />
     <Compile Include="DbModel\ParametersModule\CountryDbModel.cs" />
     <Compile Include="DbModel\SecurityModel\RoleDbModel.cs" />
+    <Compile Include="DbModel\SecurityModel\UserDbModel.cs" />
+    <Compile Include="Implementation\ParametersModule\CityImpModel.cs" />
     <Compile Include="Implementation\ParametersModule\CountryImpModel.cs" />
     <Compile Include="Implementation\SecurityModule\RoleImpModel.cs" />
+    <Compile Include="Implementation\SecurityModule\UserImpModel.cs" />
     <Compile Include="Mapper\GeneralMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\CityModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\CountryModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
+    <Compile Include="Mapper\SecurityModule\UserModelMapper.cs" />
     <Compile Include="Model\BLOCK.cs">
       <DependentUpon>ConstructoraUdeCDataModel.tt</DependentUpon>
     </Compile>
@@ -121,11 +127,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
     <EntityDeploy Include="Model\ConstructoraUdeCDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ConstructoraUdeCDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Model\ConstructoraUdeCDataModel.edmx.diagram">
       <DependentUpon>ConstructoraUdeCDataModel.edmx</DependentUpon>
     </None>
@@ -137,7 +143,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\ConstructoraUdeCDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
