@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConstructoraUdeC.Helpers;
+using ConstructoraUdeC.Mapper.ParametersModule;
 using ConstructoraUdeC.Mapper.SecurityModule;
 using ConstructoraUdeC.Models.SecurityModule;
+using ConstructoraUdeCController.DTO.ParametersModule;
 using ConstructoraUdeCController.DTO.SecurityModule;
+using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCController.Implementation.SecurityModule;
 using ConstructoraUdeCModel.Model;
 
@@ -19,6 +22,7 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
     {
         private UserImpController capaNegocio = new UserImpController();
         private RoleImpController capaNegocioRol = new RoleImpController();
+        private CityImpController capaNegocioCity = new CityImpController();
 
         // GET: User
         public ActionResult Index(string filter = "")
@@ -39,7 +43,11 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            UserModel userModel = new UserModel();
+            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
+            CityModelMapper mapper = new CityModelMapper();
+            userModel.CityActionList = mapper.MapperT1T2(dtoList);
+            return View(userModel);
         }
 
         // POST: User/Create
@@ -47,7 +55,7 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,LastName,Cellphone,Email,CityAction")] UserModel model)
+        public ActionResult Create([Bind(Include = "Name,LastName,Cellphone,Email,CityActionId")] UserModel model)
         {
             if (ModelState.IsValid)
             {
@@ -93,9 +101,19 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             {
                 return HttpNotFound();
             }
+            UserModel userModel = new UserModel();
+            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(String.Empty);
+            CityModelMapper mapperCity = new CityModelMapper();
             UserModelMapper mapper = new UserModelMapper();
             UserModel model = mapper.MapperT1T2(dto);
-            return View(model);
+
+            userModel.Name = model.Name;
+            userModel.LastName = model.LastName;
+            userModel.Cellphone = model.Cellphone;
+            userModel.Email = model.Email;
+            userModel.CityActionList = mapperCity.MapperT1T2(dtoList);
+
+            return View(userModel);
         }
 
         // POST: User/Edit/5
@@ -103,7 +121,7 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,LastName,Cellphone,Email,CityAction")] UserModel model)
+        public ActionResult Edit([Bind(Include = "Id,Name,LastName,Cellphone,Email,CityActionId")] UserModel model)
         {
             if (ModelState.IsValid)
             {
@@ -111,8 +129,9 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
                 UserModelMapper mapper = new UserModelMapper();
                 UserDTO dto = mapper.MapperT2T1(model);
                 int response = capaNegocio.RecordUpdate(dto);
-                return RedirectToAction("Index");
                 this.ProcessResponse(response, model);
+                return RedirectToAction("Index");
+                
             }
             return View(model);
         }
@@ -222,7 +241,8 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             }
             else
             {
-                Session["username"] = model.UserName;
+                var username = login.Name + " " + login.LastName;
+                Session["username"] = username;
                 Session["token"] = login.Token;
                 return RedirectToAction("Index", "Home");
             }

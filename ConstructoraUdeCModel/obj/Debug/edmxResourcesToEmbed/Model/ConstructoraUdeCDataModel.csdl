@@ -92,10 +92,11 @@
     <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CITY" Type="Int32" Nullable="false" />
     <NavigationProperty Name="BLOCK" Relationship="Self.FK__BLOCK__PROJECT__182C9B23" FromRole="PROJECT" ToRole="BLOCK" />
     <NavigationProperty Name="CITY1" Relationship="Self.FK__PROJECT__CITY__15502E78" FromRole="PROJECT" ToRole="CITY" />
+    <Property Name="REMOVED" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="PROPERTY">
     <Key>

@@ -39,11 +39,20 @@ namespace ConstructoraUdeC.Models.ParametersModule
             set { name = value; }
         }
 
-        private int country;
+        private int countryId;
 
         [DisplayName("Pais")]
         [Required()]
-        public int Country
+        public int CountryId
+        {
+            get { return countryId; }
+            set { countryId = value; }
+        }
+
+
+        private CountryModel country;
+
+        public CountryModel Country
         {
             get { return country; }
             set { country = value; }
@@ -56,6 +65,14 @@ namespace ConstructoraUdeC.Models.ParametersModule
         {
             get { return removed; }
             set { removed = value; }
+        }
+
+        private IEnumerable<CountryModel> countryList;
+
+        public IEnumerable<CountryModel> CountryList
+        {
+            get { return countryList; }
+            set { countryList = value; }
         }
     }
 }

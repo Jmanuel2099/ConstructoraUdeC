@@ -1,14 +1,14 @@
-﻿@model ConstructoraUdeC.Models.ParametersModule.CityModel
+﻿@model ConstructoraUdeC.Models.ParametersModule.ProjectModel
 
 @{
-    ViewBag.Title = "Eliminar una ciudad";
+    ViewBag.Title = "Eliminar";
 }
 
-<h2>Eliminar una ciudad</h2>
+<h2>Eliminar un proyecto</h2>
 
-<h3>¿Esta Seguro que quiere eliminar esta ciudad?</h3>
+<h3>¿Esta seguro que quiere eliminar este proyecto?</h3>
 <div>
-    <h4>Ciudad</h4>
+    <h4>PROJECT</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -28,11 +28,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Country.Name)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Country.Name)
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
         </dd>
 
     </dl>

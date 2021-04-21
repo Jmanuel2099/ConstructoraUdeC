@@ -15,37 +15,40 @@ using ConstructoraUdeCModel.Model;
 
 namespace ConstructoraUdeC.Controllers.ParametersModule
 {
-    public class CityController : Controller
+    public class ProjectController : Controller
     {
-        private CityImpController capaNegocio = new CityImpController();
-        private CountryImpController capaNegocioCountry = new CountryImpController();
+        private ProjectImpController capaNegocio = new ProjectImpController();
+        private CityImpController capaNegocioCity = new CityImpController();
 
-        // GET: City
+        // GET: Project
         public ActionResult Index(string filter = "")
         {
-            CityModelMapper mapper = new CityModelMapper();
-            IEnumerable<CityModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            IEnumerable<ProjectModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
             return View(roleList);
         }
 
-        // GET: City/Create
+        // GET: Project/Create
         public ActionResult Create()
         {
-            CityModel cityModel = new CityModel();
-            IEnumerable<CountryDTO> dtoList =  capaNegocioCountry.RecordList(string.Empty);
-            CountryModelMapper mapper = new CountryModelMapper();
-            cityModel.CountryList = mapper.MapperT1T2(dtoList);
-            return View(cityModel);
+            ProjectModel projectModel = new ProjectModel();
+            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
+            CityModelMapper mapper = new CityModelMapper();
+            projectModel.CityList = mapper.MapperT1T2(dtoList);
+            return View(projectModel);
         }
 
+        // POST: Project/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Code,Name,CountryId")] CityModel model)
+        public ActionResult Create([Bind(Include = "Code,Name,Description,Image,CityId")] ProjectModel model)
         {
             if (ModelState.IsValid)
             {
-                CityModelMapper mapper = new CityModelMapper();
-                CityDTO dto = mapper.MapperT2T1(model);
+                ProjectModelMapper mapper = new ProjectModelMapper();
+                ProjectDTO dto = mapper.MapperT2T1(model);
                 int response = capaNegocio.RecordCreation(dto);
                 this.ProcessResponse(response, model);
                 return RedirectToAction("Index");
@@ -53,42 +56,44 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return View(model);
         }
 
-        // GET: City/Edit/5
+        // GET: Project/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CityDTO dto = capaNegocio.RecordSearch(id.Value);
+            ProjectDTO dto = capaNegocio.RecordSearch(id.Value);
             if (dto == null)
             {
                 return HttpNotFound();
             }
-            CityModel cityModel = new CityModel();
-            IEnumerable<CountryDTO> dtoList = capaNegocioCountry.RecordList(string.Empty);
-            CountryModelMapper mapperCountry = new CountryModelMapper();
-            CityModelMapper mapper = new CityModelMapper();
-            CityModel model = mapper.MapperT1T2(dto);
+            ProjectModel projectModel = new ProjectModel();
+            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
+            CityModelMapper mapperCity = new CityModelMapper();
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            ProjectModel model = mapper.MapperT1T2(dto);
 
-            cityModel.Code = model.Code;
-            cityModel.Name = model.Name;
-            cityModel.CountryList = mapperCountry.MapperT1T2(dtoList);
-            cityModel.Removed = model.Removed;
-            return View(cityModel);
+            projectModel.Code = model.Code;
+            projectModel.Name = model.Name;
+            projectModel.Description = model.Description;
+            projectModel.Image = model.Image;
+            projectModel.CityList = mapperCity.MapperT1T2(dtoList);
+            projectModel.Removed = model.Removed;
+            return View(projectModel);
         }
 
-        // POST: City/Edit/5
+        // POST: Project/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Code,Name,CountryId,Removed")] CityModel model)
+        public ActionResult Edit([Bind(Include = "Id,Code,Name,Description,Image,CityId,Removed")] ProjectModel model)
         {
             if (ModelState.IsValid)
             {
-                CityModelMapper mapper = new CityModelMapper();
-                CityDTO dto = mapper.MapperT2T1(model);
+                ProjectModelMapper mapper = new ProjectModelMapper();
+                ProjectDTO dto = mapper.MapperT2T1(model);
                 int response = capaNegocio.RecordUpdate(dto);
                 this.ProcessResponse(response, model);
                 return RedirectToAction("Index");
@@ -96,35 +101,34 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return View(model);
         }
 
-        // GET: City/Delete/5
+        // GET: Project/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CityDTO dto = capaNegocio.RecordSearch(id.Value);
+            ProjectDTO dto = capaNegocio.RecordSearch(id.Value);
             if (dto == null)
             {
                 return HttpNotFound();
             }
-            CityModelMapper mapper = new CityModelMapper();
-            CityModel model = mapper.MapperT1T2(dto);
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            ProjectModel model = mapper.MapperT1T2(dto);
             return View(model);
         }
 
-        // POST: City/Delete/5
+        // POST: Project/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed([Bind(Include = "Id,Code,Name,Country,Removed")] CityModel model)
+        public ActionResult DeleteConfirmed([Bind(Include = "Id,Code,Name,Description,Image,CityId,Removed")] ProjectModel model)
         {
-            CityModelMapper mapper = new CityModelMapper();
-             CityDTO dto = mapper.MapperT2T1(model);
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            ProjectDTO dto = mapper.MapperT2T1(model);
             int response = capaNegocio.RecordRemove(dto);
             return this.ProcessResponse(response, model);
         }
-
-        private ActionResult ProcessResponse(int response, CityModel model)
+        private ActionResult ProcessResponse(int response, ProjectModel model)
         {
             switch (response)
             {

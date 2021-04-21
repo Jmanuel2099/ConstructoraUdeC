@@ -10,23 +10,23 @@ using System.Threading.Tasks;
 
 namespace ConstructoraUdeCModel.Implementation.ParametersModule
 {
-    public class CityImpModel
+    public class ProjectImpModel
     {
-        public int RecordCreation(CityDbModel dbModel)
+        public int RecordCreation(ProjectDbModel dbModel)
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
                 try
                 {
                     ///verifica si el PAIS con el nombre ya existe en algun registro 
-                    if (db.CITY.Where(x => x.ID.Equals(dbModel.Id)).Count() > 0)
+                    if (db.PROJECT.Where(x => x.ID.Equals(dbModel.Id)).Count() > 0)
                     {
                         return 3;
                     }
 
-                    CityModelMapper mapper = new CityModelMapper();
-                    CITY record = mapper.MapperT2T1(dbModel);
-                    db.CITY.Add(record);
+                    ProjectModelMapper mapper = new ProjectModelMapper();
+                    PROJECT record = mapper.MapperT2T1(dbModel);
+                    db.PROJECT.Add(record);
                     db.SaveChanges();
                     return 1;
                 }
@@ -37,20 +37,22 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
             }
         }
 
-        public int RecordUpdate(CityDbModel dbModel)
+        public int RecordUpdate(ProjectDbModel dbModel)
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
                 try
                 {
-                    var record = db.CITY.Where(x => x.ID == dbModel.Id).FirstOrDefault();
+                    var record = db.PROJECT.Where(x => x.ID == dbModel.Id).FirstOrDefault();
                     if (record == null)
                     {
                         return 3;
                     }
                     record.CODE = dbModel.Code;
                     record.NAME = dbModel.Name;
-                    record.COUNTRY = dbModel.CountryId;
+                    record.DESCRIPTION = dbModel.Description;
+                    record.IMAGE = dbModel.Image;
+                    record.CITY = dbModel.CityId;
                     record.REMOVED = dbModel.Removed;
 
                     db.Entry(record).State = EntityState.Modified;
@@ -64,13 +66,13 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
             }
         }
 
-        public int RecordRemove(CityDbModel dbModel)
+        public int RecordRemove(ProjectDbModel dbModel)
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
                 try
                 {
-                    var record = db.CITY.Where(x => x.ID == dbModel.Id).FirstOrDefault();
+                    var record = db.PROJECT.Where(x => x.ID == dbModel.Id).FirstOrDefault();
                     if (record == null)
                     {
                         return 3;
@@ -86,31 +88,32 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
             }
         }
 
-        public IEnumerable<CityDbModel> RecordList(String filter)
+        public IEnumerable<ProjectDbModel> RecordList(String filter)
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
-                var listaLambda = db.CITY.Where(x => !x.REMOVED && x.NAME.ToUpper().Contains(filter)).ToList();
-                CityModelMapper mapper = new CityModelMapper();
+                var listaLambda = db.PROJECT.Where(x => !x.REMOVED && x.NAME.ToUpper().Contains(filter)).ToList();
+                ProjectModelMapper mapper = new ProjectModelMapper();
                 var listFinal = mapper.MapperT1T2(listaLambda);
 
                 return listFinal.ToList();
             }
         }
 
-        public CityDbModel RecordSearch(int id)
+        public ProjectDbModel RecordSearch(int id)
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
-                var record = db.CITY.Where(x => !x.REMOVED && x.ID == id).FirstOrDefault();
+                var record = db.PROJECT.Where(x => !x.REMOVED && x.ID == id).FirstOrDefault();
                 if (record != null)
                 {
-                    CityModelMapper mapper = new CityModelMapper();
+                    ProjectModelMapper mapper = new ProjectModelMapper();
                     var recordFinal = mapper.MapperT1T2(record);
                     return recordFinal;
                 }
                 return null;
             }
         }
+
     }
 }

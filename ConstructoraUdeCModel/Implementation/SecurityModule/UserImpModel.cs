@@ -52,7 +52,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
                     record.LASTNAME = dbModel.LastName;
                     record.CELLPHONE = dbModel.Cellphone;
                     record.EMAIL = dbModel.Email;
-                    record.ACTIONCITY = dbModel.CityAction;
+                    record.ACTIONCITY = dbModel.CityActionId;
                     //record.USER_PASSWORD = dbModel.Password;
                     record.UPDATE_USER_ID = dbModel.UserInSessionId;
                     record.UPDATE_DATE = dbModel.CurrentDate;

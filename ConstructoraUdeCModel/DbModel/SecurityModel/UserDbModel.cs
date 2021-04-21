@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConstructoraUdeCModel.DbModel.ParametersModule;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,12 +55,28 @@ namespace ConstructoraUdeCModel.DbModel.SecurityModel
             set { password = value; }
         }
 
-        private int cityAction;
+        private int cityActionId;
 
-        public int CityAction
+        public int CityActionId
+        {
+            get { return cityActionId; }
+            set { cityActionId = value; }
+        }
+
+        private CityDbModel cityAction;
+
+        public CityDbModel CityAction
         {
             get { return cityAction; }
             set { cityAction = value; }
+        }
+
+        private IEnumerable<CityDbModel> cityActionList;
+
+        public IEnumerable<CityDbModel> CityActionList
+        {
+            get { return cityActionList; }
+            set { cityActionList = value; }
         }
 
         private IEnumerable<RoleDbModel> roles;

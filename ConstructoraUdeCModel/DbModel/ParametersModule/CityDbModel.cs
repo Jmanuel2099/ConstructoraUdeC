@@ -32,12 +32,20 @@ namespace ConstructoraUdeCModel.DbModel.ParametersModule
             set { name = value; }
         }
 
-        private int country;
+        private CountryDbModel country;
 
-        public int Country
+        public CountryDbModel Country
         {
             get { return country; }
             set { country = value; }
+        }
+
+        private int countryId;
+
+        public int CountryId
+        {
+            get { return countryId; }
+            set { countryId = value; }
         }
 
         private bool removed;
@@ -47,6 +55,15 @@ namespace ConstructoraUdeCModel.DbModel.ParametersModule
             get { return removed; }
             set { removed = value; }
         }
+
+        private IEnumerable<CountryDbModel> countryList;
+
+        public IEnumerable<CountryDbModel> CountryList
+        {
+            get { return countryList; }
+            set { countryList = value; }
+        }
+
 
 
     }

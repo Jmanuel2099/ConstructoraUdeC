@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CityAction)
+            @Html.DisplayNameFor(model => model.CityAction.Name)
         </th>
         <th></th>
     </tr>
@@ -44,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CityAction)
+            @Html.DisplayFor(modelItem => item.CityAction.Name)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |

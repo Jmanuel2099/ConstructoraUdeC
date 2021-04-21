@@ -1,4 +1,5 @@
-﻿using ConstructoraUdeCModel.DbModel.SecurityModel;
+﻿ using ConstructoraUdeCModel.DbModel.SecurityModel;
+using ConstructoraUdeCModel.Mapper.ParametersModule;
 using ConstructoraUdeCModel.Model;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,11 @@ namespace ConstructoraUdeCModel.Mapper.SecurityModule
     {
         public override UserDbModel MapperT1T2(SEC_USER input)
         {
+            //var cityAction = input.CITY;
+            CityModelMapper cityMapper = new CityModelMapper();
             var roles = input.SEC_USER_ROLE.Select(x => x.SEC_ROLE);
             RoleModelMapper roleMapper = new RoleModelMapper();
+
             return new UserDbModel
             {
                 Id = input.ID,
@@ -22,7 +26,7 @@ namespace ConstructoraUdeCModel.Mapper.SecurityModule
                 Cellphone = input.CELLPHONE,
                 Email = input.EMAIL,
                 Password = input.USER_PASSWORD,
-                CityAction = input.ACTIONCITY,
+                CityAction = cityMapper.MapperT1T2(input.CITY),
                 Roles = roleMapper.MapperT1T2(roles),
                 Token = input.SEC_SESSION.Where(x => x.TOKEN_STATUS).OrderByDescending(d => d.LOGIN_DATE).Select(z => z.TOKEN).FirstOrDefault()
             };
@@ -46,7 +50,7 @@ namespace ConstructoraUdeCModel.Mapper.SecurityModule
                 CELLPHONE = input.Cellphone,
                 EMAIL = input.Email,
                 USER_PASSWORD = input.Password,
-                ACTIONCITY = input.CityAction
+                ACTIONCITY = input.CityActionId
             };
         }
 

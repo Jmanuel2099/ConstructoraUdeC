@@ -130,6 +130,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParametersModule\CityController.cs" />
     <Compile Include="Controllers\ParametersModule\CountryController.cs" />
+    <Compile Include="Controllers\ParametersModule\ProjectController.cs" />
     <Compile Include="Controllers\SecurityModule\RoleController.cs" />
     <Compile Include="Controllers\SecurityModule\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -139,11 +140,13 @@
     <Compile Include="Mapper\GeneralMapper.cs" />
     <Compile Include="Mapper\ParametersModule\CityModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\CountryModelMapper.cs" />
+    <Compile Include="Mapper\ParametersModule\ProjectModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\UserModelMapper.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\ParametersModule\CityModel.cs" />
     <Compile Include="Models\ParametersModule\CountryModel.cs" />
+    <Compile Include="Models\ParametersModule\ProjectModel.cs" />
     <Compile Include="Models\SecurityModule\LoginModel.cs" />
     <Compile Include="Models\SecurityModule\RoleModel.cs" />
     <Compile Include="Models\SecurityModule\UserModel.cs" />
@@ -205,6 +208,10 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Logout.cshtml" />
     <Content Include="Views\User\Roles.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Project\Delete.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -66,6 +66,8 @@ C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\System.Web.Web
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\System.Web.WebPages.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\System.Web.WebPages.Razor.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\WebGrease.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\SendGrid.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\StarkbankEcdsa.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\ConstructoraUdeCController.pdb
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\ConstructoraUdeCModel.pdb
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\ConstructoraUdeCModel.dll.config
@@ -81,6 +83,8 @@ C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\System.Web.Web
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\Newtonsoft.Json.xml
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\Antlr3.Runtime.pdb
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\SendGrid.pdb
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\SendGrid.xml
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\es\System.Web.Helpers.resources.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\es\System.Web.Mvc.resources.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\es\System.Web.Optimization.resources.dll
@@ -93,7 +97,3 @@ C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\Construc
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.csproj.CopyComplete
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.pdb
-C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\SendGrid.dll
-C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\StarkbankEcdsa.dll
-C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\SendGrid.pdb
-C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\SendGrid.xml

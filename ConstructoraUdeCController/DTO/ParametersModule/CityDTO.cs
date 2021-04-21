@@ -32,9 +32,17 @@ namespace ConstructoraUdeCController.DTO.ParametersModule
             set { name = value; }
         }
 
-        private int country;
+        private int countryId;
 
-        public int Country
+        public int CountryId
+        {
+            get { return countryId; }
+            set { countryId = value; }
+        }
+
+        private CountryDTO country;
+
+        public CountryDTO Country
         {
             get { return country; }
             set { country = value; }
@@ -46,6 +54,14 @@ namespace ConstructoraUdeCController.DTO.ParametersModule
         {
             get { return removed; }
             set { removed = value; }
+        }
+
+        private IEnumerable<CountryDTO> countryList;
+
+        public IEnumerable<CountryDTO> CountryList
+        {
+            get { return countryList; }
+            set { countryList = value; }
         }
 
     }

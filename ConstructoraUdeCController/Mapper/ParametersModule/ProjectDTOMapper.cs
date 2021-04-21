@@ -1,5 +1,4 @@
 ﻿using ConstructoraUdeCController.DTO.ParametersModule;
-using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCModel.DbModel.ParametersModule;
 using System;
 using System.Collections.Generic;
@@ -9,25 +8,25 @@ using System.Threading.Tasks;
 
 namespace ConstructoraUdeCController.Mapper.ParametersModule
 {
-    public class CityDTOMapper: GeneralMapper<CityDbModel, CityDTO>
+    public class ProjectDTOMapper : GeneralMapper<ProjectDbModel, ProjectDTO>
     {
-        private CountryImpController modelCountry = new CountryImpController();
-
-        public override CityDTO MapperT1T2(CityDbModel input)
+        public override ProjectDTO MapperT1T2(ProjectDbModel input)
         {
-            CountryDTOMapper countryMapper = new CountryDTOMapper();
+            CityDTOMapper countryMapper = new CityDTOMapper();
 
-            return new CityDTO
+            return new ProjectDTO
             {
                 Id = input.Id,
                 Code = input.Code,
                 Name = input.Name,
-                Country = countryMapper.MapperT1T2(input.Country),
+                Description = input.Description,
+                Image = input.Image,
+                City = countryMapper.MapperT1T2(input.City),
                 Removed = input.Removed
             };
         }
 
-        public override IEnumerable<CityDTO> MapperT1T2(IEnumerable<CityDbModel> input)
+        public override IEnumerable<ProjectDTO> MapperT1T2(IEnumerable<ProjectDbModel> input)
         {
             foreach (var intem in input)
             {
@@ -35,19 +34,21 @@ namespace ConstructoraUdeCController.Mapper.ParametersModule
             }
         }
 
-        public override CityDbModel MapperT2T1(CityDTO input)
+        public override ProjectDbModel MapperT2T1(ProjectDTO input)
         {
-            return new CityDbModel
+            return new ProjectDbModel
             {
                 Id = input.Id,
                 Code = input.Code,
                 Name = input.Name,
+                Description = input.Description,
+                Image = input.Image,
+                CityId = input.CityId,
                 Removed = input.Removed,
-                CountryId = input.CountryId
             };
         }
 
-        public override IEnumerable<CityDbModel> MapperT2T1(IEnumerable<CityDTO> input)
+        public override IEnumerable<ProjectDbModel> MapperT2T1(IEnumerable<ProjectDTO> input)
         {
             foreach (var intem in input)
             {

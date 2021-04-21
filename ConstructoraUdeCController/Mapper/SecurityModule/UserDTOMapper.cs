@@ -1,4 +1,5 @@
 ﻿using ConstructoraUdeCController.DTO.SecurityModule;
+using ConstructoraUdeCController.Mapper.ParametersModule;
 using ConstructoraUdeCModel.DbModel.SecurityModel;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace ConstructoraUdeCController.Mapper.SecurityModule
     {
         public override UserDTO MapperT1T2(UserDbModel input)
         {
-
+            CityDTOMapper cityMapper = new CityDTOMapper();
             RoleDTOMapper roleMapper = new RoleDTOMapper();
             return new UserDTO
             {
@@ -22,7 +23,7 @@ namespace ConstructoraUdeCController.Mapper.SecurityModule
                 Cellphone = input.Cellphone,
                 Email = input.Email,
                 Password = input.Password,
-                CityAction = input.CityAction,
+                CityAction = cityMapper.MapperT1T2(input.CityAction),
                 Roles = roleMapper.MapperT1T2(input.Roles),
                 Token = input.Token
             };
@@ -46,7 +47,7 @@ namespace ConstructoraUdeCController.Mapper.SecurityModule
                 Cellphone = input.Cellphone,
                 Email = input.Email,
                 Password = input.Password,
-                CityAction = input.CityAction,
+                CityActionId = input.CityActionId,
                 UserInSessionId = input.UserInSessionId,
                 CurrentDate = input.CurrentDate
             };

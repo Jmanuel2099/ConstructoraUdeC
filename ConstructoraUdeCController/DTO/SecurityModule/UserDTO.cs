@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConstructoraUdeCController.DTO.ParametersModule;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,12 +55,28 @@ namespace ConstructoraUdeCController.DTO.SecurityModule
             set { password = value; }
         }
 
-        private int cityAction;
+        private int cityActionId;
 
-        public int CityAction
+        public int CityActionId
+        {
+            get { return cityActionId; }
+            set { cityActionId = value; }
+        }
+
+        private CityDTO cityAction;
+
+        public CityDTO CityAction
         {
             get { return cityAction; }
             set { cityAction = value; }
+        }
+
+        private IEnumerable<CityDTO> cityActionList;
+
+        public IEnumerable<CityDTO> CityActionList
+        {
+            get { return cityActionList; }
+            set { cityActionList = value; }
         }
 
         private IEnumerable<RoleDTO> roles;

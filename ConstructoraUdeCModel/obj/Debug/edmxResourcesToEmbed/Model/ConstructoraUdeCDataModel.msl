@@ -81,6 +81,7 @@
     <EntitySetMapping Name="PROJECT">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.PROJECT">
         <MappingFragment StoreEntitySet="PROJECT">
+          <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />

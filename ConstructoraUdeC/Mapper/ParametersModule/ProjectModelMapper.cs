@@ -4,26 +4,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using static ConstructoraUdeC.Models.ParametersModule.ProjectModel;
 
 namespace ConstructoraUdeC.Mapper.ParametersModule
 {
-    public class CityModelMapper: GeneralMapper<CityDTO, CityModel>
+    public class ProjectModelMapper: GeneralMapper<ProjectDTO,ProjectModel>
     {
-
-        public override CityModel MapperT1T2(CityDTO input)
+        public override ProjectModel MapperT1T2(ProjectDTO input)
         {
-            CountryModelMapper countryMapper = new CountryModelMapper();
-            return new CityModel
+            CityModelMapper countryMapper = new CityModelMapper();
+
+            return new ProjectModel
             {
                 Id = input.Id,
                 Code = input.Code,
                 Name = input.Name,
-                Country = countryMapper.MapperT1T2(input.Country),
+                Description = input.Description,
+                Image = input.Image,
+                City = countryMapper.MapperT1T2(input.City),
                 Removed = input.Removed
             };
         }
 
-        public override IEnumerable<CityModel> MapperT1T2(IEnumerable<CityDTO> input)
+        public override IEnumerable<ProjectModel> MapperT1T2(IEnumerable<ProjectDTO> input)
         {
             foreach (var intem in input)
             {
@@ -31,26 +34,26 @@ namespace ConstructoraUdeC.Mapper.ParametersModule
             }
         }
 
-        public override CityDTO MapperT2T1(CityModel input)
+        public override ProjectDTO MapperT2T1(ProjectModel input)
         {
-            return new CityDTO
+            return new ProjectDTO
             {
                 Id = input.Id,
                 Code = input.Code,
                 Name = input.Name,
+                Description = input.Description,
+                Image = input.Image,
+                CityId = input.CityId,
                 Removed = input.Removed,
-                CountryId = input.CountryId
-                
             };
         }
 
-        public override IEnumerable<CityDTO> MapperT2T1(IEnumerable<CityModel> input)
+        public override IEnumerable<ProjectDTO> MapperT2T1(IEnumerable<ProjectModel> input)
         {
             foreach (var intem in input)
             {
                 yield return MapperT2T1(intem);
             }
         }
-
     }
 }

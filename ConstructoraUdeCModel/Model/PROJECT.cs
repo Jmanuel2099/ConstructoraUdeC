@@ -26,6 +26,7 @@ namespace ConstructoraUdeCModel.Model
         public string DESCRIPTION { get; set; }
         public string IMAGE { get; set; }
         public int CITY { get; set; }
+        public bool REMOVED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BLOCK> BLOCK { get; set; }

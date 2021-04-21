@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConstructoraUdeC.Models.ParametersModule;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -26,6 +27,7 @@ namespace ConstructoraUdeC.Models.SecurityModule
             get { return name; }
             set { name = value; }
         }
+
         private string lastname;
         [DisplayName("Apellidos")]
         [Required]
@@ -63,13 +65,29 @@ namespace ConstructoraUdeC.Models.SecurityModule
             set { password = value; }
         }
 
-        private int cityAction;
+        private int cityActionId;
         [DisplayName("Ciudad de accion")]
-        [Required]
-        public int CityAction
+        [Required()]
+        public int CityActionId
+        {
+            get { return cityActionId; }
+            set { cityActionId = value; }
+        }
+
+        private CityModel cityAction;
+
+        public CityModel CityAction
         {
             get { return cityAction; }
             set { cityAction = value; }
+        }
+
+        private IEnumerable<CityModel> cityActionList;
+
+        public IEnumerable<CityModel> CityActionList
+        {
+            get { return cityActionList; }
+            set { cityActionList = value; }
         }
 
 
