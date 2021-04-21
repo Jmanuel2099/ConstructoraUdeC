@@ -64,6 +64,7 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
                 UserDTO dto = mapper.MapperT2T1(model);
                 int response = capaNegocio.RecordCreation(dto);
                 this.ProcessResponse(response, model);
+                return RedirectToAction("Index");
             }
 
             return View(model);
@@ -131,7 +132,6 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
                 int response = capaNegocio.RecordUpdate(dto);
                 this.ProcessResponse(response, model);
                 return RedirectToAction("Index");
-                
             }
             return View(model);
         }
