@@ -112,10 +112,10 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
-                /*var listLINQ = from role in db.SEC_ROLE
-                               where !role.REMOVED && role.NAME.ToUpper().Contains(filter.ToUpper())
-                               select role;*/
-                var listaLambda = db.SEC_ROLE.Where(x => !x.REMOVED && x.NAME.ToUpper().Contains(filter)).ToList();
+                //var listLINQ = from role in db.SEC_ROLE
+                              // where role.REMOVED ==false && role.NAME.ToUpper().Contains(filter.ToUpper())
+                               //select role;
+                var listaLambda = db.SEC_ROLE.Where(x => x.REMOVED==false && x.NAME.ToUpper().Contains(filter)).ToList();
                 RoleModelMapper mapper = new RoleModelMapper();
                 var listFinal = mapper.MapperT1T2(listaLambda);
 
@@ -132,7 +132,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
-                var record = db.SEC_ROLE.Where(x => !x.REMOVED && x.ID == id).FirstOrDefault();
+                var record = db.SEC_ROLE.Where(x => x.REMOVED==false && x.ID == id).FirstOrDefault();
                 if (record != null)
                 {
                     RoleModelMapper mapper = new RoleModelMapper();
@@ -154,7 +154,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
             {
 
                 var roleListDB = from role in db.SEC_ROLE
-                                 where !role.REMOVED
+                                 where role.REMOVED == false
                                  select role;
                 //RoleModelMapper mapper = new RoleModelMapper();
                 //var roleListDbModel = mapper.MapperT1T2(roleListDB);
@@ -167,7 +167,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
                         Id = role.ID,
                         Name = role.NAME,
                         Description = role.DESCRIPTION,
-                        Removed = role.REMOVED,
+                        Removed = (bool)role.REMOVED,
                         IsSelectedByUser = db.SEC_USER_ROLE.Where(x => x.ROLEID == role.ID && x.USERID == userId).Count() > 0
                     });
                 }
