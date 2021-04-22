@@ -20,11 +20,13 @@ namespace ConstructoraUdeCModel.Model
             this.BLOCK = new HashSet<BLOCK>();
         }
     
+        public int ID { get; set; }
         public string CODE { get; set; }
         public string NAME { get; set; }
         public string DESCRIPTION { get; set; }
         public string IMAGE { get; set; }
-        public string CITY { get; set; }
+        public int CITY { get; set; }
+        public bool REMOVED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BLOCK> BLOCK { get; set; }

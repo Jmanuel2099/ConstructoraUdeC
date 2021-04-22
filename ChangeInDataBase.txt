@@ -1,0 +1,20 @@
+LA tabla SEC_ROLE se le añadio la columna REMOVED de tipo BIT no permite null y DESCRIPTION de tipo NVARCHAR(100) permite null
+
+en la tabla COUNTRY se agrego la columna REMOVED de tipo BIT y no permite null
+
+Se cambiaron las llaves primarias de las tablas COUNTRY, CITY, PROJECT, BLOCK, PROPERTY POR UN ID INT IDENTITY NOT NULL,
+teniendo en cuenta que las FOREIGN KEY que hay en las tablas SEC_USER con ACTIONCITY ya es un int y no un nvarchar, lo mismo para las demas 
+tablas donde se vio afectado la FOREIGN KEY a la que hacia referencia la tabla a la que se le cambio la PRIMARY KEY
+
+Se le añadio el campo REMOVED a la tabla CITY de tipo BIT no permite null
+
+Se agregaron los campos para auditoria en la tabla SEC_USER:
+REMOVED BIT NOT NULL,
+REMOVED_DATE  DATETIME NULL,
+CREATE_DATE DATETIME NOT NULL,
+UPDATE_DATE DATETIME NULL,
+REMOVE_USER_ID INT NULL,
+CREATE_USER_ID INT NULL,
+UPDATE_USER_ID INT NULL
+
+Se le añadio el campo REMOVED a la tabla PROJECT de tipo BIT no permite null

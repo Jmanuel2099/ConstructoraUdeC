@@ -12,10 +12,10 @@ namespace ConstructoraUdeCModel.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class STATUSREQUEST
+    public partial class STATUS_REQUEST
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public STATUSREQUEST()
+        public STATUS_REQUEST()
         {
             this.REQUEST = new HashSet<REQUEST>();
         }

@@ -1,0 +1,48 @@
+﻿@model ConstructoraUdeC.Models.ParametersModule.CityModel
+
+@{
+    ViewBag.Title = "Eliminar una ciudad";
+}
+
+<h2>Eliminar una ciudad</h2>
+
+<h3>¿Esta Seguro que quiere eliminar esta ciudad?</h3>
+<div>
+    <h4>Ciudad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

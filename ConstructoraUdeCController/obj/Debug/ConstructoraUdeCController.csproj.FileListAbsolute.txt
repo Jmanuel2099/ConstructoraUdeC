@@ -1,9 +1,15 @@
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\ConstructoraUdeCController.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\ConstructoraUdeCController.pdb
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\ConstructoraUdeCModel.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\SendGrid.dll
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\StarkbankEcdsa.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\EntityFramework.dll
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\ConstructoraUdeCModel.pdb
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\ConstructoraUdeCModel.dll.config
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\SendGrid.pdb
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\SendGrid.xml
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\bin\Debug\EntityFramework.xml
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\obj\Debug\ConstructoraUdeCController.csprojAssemblyReference.cache
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeCController\obj\Debug\ConstructoraUdeCController.csproj.CoreCompileInputs.cache
