@@ -131,10 +131,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="REMOVED" Type="Boolean" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___ROLEI__3A81B327" FromRole="SEC_ROLE" ToRole="SEC_USER_ROLE" />
-    <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="REMOVED" Type="Boolean" />
   </EntityType>
   <EntityType Name="SEC_SESSION">
     <Key>
@@ -162,7 +162,6 @@
     <NavigationProperty Name="CITY" Relationship="Self.FK__SEC_USER__ACTION__300424B4" FromRole="SEC_USER" ToRole="CITY" />
     <NavigationProperty Name="SEC_SESSION" Relationship="Self.FK1_SEC_SESSION" FromRole="SEC_USER" ToRole="SEC_SESSION" />
     <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___USERI__398D8EEE" FromRole="SEC_USER" ToRole="SEC_USER_ROLE" />
-    <Property Name="REMOVED" Type="Boolean" />
   </EntityType>
   <EntityType Name="SEC_USER_ROLE">
     <Key>

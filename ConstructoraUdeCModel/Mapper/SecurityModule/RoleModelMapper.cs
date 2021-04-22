@@ -17,7 +17,7 @@ namespace ConstructoraUdeCModel.Mapper.SecurityModule
                 Id = input.ID,
                 Name = input.NAME,
                 Description = input.DESCRIPTION,
-                Removed = (bool)input.REMOVED
+                Removed = input.REMOVED
             };
         }
 

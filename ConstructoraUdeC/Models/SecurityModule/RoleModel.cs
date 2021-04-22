@@ -54,5 +54,6 @@ namespace ConstructoraUdeC.Models.SecurityModule
             set { isSelectedByUser = value; }
         }
 
-     }
+
+    }
 }
