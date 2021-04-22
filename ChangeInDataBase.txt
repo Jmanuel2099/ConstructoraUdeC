@@ -18,3 +18,4 @@ CREATE_USER_ID INT NULL,
 UPDATE_USER_ID INT NULL
 
 Se le añadio el campo REMOVED a la tabla PROJECT de tipo BIT no permite null
+.
