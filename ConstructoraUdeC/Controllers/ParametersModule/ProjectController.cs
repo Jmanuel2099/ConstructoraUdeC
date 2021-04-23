@@ -15,7 +15,7 @@ using ConstructoraUdeCModel.Model;
 
 namespace ConstructoraUdeC.Controllers.ParametersModule
 {
-    public class ProjectController : Controller
+    public class ProjectController : BaseController
     {
         private ProjectImpController capaNegocio = new ProjectImpController();
         private CityImpController capaNegocioCity = new CityImpController();
@@ -23,6 +23,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: Project
         public ActionResult Index(string filter = "")
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             ProjectModelMapper mapper = new ProjectModelMapper();
             IEnumerable<ProjectModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
             return View(roleList);
@@ -31,6 +35,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: Project/Create
         public ActionResult Create()
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             ProjectModel projectModel = new ProjectModel();
             IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
             CityModelMapper mapper = new CityModelMapper();
@@ -59,6 +67,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: Project/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -104,6 +116,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: Project/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
