@@ -222,40 +222,6 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             return View();
         }
 
-        public ActionResult Password(int? id)
-        {
-            UserDTO dto = capaNegocio.RecordSearch(id.Value);
-            if (dto == null)
-            {
-                return HttpNotFound();
-            }
-            UserModelMapper mapper = new UserModelMapper();
-            UserModel model = mapper.MapperT1T2(dto);
-
-            return View(model);
-        }
-        [HttpPost, ActionName("Password")]
-        [ValidateAntiForgeryToken]
-        public ActionResult ResetPass(UserModel model)
-        {
-            UserDTO dto = capaNegocio.RecordSearch(model.Id);
-            if (dto == null)
-            {
-                return HttpNotFound();
-            }
-            UserModelMapper mapper = new UserModelMapper();
-            UserModel modelo = mapper.MapperT1T2(dto);
-
-            capaNegocio.GetHashCode();
-            int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword, modelo.Id);
-            if (result==1)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return View(model);
-
-        }
-
         [HttpPost, ActionName("Login")]
         [ValidateAntiForgeryToken]
         public ActionResult IdentifyUser([Bind(Include = "UserName,Password")] LoginModel model)
@@ -282,9 +248,60 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             }
         }
 
+        public ActionResult Password(int? id)
+        {
+            UserDTO dto = capaNegocio.RecordSearch(id.Value);
+            if (dto == null)
+            {
+                return HttpNotFound();
+            }
+            UserModelMapper mapper = new UserModelMapper();
+            UserModel model = mapper.MapperT1T2(dto);
 
+            return View(model);
+        }
+        [HttpPost, ActionName("Password")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPass([Bind(Include = "Id,Password,NewPassword")] UserModel model)
+        {
+            UserDTO dto = capaNegocio.RecordSearch(model.Id);
+            if (dto == null)
+            {
+                return HttpNotFound();
+            }
+            UserModelMapper mapper = new UserModelMapper();
+            UserModel modelo = mapper.MapperT1T2(dto);
 
-       
+            capaNegocio.GetHashCode();
+            int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword, modelo.Id);
+            if (result==1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
+
+        }
+
+        public ActionResult RecoverPassword()
+        {
+            if (this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost, ActionName("RecoverPassword")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecoverPasswordConfirmed([Bind(Include = "Email")] UserModel model)
+        {
+            int result = capaNegocio.PasswordResset(model.Email);
+            if (result == 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
+        }
 
         public ActionResult Logout()
         {
@@ -295,5 +312,6 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             Session.RemoveAll();
             return RedirectToAction("Index", "Home");
         }
+
     }
 }

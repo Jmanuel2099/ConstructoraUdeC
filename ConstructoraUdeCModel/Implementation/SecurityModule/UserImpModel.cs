@@ -222,5 +222,31 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
             }
         }
 
+        public int PasswordResset(string email, string newPass)
+        {
+
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                try
+                {
+                    var user = db.SEC_USER.Where(x => x.REMOVED == false && x.EMAIL.Equals(email)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        return 3;
+                    }
+
+                    user.USER_PASSWORD = newPass;
+                    db.SaveChanges();
+                    email = user.EMAIL;
+                    return 1;
+                }
+                catch
+                {
+                    return 2;
+                }
+
+            }
+        }
+
     }
 }
