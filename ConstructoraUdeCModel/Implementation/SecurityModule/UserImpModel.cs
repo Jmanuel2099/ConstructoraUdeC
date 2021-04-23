@@ -125,6 +125,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
+                
                 var login = (from user in db.SEC_USER
                              where user.EMAIL.ToUpper().Equals(dbModel.Email.ToUpper()) && user.USER_PASSWORD.Equals(dbModel.Password)
                              select user).FirstOrDefault();
