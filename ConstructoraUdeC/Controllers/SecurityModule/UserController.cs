@@ -15,6 +15,7 @@ using ConstructoraUdeCController.DTO.SecurityModule;
 using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCController.Implementation.SecurityModule;
 using ConstructoraUdeCModel.Model;
+using reCAPTCHA.MVC;
 
 namespace ConstructoraUdeC.Controllers.SecurityModule
 {
@@ -248,43 +249,55 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
 
             capaNegocio.GetHashCode();
             int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword, modelo.Id);
-            if (result==1)
+            if (result == 1)
             {
                 return RedirectToAction("Index", "Home");
             }
             return View(model);
 
         }
-
+       
+        
+        
         [HttpPost, ActionName("Login")]
+        [CaptchaValidator]
         [ValidateAntiForgeryToken]
-        public ActionResult IdentifyUser([Bind(Include = "UserName,Password")] LoginModel model)
+        public ActionResult IdentifyUser(bool captchaValid, LoginModel model)
         {
-            UserDTO dto = new UserDTO()
-            {
-                Email = model.UserName,
-                Password = model.Password,
-                CurrentDate = DateTime.Now
-            };
-            UserDTO login = capaNegocio.Login(dto);
 
-            if (login == null)
+
+            if (ModelState.IsValid) //this will take care of captcha
             {
-                ViewBag.ErrorMessage = "Datos invalidos";
-                return View(model);
-            }
-            else
-            {
-                var username = login.Name + " " + login.LastName;
-                Session["username"] = username;
-                Session["token"] = login.Token;
-                return RedirectToAction("Index", "Home");
-            }
+
+
+
+                UserDTO dto = new UserDTO()
+                {
+                    Email = model.UserName,
+                    Password = model.Password,
+                    CurrentDate = DateTime.Now
+                };
+                UserDTO login = capaNegocio.Login(dto);
+
+                if (login == null)
+                {
+                    ViewBag.ErrorMessage = "Datos invalidos";
+                    return View(model);
+                }
+                else
+                {
+                    var username = login.Name + " " + login.LastName;
+                    Session["username"] = username;
+                    Session["token"] = login.Token;
+                    return RedirectToAction("Index", "Home");
+                }
+            }return View(model);
         }
 
 
 
-       
+
+
 
         public ActionResult Logout()
         {
