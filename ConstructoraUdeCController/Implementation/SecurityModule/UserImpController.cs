@@ -100,15 +100,24 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             RoleDTOMapper mapper = new RoleDTOMapper();
             return mapper.MapperT1T2(list);
         }
-        public int ChangePassword(string currentPassword, string newPassword, int userId)
+        public int ChangePassword(string currentPassword, string newPassword, int userId, string nombre, string email)
         {
-            string email = string.Empty;
+            
             Encrypt encrypt = new Encrypt();
+            string pass = encrypt.CreateMD5(newPassword);
 
-            var response = model.ChangePassword(currentPassword, encrypt.CreateMD5(newPassword), userId, out email);
+            var response = model.ChangePassword(currentPassword,pass , userId,nombre, email);
             if (response == 1)
             {
-                new Notifications().SendEmail("Password changed", "Content...", email, "bernumledon@gmail.com");
+                String content = String.Format("Hola {0}," +
+                    " <br />Se realizo el cambio de su contraseña. " +
+                    "Sus credenciales de acceso son: <br />" +
+                    " <ul>" +
+                    "<li>Usuario: {1}</li>" +
+                    "<li>Contraseña: {2}</li>" +
+                    "</ul>" +
+                    "<br /> Cordial saludo. ", nombre, email, newPassword);
+                new Notifications().SendEmail("Password changed", content, nombre, email);
             }
             return response;
 

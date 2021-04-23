@@ -247,8 +247,8 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             UserModelMapper mapper = new UserModelMapper();
             UserModel modelo = mapper.MapperT1T2(dto);
 
-            capaNegocio.GetHashCode();
-            int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword, modelo.Id);
+           
+            int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword,modelo.Id, modelo.Name,  modelo.Email);
             if (result == 1)
             {
                 return RedirectToAction("Index", "Home");
@@ -266,8 +266,8 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
         {
 
 
-            if (ModelState.IsValid) //this will take care of captcha
-            {
+            //if (ModelState.IsValid) //this will take care of captcha
+            //{
 
 
 
@@ -291,7 +291,7 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
                     Session["token"] = login.Token;
                     return RedirectToAction("Index", "Home");
                 }
-            }return View(model);
+            //}return View(model);
         }
 
 
