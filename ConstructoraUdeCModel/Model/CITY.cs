@@ -26,7 +26,7 @@ namespace ConstructoraUdeCModel.Model
         public string CODE { get; set; }
         public string NAME { get; set; }
         public int COUNTRY { get; set; }
-        public bool REMOVED { get; set; }
+        public Nullable<bool> REMOVED { get; set; }
     
         public virtual COUNTRY COUNTRY1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
