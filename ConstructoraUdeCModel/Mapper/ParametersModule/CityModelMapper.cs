@@ -26,7 +26,7 @@ namespace ConstructoraUdeCModel.Mapper.ParametersModule
                 Code = input.CODE,
                 Name = input.NAME,
                 Country = countryMapper.MapperT1T2(country),
-                Removed = input.REMOVED
+                Removed = (bool)input.REMOVED
         };
         }
 

@@ -100,5 +100,18 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             RoleDTOMapper mapper = new RoleDTOMapper();
             return mapper.MapperT1T2(list);
         }
+        public int ChangePassword(string currentPassword, string newPassword, int userId)
+        {
+            string email = string.Empty;
+            Encrypt encrypt = new Encrypt();
+
+            var response = model.ChangePassword(currentPassword, encrypt.CreateMD5(newPassword), userId, out email);
+            if (response == 1)
+            {
+                new Notifications().SendEmail("Password changed", "Content...", email, "bernumledon@gmail.com");
+            }
+            return response;
+
+        }
     }
 }
