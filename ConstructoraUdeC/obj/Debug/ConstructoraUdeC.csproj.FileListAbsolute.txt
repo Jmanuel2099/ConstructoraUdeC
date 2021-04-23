@@ -196,3 +196,4 @@ C:\Users\Daniel Cuartas\Desktop\Proyecto .net\ConstructoraUdeC\bin\es\System.Web
 C:\Users\Daniel Cuartas\Desktop\Proyecto .net\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.csproj.CopyComplete
 C:\Users\Daniel Cuartas\Desktop\Proyecto .net\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.dll
 C:\Users\Daniel Cuartas\Desktop\Proyecto .net\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.pdb
+C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\Recaptcha.Web.dll

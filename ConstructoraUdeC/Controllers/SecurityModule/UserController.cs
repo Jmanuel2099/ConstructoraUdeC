@@ -15,6 +15,7 @@ using ConstructoraUdeCController.DTO.SecurityModule;
 using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCController.Implementation.SecurityModule;
 using ConstructoraUdeCModel.Model;
+using Newtonsoft.Json.Linq;
 
 namespace ConstructoraUdeC.Controllers.SecurityModule
 {
@@ -215,10 +216,17 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
 
         public ActionResult Login()
         {
-            if (this.verificarSesion())
+            /*if (this.verificarSesion())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
+            var response = Request["g-recaptcha-response"];
+            string secretKey = "6LfLgrYaAAAAAKkdQhIArWU0WSvJmdqP4_tcWWxb";
+            var client = new WebClient();
+            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
+            var obj = JObject.Parse(result);
+            var status = (bool)obj.SelectToken("success");
+            ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
             return View();
         }
 
