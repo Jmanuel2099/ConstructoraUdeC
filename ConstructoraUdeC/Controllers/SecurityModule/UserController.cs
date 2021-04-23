@@ -281,7 +281,7 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             UserModel modelo = mapper.MapperT1T2(dto);
 
             capaNegocio.GetHashCode();
-            int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword, modelo.Id);
+            int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword, modelo.Id,modelo.Name,modelo.Email);
             if (result==1)
             {
                 return RedirectToAction("Index", "Home");

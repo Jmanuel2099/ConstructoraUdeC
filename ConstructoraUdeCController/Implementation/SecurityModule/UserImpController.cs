@@ -74,7 +74,8 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             UserDbModel dbModel = mapper.MapperT2T1(dto);
             dbModel.Password = new Encrypt().CreateMD5(dbModel.Password);
             var obj = model.Login(dbModel);
-            if (obj == null) {
+            if (obj == null)
+            {
 
                 return null;
             }
@@ -104,18 +105,28 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             RoleDTOMapper mapper = new RoleDTOMapper();
             return mapper.MapperT1T2(list);
         }
-        public int ChangePassword(string currentPassword, string newPassword, int userId)
+        public int ChangePassword(string currentPassword, string newPassword, int userId, string nombre, string email)
         {
-            string email = string.Empty;
-            Encrypt encrypt = new Encrypt();
 
-            var response = model.ChangePassword(currentPassword, encrypt.CreateMD5(newPassword), userId, out email);
+            Encrypt encrypt = new Encrypt();
+            string pass = encrypt.CreateMD5(newPassword);
+
+            int response = model.ChangePassword(currentPassword, pass, userId, nombre, email);
+
             if (response == 1)
             {
-                new Notifications().SendEmail("Password changed", "Content...", email, "bernumledon@gmail.com");
+                String content = String.Format("Hola {0}," +
+                    " <br />Se realizo el cambio de su contraseña. " +
+                    "Sus credenciales de acceso son: <br />" +
+                    " <ul>" +
+                    "<li>Usuario: {1}</li>" +
+                    "<li>Contraseña: {2}</li>" +
+                    "</ul>" +
+                    "<br /> Cordial saludo. ", nombre, email, newPassword);
+                new Notifications().SendEmail("Password changed", content, nombre, email);
+                return response;
             }
             return response;
-
         }
 
         public int PasswordResset(string email)
