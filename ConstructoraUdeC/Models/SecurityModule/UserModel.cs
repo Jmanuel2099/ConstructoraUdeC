@@ -64,6 +64,13 @@ namespace ConstructoraUdeC.Models.SecurityModule
             get { return password; }
             set { password = value; }
         }
+        private string newpassword;
+
+        public string NewPassword
+        {
+            get { return newpassword; }
+            set { newpassword = value; }
+        }
 
         private int cityActionId;
         [DisplayName("Ciudad de accion")]

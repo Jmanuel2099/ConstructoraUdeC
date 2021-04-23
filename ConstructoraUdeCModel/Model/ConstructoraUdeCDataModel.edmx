@@ -23,7 +23,7 @@
           <Property Name="CODE" Type="nvarchar" MaxLength="50" />
           <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="COUNTRY" Type="int" Nullable="false" />
-          <Property Name="REMOVED" Type="bit" Nullable="false" />
+          <Property Name="REMOVED" Type="bit" />
         </EntityType>
         <EntityType Name="COUNTRY">
           <Key>
@@ -84,7 +84,7 @@
           <Property Name="CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="IMAGE" Type="nvarchar(max)" />
+          <Property Name="IMAGE" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CITY" Type="int" Nullable="false" />
           <Property Name="REMOVED" Type="bit" Nullable="false" />
         </EntityType>
@@ -148,9 +148,9 @@
           <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
           <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ACTIONCITY" Type="int" Nullable="false" />
-          <Property Name="REMOVED" Type="bit" Nullable="false" />
+          <Property Name="REMOVED" Type="bit" />
           <Property Name="REMOVED_DATE" Type="datetime" />
-          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" />
           <Property Name="UPDATE_DATE" Type="datetime" />
           <Property Name="REMOVE_USER_ID" Type="int" />
           <Property Name="CREATE_USER_ID" Type="int" />
@@ -453,7 +453,7 @@
           <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="COUNTRY" Type="Int32" Nullable="false" />
-          <Property Name="REMOVED" Type="Boolean" Nullable="false" />
+          <Property Name="REMOVED" Type="Boolean" />
           <NavigationProperty Name="COUNTRY1" Relationship="Self.FK__CITY__COUNTRY__1273C1CD" FromRole="CITY" ToRole="COUNTRY" />
           <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__CUSTOMER__CITY__1DE57479" FromRole="CITY" ToRole="CUSTOMER" />
           <NavigationProperty Name="PROJECT" Relationship="Self.FK__PROJECT__CITY__15502E78" FromRole="CITY" ToRole="PROJECT" />
@@ -525,7 +525,7 @@
           <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CITY" Type="Int32" Nullable="false" />
           <NavigationProperty Name="BLOCK" Relationship="Self.FK__BLOCK__PROJECT__182C9B23" FromRole="PROJECT" ToRole="BLOCK" />
           <NavigationProperty Name="CITY1" Relationship="Self.FK__PROJECT__CITY__15502E78" FromRole="PROJECT" ToRole="CITY" />
@@ -603,9 +603,9 @@
           <NavigationProperty Name="CITY" Relationship="Self.FK__SEC_USER__ACTION__300424B4" FromRole="SEC_USER" ToRole="CITY" />
           <NavigationProperty Name="SEC_SESSION" Relationship="Self.FK1_SEC_SESSION" FromRole="SEC_USER" ToRole="SEC_SESSION" />
           <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___USERI__398D8EEE" FromRole="SEC_USER" ToRole="SEC_USER_ROLE" />
-          <Property Name="REMOVED" Type="Boolean" Nullable="false" />
+          <Property Name="REMOVED" Type="Boolean" />
           <Property Name="REMOVED_DATE" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
           <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
           <Property Name="REMOVE_USER_ID" Type="Int32" />
           <Property Name="CREATE_USER_ID" Type="Int32" />
