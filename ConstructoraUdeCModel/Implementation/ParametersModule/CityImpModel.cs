@@ -90,7 +90,7 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
-                var listaLambda = db.CITY.Where(x => !x.REMOVED && x.NAME.ToUpper().Contains(filter)).ToList();
+                var listaLambda = db.CITY.Where(x => x.REMOVED == false && x.NAME.ToUpper().Contains(filter)).ToList();
                 CityModelMapper mapper = new CityModelMapper();
                 var listFinal = mapper.MapperT1T2(listaLambda);
 
@@ -102,7 +102,7 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
-                var record = db.CITY.Where(x => !x.REMOVED && x.ID == id).FirstOrDefault();
+                var record = db.CITY.Where(x => x.REMOVED == false && x.ID == id).FirstOrDefault();
                 if (record != null)
                 {
                     CityModelMapper mapper = new CityModelMapper();

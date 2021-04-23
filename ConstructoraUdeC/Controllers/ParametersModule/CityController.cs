@@ -15,7 +15,7 @@ using ConstructoraUdeCModel.Model;
 
 namespace ConstructoraUdeC.Controllers.ParametersModule
 {
-    public class CityController : Controller
+    public class CityController : BaseController
     {
         private CityImpController capaNegocio = new CityImpController();
         private CountryImpController capaNegocioCountry = new CountryImpController();
@@ -23,6 +23,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: City
         public ActionResult Index(string filter = "")
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             CityModelMapper mapper = new CityModelMapper();
             IEnumerable<CityModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
             return View(roleList);
@@ -31,6 +35,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: City/Create
         public ActionResult Create()
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             CityModel cityModel = new CityModel();
             IEnumerable<CountryDTO> dtoList =  capaNegocioCountry.RecordList(string.Empty);
             CountryModelMapper mapper = new CountryModelMapper();
@@ -56,6 +64,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: City/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -85,6 +97,7 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Code,Name,CountryId,Removed")] CityModel model)
         {
+
             if (ModelState.IsValid)
             {
                 CityModelMapper mapper = new CityModelMapper();
@@ -99,6 +112,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: City/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

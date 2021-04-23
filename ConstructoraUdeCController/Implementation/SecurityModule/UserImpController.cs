@@ -35,7 +35,7 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             if (response == 1)
             {
                 String content = String.Format("Hola {0}," +
-                    " <br />Usted se ha sido registrado en la plataforma de desarrollo docente. " +
+                    " <br />Usted se ha sido registrado en la plataforma ConstructoraUdeC. " +
                     "Sus credenciales de acceso son: <br />" +
                     " <ul>" +
                     "<li>Usuario: {1}</li>" +
@@ -74,6 +74,10 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             UserDbModel dbModel = mapper.MapperT2T1(dto);
             dbModel.Password = new Encrypt().CreateMD5(dbModel.Password);
             var obj = model.Login(dbModel);
+            if (obj == null) {
+
+                return null;
+            }
             return mapper.MapperT1T2(obj);
         }
 
@@ -99,6 +103,39 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             var list = roleModel.RecordListByUser(userId);
             RoleDTOMapper mapper = new RoleDTOMapper();
             return mapper.MapperT1T2(list);
+        }
+        public int ChangePassword(string currentPassword, string newPassword, int userId)
+        {
+            string email = string.Empty;
+            Encrypt encrypt = new Encrypt();
+
+            var response = model.ChangePassword(currentPassword, encrypt.CreateMD5(newPassword), userId, out email);
+            if (response == 1)
+            {
+                new Notifications().SendEmail("Password changed", "Content...", email, "bernumledon@gmail.com");
+            }
+            return response;
+
+        }
+
+        public int PasswordResset(string email)
+        {
+            Encrypt encrypt = new Encrypt();
+            string ramdonString = encrypt.RandomString(15);
+            var newpass = encrypt.CreateMD5(ramdonString);
+            var response = model.PasswordResset(email, newpass);
+            if (response == 1)
+            {
+                String content = String.Format("Hola {0}," +
+                " <br />Se ha cambiado la contraseña en ConstructoraUdeC. " +
+                "Su nueva contraseña es: <br />" +
+                " <ul>" +
+                "<li>Nueva contraseña: {1}</li>" +
+                "</ul>" +
+                "<br /> Cordial saludo. ", email, ramdonString);
+                new Notifications().SendEmail("Recover password", content, email, email);
+            }
+            return response;
         }
     }
 }

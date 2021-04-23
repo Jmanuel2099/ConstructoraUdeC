@@ -15,6 +15,7 @@ using ConstructoraUdeCController.DTO.SecurityModule;
 using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCController.Implementation.SecurityModule;
 using ConstructoraUdeCModel.Model;
+using Newtonsoft.Json.Linq;
 
 namespace ConstructoraUdeC.Controllers.SecurityModule
 {
@@ -215,10 +216,17 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
 
         public ActionResult Login()
         {
-            if (this.verificarSesion())
+            /*if (this.verificarSesion())
             {
                 return RedirectToAction("Index", "Home");
-            }
+            }*/
+            var response = Request["g-recaptcha-response"];
+            string secretKey = "6LfLgrYaAAAAAKkdQhIArWU0WSvJmdqP4_tcWWxb";
+            var client = new WebClient();
+            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
+            var obj = JObject.Parse(result);
+            var status = (bool)obj.SelectToken("success");
+            ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
             return View();
         }
 
@@ -248,6 +256,61 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             }
         }
 
+        public ActionResult Password(int? id)
+        {
+            UserDTO dto = capaNegocio.RecordSearch(id.Value);
+            if (dto == null)
+            {
+                return HttpNotFound();
+            }
+            UserModelMapper mapper = new UserModelMapper();
+            UserModel model = mapper.MapperT1T2(dto);
+
+            return View(model);
+        }
+        [HttpPost, ActionName("Password")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPass([Bind(Include = "Id,Password,NewPassword")] UserModel model)
+        {
+            UserDTO dto = capaNegocio.RecordSearch(model.Id);
+            if (dto == null)
+            {
+                return HttpNotFound();
+            }
+            UserModelMapper mapper = new UserModelMapper();
+            UserModel modelo = mapper.MapperT1T2(dto);
+
+            capaNegocio.GetHashCode();
+            int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword, modelo.Id);
+            if (result==1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
+
+        }
+
+        public ActionResult RecoverPassword()
+        {
+            if (this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost, ActionName("RecoverPassword")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecoverPasswordConfirmed([Bind(Include = "Email")] UserModel model)
+        {
+            int result = capaNegocio.PasswordResset(model.Email);
+            if (result == 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
+        }
+
         public ActionResult Logout()
         {
             if (!this.verificarSesion())
@@ -257,5 +320,6 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             Session.RemoveAll();
             return RedirectToAction("Index", "Home");
         }
+
     }
 }

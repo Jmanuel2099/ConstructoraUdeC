@@ -15,13 +15,17 @@ using ConstructoraUdeCModel.Model;
 
 namespace ConstructoraUdeC.Controllers.ParametersModule
 {
-    public class CountryController : Controller
+    public class CountryController : BaseController
     {
         private CountryImpController capaNegocio = new CountryImpController();
 
         // GET: Country
         public ActionResult Index(string filter = "")
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             CountryModelMapper mapper = new CountryModelMapper();
             IEnumerable<CountryModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
             return View(roleList);
@@ -30,6 +34,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: Country/Create
         public ActionResult Create()
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -70,6 +78,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: Country/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -106,6 +118,10 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         // GET: Country/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

@@ -97,7 +97,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
             {
 
                 var listLINQ = from user in db.SEC_USER
-                               where !user.REMOVED && user.NAME.ToUpper().Contains(filter)
+                               where user.REMOVED == false && user.NAME.ToUpper().Contains(filter)
                                select user;
                 UserModelMapper mapper = new UserModelMapper();
                 var listFinal = mapper.MapperT1T2(listLINQ).ToList();
@@ -110,7 +110,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
-                var record = db.SEC_USER.Where(x => !x.REMOVED && x.ID == id).FirstOrDefault();
+                var record = db.SEC_USER.Where(x => x.REMOVED == false && x.ID == id).FirstOrDefault();
                 if (record != null)
                 {
                     UserModelMapper mapper = new UserModelMapper();
@@ -125,6 +125,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
+                
                 var login = (from user in db.SEC_USER
                              where user.EMAIL.ToUpper().Equals(dbModel.Email.ToUpper()) && user.USER_PASSWORD.Equals(dbModel.Password)
                              select user).FirstOrDefault();
@@ -196,6 +197,55 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
             //GET IP ADDRESS
             string myIP = Dns.GetHostEntry(hostname).AddressList[0].ToString();
             return myIP;
+        }
+        public int ChangePassword(string currentPassword, string newPassword, int userId, out string email)
+        {
+            email = string.Empty;
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                try
+                {
+                    var user = db.SEC_USER.Where(x => x.ID == userId && x.USER_PASSWORD.Equals(currentPassword)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        return 3;
+                    }
+                    user.USER_PASSWORD = newPassword;
+                    db.SaveChanges();
+                    email = user.EMAIL;
+                    return 1;
+                }
+                catch
+                {
+                    return 2;
+                }
+            }
+        }
+
+        public int PasswordResset(string email, string newPass)
+        {
+
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                try
+                {
+                    var user = db.SEC_USER.Where(x => x.REMOVED == false && x.EMAIL.Equals(email)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        return 3;
+                    }
+
+                    user.USER_PASSWORD = newPass;
+                    db.SaveChanges();
+                    email = user.EMAIL;
+                    return 1;
+                }
+                catch
+                {
+                    return 2;
+                }
+
+            }
         }
 
     }
