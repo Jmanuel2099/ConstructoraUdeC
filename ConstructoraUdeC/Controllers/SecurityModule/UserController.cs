@@ -216,10 +216,10 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
 
         public ActionResult Login()
         {
-            /*if (this.verificarSesion())
+            if (this.verificarSesion())
             {
                 return RedirectToAction("Index", "Home");
-            }*/
+            }
             var response = Request["g-recaptcha-response"];
             string secretKey = "6LfLgrYaAAAAAKkdQhIArWU0WSvJmdqP4_tcWWxb";
             var client = new WebClient();
@@ -251,14 +251,20 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             {
                 var username = login.Name + " " + login.LastName;
                 Session["username"] = username;
+                Session["userId"] = login.Id;
                 Session["token"] = login.Token;
                 return RedirectToAction("Index", "Home");
             }
         }
 
-        public ActionResult Password(int? id)
+        public ActionResult Password()
         {
-            UserDTO dto = capaNegocio.RecordSearch(id.Value);
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            int id = int.Parse(Session["userId"].ToString());
+            UserDTO dto = capaNegocio.RecordSearch(id);
             if (dto == null)
             {
                 return HttpNotFound();
@@ -281,13 +287,13 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             UserModel modelo = mapper.MapperT1T2(dto);
 
             capaNegocio.GetHashCode();
-            int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword, modelo.Id);
+            int result = capaNegocio.ChangePassword(modelo.Password, model.NewPassword, modelo.Name, modelo.Email, modelo.Id);
             if (result==1)
             {
+                ViewBag.SuccesSendMessage = "Contraseña actualizada";
                 return RedirectToAction("Index", "Home");
             }
             return View(model);
-
         }
 
         public ActionResult RecoverPassword()
@@ -306,6 +312,7 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             int result = capaNegocio.PasswordResset(model.Email);
             if (result == 1)
             {
+                ViewBag.SuccesRecoverMessage = "Se ha enviado un mail al correo especificado con la nueva contraseña";
                 return RedirectToAction("Index", "Home");
             }
             return View(model);

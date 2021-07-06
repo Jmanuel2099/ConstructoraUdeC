@@ -104,7 +104,7 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             RoleDTOMapper mapper = new RoleDTOMapper();
             return mapper.MapperT1T2(list);
         }
-        public int ChangePassword(string currentPassword, string newPassword, int userId)
+        public int ChangePassword(string currentPassword, string newPassword, string toname, string toemail, int userId)
         {
             string email = string.Empty;
             Encrypt encrypt = new Encrypt();
@@ -112,10 +112,17 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             var response = model.ChangePassword(currentPassword, encrypt.CreateMD5(newPassword), userId, out email);
             if (response == 1)
             {
-                new Notifications().SendEmail("Password changed", "Content...", email, "bernumledon@gmail.com");
+                String content = String.Format("Hola,{0}" +
+                " <br />Se realizo el cambio de su contraseña. " +
+                "Sus credenciales de acceso son: <br />" +
+                " <ul>" +
+                "<li>Usuario: {1}</li>" +
+                "<li>Contraseña: {2}</li>" +
+                "</ul>" +
+                "<br /> Cordial saludo. ", toname ,toemail, newPassword);
+                new Notifications().SendEmail("Password changed", content, toname, email);
             }
             return response;
-
         }
 
         public int PasswordResset(string email)
