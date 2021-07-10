@@ -33,4 +33,3 @@ C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\Con
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.CopyComplete
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.pdb
-C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.AssemblyReference.cache

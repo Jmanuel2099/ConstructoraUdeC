@@ -198,7 +198,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
             string myIP = Dns.GetHostEntry(hostname).AddressList[0].ToString();
             return myIP;
         }
-        public int ChangePassword(string currentPassword, string newPassword, int userId, string name, string email)
+        public int ChangePassword(string currentPassword, string newPassword, int userId, out string email)
         {
             email = string.Empty;
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
