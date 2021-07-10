@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,19 +21,43 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
+
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
 
                     @if (Session.Count > 0)
                     {
-                        <li>@Html.ActionLink("Paises", "Index", "Country")</li>
-                        <li>@Html.ActionLink("Ciudades", "Index", "City")</li>
-                        <li>@Html.ActionLink("Proyectos", "Index", "Project")</li>
-                        <li>@Html.ActionLink("Roles", "Index", "Role")</li>
-                        <li>@Html.ActionLink("Usuarios", "Index", "User")</li>
-                        <li>@Html.ActionLink("cambiar contraseña", "Password", "User")</li>
-                        <li>@Html.ActionLink("Cerrar sesión", "Logout", "User")</li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Parametros
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item">@Html.ActionLink("Paises", "Index", "Country")</a>
+                                <a class="dropdown-item">@Html.ActionLink("Ciudades", "Index", "City")</a>
+                                <a class="dropdown-item">@Html.ActionLink("Proyectos", "Index", "Project")</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Administracion
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item">@Html.ActionLink("Roles", "Index", "Role")</a>
+                                <a class="dropdown-item">@Html.ActionLink("Usuarios", "Index", "User")</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @Session["username"]
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">@Html.ActionLink("cambiar contraseña", "Password", "User")</a>
+                                <a class="dropdown-item" href="#">@Html.ActionLink("Cerrar sesión", "Logout", "User")</a>
+                            </div>
+                        </li>
+
                     }
                     else
                     {
@@ -44,12 +68,7 @@
         </div>
     </div>
     <div class="container body-content">
-        @if (Session.Count > 0)
-        {
-            <div class="sessionBar">
-                En sessión: <strong>@Session["username"]</strong>
-            </div>
-        }
+       
         @RenderBody()
         <hr />
         <footer>
