@@ -9,6 +9,7 @@
     <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="PROJECT" Type="int" Nullable="false" />
+    <Property Name="REMOVED" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="CITY">
     <Key>
@@ -18,7 +19,7 @@
     <Property Name="CODE" Type="nvarchar" MaxLength="50" />
     <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="COUNTRY" Type="int" Nullable="false" />
-    <Property Name="REMOVED" Type="bit" />
+    <Property Name="REMOVED" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="COUNTRY">
     <Key>
@@ -93,6 +94,7 @@
     <Property Name="VALUE" Type="int" Nullable="false" />
     <Property Name="STATUS" Type="bit" Nullable="false" />
     <Property Name="BLOCK" Type="int" Nullable="false" />
+    <Property Name="REMOVED" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="RECEIPT">
     <Key>
@@ -143,10 +145,10 @@
     <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
     <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="ACTIONCITY" Type="int" Nullable="false" />
-    <Property Name="REMOVED" Type="bit" />
-    <Property Name="REMOVED_DATE" Type="datetime" />
-    <Property Name="CREATE_DATE" Type="datetime" />
-    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="REMOVED" Type="bit" Nullable="false" />
+    <Property Name="REMOVED_DATE" Type="date" />
+    <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+    <Property Name="UPDATE_DATE" Type="date" />
     <Property Name="REMOVE_USER_ID" Type="int" />
     <Property Name="CREATE_USER_ID" Type="int" />
     <Property Name="UPDATE_USER_ID" Type="int" />
@@ -323,7 +325,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SEC_USER__ACTION__300424B4">
+  <Association Name="FK__SEC_USER__UPDATE__300424B4">
     <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
     <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="*" />
     <ReferentialConstraint>
@@ -415,7 +417,7 @@
       <End Role="SEC_USER" EntitySet="SEC_USER" />
       <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
     </AssociationSet>
-    <AssociationSet Name="FK__SEC_USER__ACTION__300424B4" Association="Self.FK__SEC_USER__ACTION__300424B4">
+    <AssociationSet Name="FK__SEC_USER__UPDATE__300424B4" Association="Self.FK__SEC_USER__UPDATE__300424B4">
       <End Role="CITY" EntitySet="CITY" />
       <End Role="SEC_USER" EntitySet="SEC_USER" />
     </AssociationSet>

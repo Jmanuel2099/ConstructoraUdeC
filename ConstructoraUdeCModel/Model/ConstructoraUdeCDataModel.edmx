@@ -14,6 +14,7 @@
           <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="PROJECT" Type="int" Nullable="false" />
+          <Property Name="REMOVED" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="CITY">
           <Key>
@@ -23,7 +24,7 @@
           <Property Name="CODE" Type="nvarchar" MaxLength="50" />
           <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="COUNTRY" Type="int" Nullable="false" />
-          <Property Name="REMOVED" Type="bit" />
+          <Property Name="REMOVED" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="COUNTRY">
           <Key>
@@ -98,6 +99,7 @@
           <Property Name="VALUE" Type="int" Nullable="false" />
           <Property Name="STATUS" Type="bit" Nullable="false" />
           <Property Name="BLOCK" Type="int" Nullable="false" />
+          <Property Name="REMOVED" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="RECEIPT">
           <Key>
@@ -148,10 +150,10 @@
           <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
           <Property Name="USER_PASSWORD" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ACTIONCITY" Type="int" Nullable="false" />
-          <Property Name="REMOVED" Type="bit" />
-          <Property Name="REMOVED_DATE" Type="datetime" />
-          <Property Name="CREATE_DATE" Type="datetime" />
-          <Property Name="UPDATE_DATE" Type="datetime" />
+          <Property Name="REMOVED" Type="bit" Nullable="false" />
+          <Property Name="REMOVED_DATE" Type="date" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="date" />
           <Property Name="REMOVE_USER_ID" Type="int" />
           <Property Name="CREATE_USER_ID" Type="int" />
           <Property Name="UPDATE_USER_ID" Type="int" />
@@ -328,7 +330,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SEC_USER__ACTION__300424B4">
+        <Association Name="FK__SEC_USER__UPDATE__300424B4">
           <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
           <End Role="SEC_USER" Type="Self.SEC_USER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -420,7 +422,7 @@
             <End Role="SEC_USER" EntitySet="SEC_USER" />
             <End Role="SEC_USER_ROLE" EntitySet="SEC_USER_ROLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__SEC_USER__ACTION__300424B4" Association="Self.FK__SEC_USER__ACTION__300424B4">
+          <AssociationSet Name="FK__SEC_USER__UPDATE__300424B4" Association="Self.FK__SEC_USER__UPDATE__300424B4">
             <End Role="CITY" EntitySet="CITY" />
             <End Role="SEC_USER" EntitySet="SEC_USER" />
           </AssociationSet>
@@ -444,6 +446,7 @@
           <Property Name="PROJECT" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PROJECT1" Relationship="Self.FK__BLOCK__PROJECT__182C9B23" FromRole="BLOCK" ToRole="PROJECT" />
           <NavigationProperty Name="PROPERTY" Relationship="Self.FK__PROPERTY__BLOCK__1B0907CE" FromRole="BLOCK" ToRole="PROPERTY" />
+          <Property Name="REMOVED" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="CITY">
           <Key>
@@ -453,7 +456,7 @@
           <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="COUNTRY" Type="Int32" Nullable="false" />
-          <Property Name="REMOVED" Type="Boolean" />
+          <Property Name="REMOVED" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="COUNTRY1" Relationship="Self.FK__CITY__COUNTRY__1273C1CD" FromRole="CITY" ToRole="COUNTRY" />
           <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__CUSTOMER__CITY__1DE57479" FromRole="CITY" ToRole="CUSTOMER" />
           <NavigationProperty Name="PROJECT" Relationship="Self.FK__PROJECT__CITY__15502E78" FromRole="CITY" ToRole="PROJECT" />
@@ -543,6 +546,7 @@
           <Property Name="BLOCK" Type="Int32" Nullable="false" />
           <NavigationProperty Name="BLOCK1" Relationship="Self.FK__PROPERTY__BLOCK__1B0907CE" FromRole="PROPERTY" ToRole="BLOCK" />
           <NavigationProperty Name="REQUEST" Relationship="Self.FK__REQUEST__PROPERT__267ABA7A" FromRole="PROPERTY" ToRole="REQUEST" />
+          <Property Name="REMOVED" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="RECEIPT">
           <Key>
@@ -603,10 +607,10 @@
           <NavigationProperty Name="CITY" Relationship="Self.FK__SEC_USER__ACTION__300424B4" FromRole="SEC_USER" ToRole="CITY" />
           <NavigationProperty Name="SEC_SESSION" Relationship="Self.FK1_SEC_SESSION" FromRole="SEC_USER" ToRole="SEC_SESSION" />
           <NavigationProperty Name="SEC_USER_ROLE" Relationship="Self.FK__SEC_USER___USERI__398D8EEE" FromRole="SEC_USER" ToRole="SEC_USER_ROLE" />
-          <Property Name="REMOVED" Type="Boolean" />
-          <Property Name="REMOVED_DATE" Type="DateTime" Precision="3" />
-          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
-          <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REMOVED" Type="Boolean" Nullable="false" />
+          <Property Name="REMOVED_DATE" Type="DateTime" Precision="0" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
           <Property Name="REMOVE_USER_ID" Type="Int32" />
           <Property Name="CREATE_USER_ID" Type="Int32" />
           <Property Name="UPDATE_USER_ID" Type="Int32" />
@@ -896,6 +900,7 @@
           <EntitySetMapping Name="BLOCK">
             <EntityTypeMapping TypeName="ConstructoraUdeCModel.BLOCK">
               <MappingFragment StoreEntitySet="BLOCK">
+                <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CODE" ColumnName="CODE" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -986,6 +991,7 @@
           <EntitySetMapping Name="PROPERTY">
             <EntityTypeMapping TypeName="ConstructoraUdeCModel.PROPERTY">
               <MappingFragment StoreEntitySet="PROPERTY">
+                <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CODE" ColumnName="CODE" />
                 <ScalarProperty Name="IDENTIFICATION" ColumnName="IDENTIFICATION" />

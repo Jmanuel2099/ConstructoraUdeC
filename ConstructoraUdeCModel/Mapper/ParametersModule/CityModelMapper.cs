@@ -27,7 +27,7 @@ namespace ConstructoraUdeCModel.Mapper.ParametersModule
                 Name = input.NAME,
                 Country = countryMapper.MapperT1T2(country),
                 Removed = (bool)input.REMOVED
-        };
+            };
         }
 
         public override IEnumerable<CityDbModel> MapperT1T2(IEnumerable<CITY> input)

@@ -18,4 +18,14 @@ CREATE_USER_ID INT NULL,
 UPDATE_USER_ID INT NULL
 
 Se le añadio el campo REMOVED a la tabla PROJECT de tipo BIT no permite null
+    ALTER TABLE PROJECT
+    ADD REMOVED BIT NOT NULL;
+
+
+Se le añadio el campo REMOVED a la tabla BLOCK de tipo BIT no permite null
+    ALTER TABLE BLOCK
+    ADD REMOVED BIT NOT NULL;
+Se le añadio el campo REMOVED a la tabla PROPERTY de tipo BIT no permite null
+    ALTER TABLE PROPERTY
+    ADD REMOVED BIT NOT NULL;
 .
