@@ -12,7 +12,7 @@ namespace ConstructoraUdeCController.Mapper.ParametersModule
     {
         public override ProjectDTO MapperT1T2(ProjectDbModel input)
         {
-            CityDTOMapper countryMapper = new CityDTOMapper();
+            CityDTOMapper cityMapper = new CityDTOMapper();
 
             return new ProjectDTO
             {
@@ -21,7 +21,7 @@ namespace ConstructoraUdeCController.Mapper.ParametersModule
                 Name = input.Name,
                 Description = input.Description,
                 Image = input.Image,
-                City = countryMapper.MapperT1T2(input.City),
+                City = cityMapper.MapperT1T2(input.City),
                 Removed = input.Removed
             };
         }

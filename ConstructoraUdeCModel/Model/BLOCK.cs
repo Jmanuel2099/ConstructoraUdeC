@@ -25,6 +25,7 @@ namespace ConstructoraUdeCModel.Model
         public string NAME { get; set; }
         public string DESCRIPTION { get; set; }
         public int PROJECT { get; set; }
+        public bool REMOVED { get; set; }
     
         public virtual PROJECT PROJECT1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

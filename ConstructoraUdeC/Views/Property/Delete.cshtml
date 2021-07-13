@@ -1,0 +1,65 @@
+﻿@model ConstructoraUdeC.Models.ParametersModule.PropertyModel
+
+@{
+    ViewBag.Title = "Eliminar una propiedad";
+}
+
+<h2>Eliminar una propiedad</h2>
+
+<h3>¿Esta seguro de eliminar este registro?</h3>
+<div>
+    <h4>Propiedades</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Val)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Val)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Block.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Block.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-warning" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

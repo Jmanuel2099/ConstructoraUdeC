@@ -4,6 +4,7 @@
     <EntitySetMapping Name="BLOCK">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.BLOCK">
         <MappingFragment StoreEntitySet="BLOCK">
+          <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
@@ -94,6 +95,7 @@
     <EntitySetMapping Name="PROPERTY">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.PROPERTY">
         <MappingFragment StoreEntitySet="PROPERTY">
+          <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="IDENTIFICATION" ColumnName="IDENTIFICATION" />

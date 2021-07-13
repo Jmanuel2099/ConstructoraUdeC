@@ -29,6 +29,7 @@ C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\bin\Debug\Ent
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\bin\Debug\EntityFramework.xml
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.AssemblyReference.cache
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.CoreCompileInputs.cache
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.csproj.CopyComplete
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeCModel\obj\Debug\ConstructoraUdeCModel.dll

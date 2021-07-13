@@ -64,7 +64,5 @@ namespace ConstructoraUdeCModel.DbModel.ParametersModule
             set { countryList = value; }
         }
 
-
-
     }
 }
