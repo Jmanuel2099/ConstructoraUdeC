@@ -12,6 +12,7 @@ using ConstructoraUdeC.Models.ParametersModule;
 using ConstructoraUdeCController.DTO.ParametersModule;
 using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCModel.Model;
+using PagedList;
 
 namespace ConstructoraUdeC.Controllers.ParametersModule
 {
@@ -21,15 +22,52 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         private CountryImpController capaNegocioCountry = new CountryImpController();
 
         // GET: City
-        public ActionResult Index(string filter = "")
+        public ActionResult Index(string Sorting_Order, string Search_Country, string Filter_Value, int? Page_No, string filter = "")
         {
             if (!this.verificarSesion())
             {
                 return RedirectToAction("Index", "Home");
             }
+            ViewBag.CurrentSortOrder = Sorting_Order;
+            ViewBag.SortingName = String.IsNullOrEmpty(Sorting_Order) ? "Name_Country" : "";
+
+            if (Search_Country != null)
+            {
+                Page_No = 1;
+            }
+            else
+            {
+                Search_Country = Filter_Value;
+            }
+            ViewBag.FilterValueCountry = Search_Country;
             CityModelMapper mapper = new CityModelMapper();
-            IEnumerable<CityModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
-            return View(roleList);
+            IEnumerable<CityModel> cityList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
+
+            if (!String.IsNullOrEmpty(Search_Country))
+            {
+                cityList = mapper.MapperT1T2(capaNegocio.RecordListByCountry(Search_Country).ToList());
+            }
+
+            switch (Sorting_Order)
+            {
+                case "Name_Country":
+                    cityList = cityList.OrderByDescending(city => city.Country.Name);
+                    break;
+                default:
+                    cityList = cityList.OrderBy(city => city.Country.Name);
+                    break;
+            }
+            int Size_Of_Page = 8;
+            int No_Of_Page = (Page_No ?? 1);
+            return View(cityList.ToPagedList(No_Of_Page, Size_Of_Page));
+        }
+
+        [HttpPost]
+        public JsonResult LoadCitiesByCountry(int countryId)
+        {
+            CityModelMapper mapper = new CityModelMapper();
+            IEnumerable<CityModel> cityList = mapper.MapperT1T2(capaNegocio.RecordListByCountry(countryId).ToList());
+            return new JsonResult { Data = cityList };
         }
 
         // GET: City/Create

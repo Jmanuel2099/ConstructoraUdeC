@@ -12,6 +12,7 @@ using ConstructoraUdeC.Models.ParametersModule;
 using ConstructoraUdeCController.DTO.ParametersModule;
 using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCModel.Model;
+using PagedList;
 
 namespace ConstructoraUdeC.Controllers.ParametersModule
 {
@@ -21,17 +22,59 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
         private BlockImpController capaNegocio = new BlockImpController();
 
         // GET: Block
-        public ActionResult Index(string filter = "")
+        public ActionResult Index(string Sorting_Order, string Search_Country, string Search_City, string Search_project, string Filter_Value, int? Page_No, string filter = "")
         {
             if (!this.verificarSesion())
             {
                 return RedirectToAction("Index", "Home");
             }
-            BlockModelMapper mapper = new BlockModelMapper();
-            IEnumerable<BlockModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
-            return View(roleList);
-        }
+            ViewBag.CurrentSortOrder = Sorting_Order;
+            ViewBag.SortingName = String.IsNullOrEmpty(Sorting_Order) ? "Project_Name" : "";
+            if (Search_Country != null || Search_City != null || Search_project != null )
+            {
+                Page_No = 1;
+            }
+            else
+            {
+                Search_Country = Filter_Value;
+                Search_City = Filter_Value;
+                Search_project = Filter_Value;
+            }
+            ViewBag.FilterValueCountry = Search_Country;
+            ViewBag.FilterValueCity = Search_City;
+            ViewBag.FilterValueProject = Search_project;
 
+            BlockModelMapper mapper = new BlockModelMapper();
+            IEnumerable<BlockModel> blockList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
+            if (!String.IsNullOrEmpty(Search_Country) || !String.IsNullOrEmpty(Search_City) || !String.IsNullOrEmpty(Search_project))
+            {
+                if (!String.IsNullOrEmpty(Search_Country))
+                {
+                    blockList = mapper.MapperT1T2(capaNegocio.RecordListByCountry(Search_Country).ToList());
+                }
+                if (!String.IsNullOrEmpty(Search_City))
+                {
+                    blockList = mapper.MapperT1T2(capaNegocio.RecordListByCity(Search_City).ToList());
+                }
+                if (!String.IsNullOrEmpty(Search_project))
+                {
+                    blockList = mapper.MapperT1T2(capaNegocio.RecordListByProject(Search_project).ToList());
+                }
+            }
+            switch (Sorting_Order)
+            {
+                case "Project_Name":
+                    blockList = blockList.OrderByDescending(block => block.Project.Name);
+                    break;
+                default:
+                    blockList = blockList.OrderBy(block => block.Project.Name);
+                    break;
+            }
+
+            int Size_Of_Page = 4;
+            int No_Of_Page = (Page_No ?? 1);
+            return View(blockList.ToPagedList(No_Of_Page, Size_Of_Page));
+        }
 
         // GET: Block/Create
         public ActionResult Create()

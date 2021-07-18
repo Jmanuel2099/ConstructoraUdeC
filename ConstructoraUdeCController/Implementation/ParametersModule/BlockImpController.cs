@@ -58,5 +58,24 @@ namespace ConstructoraUdeCController.Implementation.ParametersModule
             BlockDTOMapper mapper = new BlockDTOMapper();
             return mapper.MapperT1T2(record);
         }
+
+        public IEnumerable<BlockDTO> RecordListByProject(string projectName)
+        {
+            var list = model.RecordListByProject(projectName);
+            BlockDTOMapper mapper = new BlockDTOMapper();
+            return mapper.MapperT1T2(list);
+        }
+        public IEnumerable<BlockDTO> RecordListByCity(string projectCityName)
+        {
+            var list = model.RecordListByCity(projectCityName);
+            BlockDTOMapper mapper = new BlockDTOMapper();
+            return mapper.MapperT1T2(list);
+        }
+        public IEnumerable<BlockDTO> RecordListByCountry(string projecCountrytName)
+        {
+            var list = model.RecordListByCountry(projecCountrytName);
+            BlockDTOMapper mapper = new BlockDTOMapper();
+            return mapper.MapperT1T2(list);
+        }
     }
 }

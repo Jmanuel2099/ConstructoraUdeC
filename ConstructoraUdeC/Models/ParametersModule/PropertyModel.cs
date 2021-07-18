@@ -79,13 +79,88 @@ namespace ConstructoraUdeC.Models.ParametersModule
             set { block = value; }
         }
 
-
         private IEnumerable<BlockModel> blockList;
 
         public IEnumerable<BlockModel> BlockList
         {
             get { return blockList; }
             set { blockList = value; }
+        }
+
+        private int projectId;
+        [DisplayName("Proyecto del bloque")]
+        [Required()]
+        public int ProjectId
+        {
+            get { return projectId; }
+            set { projectId = value; }
+        }
+
+        private ProjectModel project;
+
+        public ProjectModel Project
+        {
+            get { return project; }
+            set { project = value; }
+        }
+
+        private IEnumerable<ProjectModel> projectList;
+
+        public IEnumerable<ProjectModel> ProjectList
+        {
+            get { return projectList; }
+            set { projectList = value; }
+        }
+
+        private int cityId;
+        [DisplayName("Ciudad proyecto")]
+        [Required()]
+        public int CityId
+        {
+            get { return cityId; }
+            set { cityId = value; }
+        }
+
+        private CityModel city;
+
+        public CityModel City
+        {
+            get { return city; }
+            set { city = value; }
+        }
+
+        private IEnumerable<CityModel> cityList;
+
+        public IEnumerable<CityModel> CityList
+        {
+            get { return cityList; }
+            set { cityList = value; }
+        }
+
+        private int countryId;
+        [DisplayName("Pais del proyecto")]
+        [Required()]
+        public int CountryId
+        {
+            get { return countryId; }
+            set { countryId = value; }
+        }
+
+        private CountryModel country;
+
+        public CountryModel Country
+        {
+            get { return country; }
+            set { country = value; }
+        }
+
+
+        private IEnumerable<CountryModel> countryList;
+
+        public IEnumerable<CountryModel> CountryList
+        {
+            get { return countryList; }
+            set { countryList = value; }
         }
     }
 }

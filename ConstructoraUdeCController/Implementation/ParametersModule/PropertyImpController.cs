@@ -54,9 +54,36 @@ namespace ConstructoraUdeCController.Implementation.ParametersModule
             {
                 return null;
             }
-
             PropertyDTOMapper mapper = new PropertyDTOMapper();
             return mapper.MapperT1T2(record);
+        }
+
+        public IEnumerable<PropertyDTO> RecordListByBlock(string blockName)
+        {
+            var list = model.RecordListByBlock(blockName);
+            PropertyDTOMapper mapper = new PropertyDTOMapper();
+            return mapper.MapperT1T2(list);
+        }
+
+        public IEnumerable<PropertyDTO> RecordListByProject(string projectName)
+        {
+            var list = model.RecordListByProject(projectName);
+            PropertyDTOMapper mapper = new PropertyDTOMapper();
+            return mapper.MapperT1T2(list);
+        }
+
+        public IEnumerable<PropertyDTO> RecordListByCity(string citytName)
+        {
+            var list = model.RecordListByCity(citytName);
+            PropertyDTOMapper mapper = new PropertyDTOMapper();
+            return mapper.MapperT1T2(list);
+        }
+
+        public IEnumerable<PropertyDTO> RecordListByCountry(string countrytName)
+        {
+            var list = model.RecordListByCountry(countrytName);
+            PropertyDTOMapper mapper = new PropertyDTOMapper();
+            return mapper.MapperT1T2(list);
         }
     }
 }

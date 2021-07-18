@@ -1,4 +1,7 @@
-﻿@model IEnumerable<ConstructoraUdeC.Models.ParametersModule.ProjectModel>
+﻿@model PagedList.IPagedList<ConstructoraUdeC.Models.ParametersModule.ProjectModel>
+
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Proyectos";
@@ -9,19 +12,36 @@
 <p>
     @Html.ActionLink("Crear un proyecto", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Project", FormMethod.Get))
+{
+<div class="form-row">
+    <div class="form-group col-lg-3">
+        @Html.TextBox("Search_Country", ViewBag.FilterValueCountry as string, new { @class = "form-control", placeholder = "Pais" })
+    </div>
+    <div class="form-group col-lg-3">
+        @Html.TextBox("Search_City", ViewBag.FilterValueCity as string, new { @class = "form-control", placeholder = "Ciudad" })
+    </div>
+    <div class="form-group col-lg-3">
+        <input type="submit" value="Buscar" class="btn btn-info" />
+    </div>
+</div>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Code)
+            Codigo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            descripción
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.ActionLink("Ciudad", "Index", new { Sorting_Order = ViewBag.SortingName })
+
         </th>
 
         <th></th>
@@ -29,48 +49,53 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Code)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.City.Name)
-    </td>
-    <td>
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target=".bd-example-modal-lg">Imagen</button>
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+            <td>
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target=".bd-example-modal-lg">Imagen</button>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
     }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
 
-@foreach (var item in Model){
+@foreach (var item in Model)
+{
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Imagen del proyecto</h5>
-            </div>
-            <div class="modal-body">
-                <img src=@item.Image class="img-thumbnail" alt="Responsive image">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Imagen del proyecto</h5>
+                </div>
+                <div class="modal-body">
+                    <img src=@item.Image class="img-thumbnail" alt="Responsive image">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
 
-            @Html.DisplayFor(modelItem => item.Image)
+                @Html.DisplayFor(modelItem => item.Image)
+            </div>
         </div>
     </div>
-</div>
 }

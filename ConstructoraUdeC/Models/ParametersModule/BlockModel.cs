@@ -80,5 +80,56 @@ namespace ConstructoraUdeC.Models.ParametersModule
             get { return removed; }
             set { removed = value; }
         }
+
+        private int cityId;
+        [DisplayName("Ciudad proyecto")]
+        [Required()]
+        public int CityId
+        {
+            get { return cityId; }
+            set { cityId = value; }
+        }
+
+        private CityModel city;
+
+        public CityModel City
+        {
+            get { return city; }
+            set { city = value; }
+        }
+
+        private IEnumerable<CityModel> cityList;
+
+        public IEnumerable<CityModel> CityList
+        {
+            get { return cityList; }
+            set { cityList = value; }
+        }
+
+        private int countryId;
+        [DisplayName("Pais del proyecto")]
+        [Required()]
+        public int CountryId
+        {
+            get { return countryId; }
+            set { countryId = value; }
+        }
+
+        private CountryModel country;
+
+        public CountryModel Country
+        {
+            get { return country; }
+            set { country = value; }
+        }
+
+
+        private IEnumerable<CountryModel> countryList;
+
+        public IEnumerable<CountryModel> CountryList
+        {
+            get { return countryList; }
+            set { countryList = value; }
+        }
     }
 }

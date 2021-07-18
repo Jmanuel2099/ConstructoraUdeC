@@ -114,5 +114,50 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
                 return null;
             }
         }
+
+        public IEnumerable<PropertyDbModel> RecordListByBlock(String blockName)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.PROPERTY.Where(x => !x.REMOVED && x.BLOCK1.NAME.ToUpper().Contains(blockName)).ToList();
+                PropertyModelMapper mapper = new PropertyModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
+        public IEnumerable<PropertyDbModel> RecordListByProject(String projectName)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.PROPERTY.Where(x => !x.REMOVED && x.BLOCK1.PROJECT1.NAME.ToUpper().Contains(projectName)).ToList();
+                PropertyModelMapper mapper = new PropertyModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
+        public IEnumerable<PropertyDbModel> RecordListByCity(String cityName)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.PROPERTY.Where(x => !x.REMOVED && x.BLOCK1.PROJECT1.CITY1.NAME.ToUpper().Contains(cityName)).ToList();
+                PropertyModelMapper mapper = new PropertyModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
+        public IEnumerable<PropertyDbModel> RecordListByCountry(String countryName)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.PROPERTY.Where(x => !x.REMOVED && x.BLOCK1.PROJECT1.CITY1.COUNTRY1.NAME.ToUpper().Contains(countryName)).ToList();
+                PropertyModelMapper mapper = new PropertyModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top ">
+    <div class="navbar navbar-inverse navbar-fixed-top bg-light ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,40 +32,40 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Parametros
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item">@Html.ActionLink("Paises ", "Index", "Country")</a>
-                                <a class="dropdown-item">@Html.ActionLink("Ciudades", "Index", "City")</a>
-                                <a class="dropdown-item">@Html.ActionLink("Proyectos", "Index", "Project")</a>
-                                <a class="dropdown-item">@Html.ActionLink("Bloques", "Index", "Block")</a>
-                                <a class="dropdown-item">@Html.ActionLink("Propiedades", "Index", "Property")</a>
-                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item">@Html.ActionLink("Paises ", "Index", "Country")</a></li>
+                                <li><a class="dropdown-item">@Html.ActionLink("Ciudades", "Index", "City")</a></li>
+                                <li><a class="dropdown-item">@Html.ActionLink("Proyectos", "Index", "Project")</a></li>
+                                <li><a class="dropdown-item">@Html.ActionLink("Bloques", "Index", "Block")</a></li>
+                                <li><a class="dropdown-item">@Html.ActionLink("Propiedades", "Index", "Property")</a></li>
+                            </ul>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Administracion
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item">@Html.ActionLink("Roles", "Index", "Role")</a>
-                                <a class="dropdown-item">@Html.ActionLink("Usuarios", "Index", "User")</a>
-                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item">@Html.ActionLink("Roles", "Index", "Role")</a></li>
+                                <li><a class="dropdown-item">@Html.ActionLink("Usuarios", "Index", "User")</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @Session["username"]
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">@Html.ActionLink("cambiar contraseña", "Password", "User")</a>
-                                <a class="dropdown-item" href="#">@Html.ActionLink("Cerrar sesión", "Logout", "User")</a>
-                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">@Html.ActionLink("cambiar contraseña", "Password", "User")</a></li>
+                                <li><a class="dropdown-item" href="#">@Html.ActionLink("Cerrar sesión", "Logout", "User")</a></li>
+                            </ul>
                         </li>
 
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
                         <li>@Html.ActionLink("Iniciar sesión", "Login", "User")</li>
-                    }
-                </ul>
+                        }
+                    </ul>
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET Cuartas y Marin</p>
         </footer>
     </div>
 

@@ -58,5 +58,19 @@ namespace ConstructoraUdeCController.Implementation.ParametersModule
             ProjectDTOMapper mapper = new ProjectDTOMapper();
             return mapper.MapperT1T2(record);
         }
+
+        public IEnumerable<ProjectDTO> RecordListByCity(string cityName)
+        {
+            var list = model.RecordListByCity(cityName);
+            ProjectDTOMapper mapper = new ProjectDTOMapper();
+            return mapper.MapperT1T2(list);
+        }
+
+        public IEnumerable<ProjectDTO> RecordListByCountry(string countryName)
+        {
+            var list = model.RecordListByCountry(countryName);
+            ProjectDTOMapper mapper = new ProjectDTOMapper();
+            return mapper.MapperT1T2(list);
+        }
     }
 }
