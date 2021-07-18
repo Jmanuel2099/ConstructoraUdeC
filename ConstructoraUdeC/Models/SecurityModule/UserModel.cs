@@ -58,14 +58,18 @@ namespace ConstructoraUdeC.Models.SecurityModule
         }
 
         private string password;
-
+        [DisplayName("Contraseña")]
+        [Required]
+        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud maxima de {1} caracteres")]
         public string Password
         {
             get { return password; }
             set { password = value; }
         }
         private string newpassword;
-
+        [DisplayName("Nueva contraseña")]
+        [Required]
+        [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud maxima de {1} caracteres")]
         public string NewPassword
         {
             get { return newpassword; }

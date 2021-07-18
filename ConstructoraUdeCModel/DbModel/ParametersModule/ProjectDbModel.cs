@@ -79,5 +79,31 @@ namespace ConstructoraUdeCModel.DbModel.ParametersModule
             get { return removed; }
             set { removed = value; }
         }
+
+        private int countryId;
+
+        public int CountryId
+        {
+            get { return countryId; }
+            set { countryId = value; }
+        }
+
+        private CountryDbModel country;
+
+        public CountryDbModel Country
+        {
+            get { return country; }
+            set { country = value; }
+        }
+
+
+        private IEnumerable<CountryDbModel> conutryList;
+
+        public IEnumerable<CountryDbModel> ConutryList
+        {
+            get { return conutryList; }
+            set { conutryList = value; }
+        }
+
     }
 }

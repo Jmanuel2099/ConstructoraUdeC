@@ -113,5 +113,40 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
                 return null;
             }
         }
+
+        public IEnumerable<BlockDbModel> RecordListByProject(String projectName)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.BLOCK.Where(x => !x.REMOVED && x.PROJECT1.NAME.ToUpper().Contains(projectName)).ToList();
+                BlockModelMapper mapper = new BlockModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
+
+        public IEnumerable<BlockDbModel> RecordListByCity(String projectCitytName)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.BLOCK.Where(x => !x.REMOVED && x.PROJECT1.CITY1.NAME.ToUpper().Contains(projectCitytName)).ToList();
+                BlockModelMapper mapper = new BlockModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
+        public IEnumerable<BlockDbModel> RecordListByCountry(String projectCountrytName)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.BLOCK.Where(x => !x.REMOVED && x.PROJECT1.CITY1.COUNTRY1.NAME.ToUpper().Contains(projectCountrytName)).ToList();
+                BlockModelMapper mapper = new BlockModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
     }
 }

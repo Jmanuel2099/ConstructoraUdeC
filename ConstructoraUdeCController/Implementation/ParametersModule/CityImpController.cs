@@ -45,6 +45,7 @@ namespace ConstructoraUdeCController.Implementation.ParametersModule
             CityDTOMapper mapper = new CityDTOMapper();
             return mapper.MapperT1T2(list);
         }
+
         public CityDTO RecordSearch(int id)
         {
             var record = model.RecordSearch(id);
@@ -55,6 +56,19 @@ namespace ConstructoraUdeCController.Implementation.ParametersModule
 
             CityDTOMapper mapper = new CityDTOMapper();
             return mapper.MapperT1T2(record);
+        }
+
+        public IEnumerable<CityDTO> RecordListByCountry(string filter)
+        {
+            var list = model.RecordListByCountry(filter);
+            CityDTOMapper mapper = new CityDTOMapper();
+            return mapper.MapperT1T2(list);
+        }
+        public IEnumerable<CityDTO> RecordListByCountry(int countryId)
+        {
+            var list = model.RecordListByCountry(countryId);
+            CityDTOMapper mapper = new CityDTOMapper();
+            return mapper.MapperT1T2(list);
         }
     }
 }

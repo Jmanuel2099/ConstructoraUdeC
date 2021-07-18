@@ -112,5 +112,27 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
                 return null;
             }
         }
+        public IEnumerable<CityDbModel> RecordListByCountry(String filter)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.CITY.Where(x => x.REMOVED == false && x.COUNTRY1.NAME.ToUpper().Contains(filter)).ToList();
+                CityModelMapper mapper = new CityModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
+        public IEnumerable<CityDbModel> RecordListByCountry(int countryId)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.CITY.Where(x => x.REMOVED == false && x.COUNTRY == countryId).ToList();
+                CityModelMapper mapper = new CityModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
     }
 }

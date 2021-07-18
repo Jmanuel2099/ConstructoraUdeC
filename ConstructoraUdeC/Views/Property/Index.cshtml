@@ -1,5 +1,7 @@
-﻿@model IEnumerable<ConstructoraUdeC.Models.ParametersModule.PropertyModel>
+﻿@model PagedList.IPagedList<ConstructoraUdeC.Models.ParametersModule.PropertyModel>
 
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Listado de propiedades";
 }
@@ -9,22 +11,42 @@
 <p>
     @Html.ActionLink("Create una nueva propiedad", "Create")
 </p>
+@using (Html.BeginForm("Index", "Property", FormMethod.Get))
+{
+    <div class="form-row">
+        <div class="form-group col-lg-2">
+            @Html.TextBox("Search_Country", ViewBag.FilterValueCountry as string, new { @class = "form-control", placeholder = "Pais" })
+        </div>
+        <div class="form-group col-lg-2">
+            @Html.TextBox("Search_City", ViewBag.FilterValueCity as string, new { @class = "form-control", placeholder = "Ciudad" })
+        </div>
+        <div class="form-group col-lg-2">
+            @Html.TextBox("Search_Project", ViewBag.FilterValueProject as string, new { @class = "form-control", placeholder = "Projecto" })
+        </div>
+        <div class="form-group col-lg-2">
+            @Html.TextBox("Search_Block", ViewBag.FilterValueBlock as string, new { @class = "form-control", placeholder = "Bloque" })
+        </div>
+        <div class="form-group col-lg-2">
+            <input type="submit" value="Buscar" class="btn btn-info" />
+        </div>
+    </div>
+}
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Code)
+            Codigo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Identification)
+            Identificacion
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Val)
+            Valor
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            Estado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Block.Name)
+            @Html.ActionLink("Bloque", "Index", new { Sorting_Order = ViewBag.SortingName })
         </th>
         <th></th>
     </tr>
@@ -55,3 +77,7 @@
     }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))

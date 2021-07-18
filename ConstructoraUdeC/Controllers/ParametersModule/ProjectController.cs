@@ -12,6 +12,7 @@ using ConstructoraUdeC.Models.ParametersModule;
 using ConstructoraUdeCController.DTO.ParametersModule;
 using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCModel.Model;
+using PagedList;
 
 namespace ConstructoraUdeC.Controllers.ParametersModule
 {
@@ -19,17 +20,54 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
     {
         private ProjectImpController capaNegocio = new ProjectImpController();
         private CityImpController capaNegocioCity = new CityImpController();
+        private CountryImpController capaNegocioCountry = new CountryImpController();
 
         // GET: Project
-        public ActionResult Index(string filter = "")
+        public ActionResult Index(string Sorting_Order, string Search_Country,string Search_City, string Filter_Value, int? Page_No, string filter = "")
         {
             if (!this.verificarSesion())
             {
                 return RedirectToAction("Index", "Home");
             }
+            ViewBag.CurrentSortOrder = Sorting_Order;
+            ViewBag.SortingName = String.IsNullOrEmpty(Sorting_Order) ? "Name_Description" : "";
+            if (Search_Country != null || Search_City != null)
+            {
+                Page_No = 1;
+            }
+            else
+            {
+                Search_Country = Filter_Value;
+                Search_City = Filter_Value;
+            }
+            ViewBag.FilterValueCountry = Search_Country;
+            ViewBag.FilterValueCity = Search_City;
+
             ProjectModelMapper mapper = new ProjectModelMapper();
-            IEnumerable<ProjectModel> roleList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
-            return View(roleList);
+            IEnumerable<ProjectModel> projectList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
+            if (!String.IsNullOrEmpty(Search_Country) || !String.IsNullOrEmpty(Search_City))
+            {
+                if (!String.IsNullOrEmpty(Search_Country) || String.IsNullOrEmpty(Search_City))
+                {
+                    projectList = mapper.MapperT1T2(capaNegocio.RecordListByCountry(Search_Country).ToList());
+                }
+                if (String.IsNullOrEmpty(Search_Country) || !String.IsNullOrEmpty(Search_City))
+                {
+                    projectList = mapper.MapperT1T2(capaNegocio.RecordListByCity(Search_City).ToList());
+                }
+            }
+            switch (Sorting_Order)
+            {
+                case "Name_Description":
+                    projectList = projectList.OrderByDescending(project => project.City.Name);
+                    break;
+                default:
+                    projectList = projectList.OrderBy(project => project.City.Name);
+                    break;
+            }
+            int Size_Of_Page = 4;
+            int No_Of_Page = (Page_No ?? 1);
+            return View(projectList.ToPagedList(No_Of_Page, Size_Of_Page));
         }
 
         // GET: Project/Create
@@ -40,9 +78,16 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
                 return RedirectToAction("Index", "Home");
             }
             ProjectModel projectModel = new ProjectModel();
-            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
-            CityModelMapper mapper = new CityModelMapper();
-            projectModel.CityList = mapper.MapperT1T2(dtoList);
+            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<CountryDTO> dtoCountryList = capaNegocioCountry.RecordList(string.Empty);
+            projectModel.CountryList = mapperCountry.MapperT1T2(dtoCountryList);
+            CityModelMapper mapperCity = new CityModelMapper();
+            IEnumerable<CityDTO> dtoCitiesList = new List<CityDTO>();
+            if(dtoCountryList.Count() > 0)
+            {
+                dtoCitiesList = capaNegocioCity.RecordListByCountry(dtoCountryList.First().Id);
+            }
+            projectModel.CityList = mapperCity.MapperT1T2(dtoCitiesList);
             return View(projectModel);
         }
 
@@ -81,8 +126,17 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
                 return HttpNotFound();
             }
             ProjectModel projectModel = new ProjectModel();
-            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
+            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<CountryDTO> dtoCountryList = capaNegocioCountry.RecordList(string.Empty);
+            projectModel.CountryList = mapperCountry.MapperT1T2(dtoCountryList);
             CityModelMapper mapperCity = new CityModelMapper();
+            IEnumerable<CityDTO> dtoCitiesList = capaNegocioCity.RecordList(string.Empty);
+            if (dtoCountryList.Count() > 0)
+            {
+                dtoCitiesList = capaNegocioCity.RecordListByCountry(dtoCountryList.First().Id);
+            }
+            
+            
             ProjectModelMapper mapper = new ProjectModelMapper();
             ProjectModel model = mapper.MapperT1T2(dto);
 
@@ -90,7 +144,7 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             projectModel.Name = model.Name;
             projectModel.Description = model.Description;
             projectModel.Image = model.Image;
-            projectModel.CityList = mapperCity.MapperT1T2(dtoList);
+            projectModel.CityList = mapperCity.MapperT1T2(dtoCitiesList);
             projectModel.Removed = model.Removed;
             return View(projectModel);
         }

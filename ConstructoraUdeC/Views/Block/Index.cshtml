@@ -1,27 +1,46 @@
-﻿@model IEnumerable<ConstructoraUdeC.Models.ParametersModule.BlockModel>
+﻿@model PagedList.IPagedList<ConstructoraUdeC.Models.ParametersModule.BlockModel>
 
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Lista de bloques</h2>
-
 <p>
     @Html.ActionLink("Crear nuevo bloque", "Create")
 </p>
+@using (Html.BeginForm("Index", "Block", FormMethod.Get))
+{
+<div class="form-row">
+    <div class="form-group col-lg-3">
+        @Html.TextBox("Search_Country", ViewBag.FilterValueCountry as string, new { @class = "form-control", placeholder = "Pais" })
+    </div>
+    <div class="form-group col-lg-3">
+        @Html.TextBox("Search_City", ViewBag.FilterValueCity as string, new { @class = "form-control", placeholder = "Ciudad" })
+    </div>
+    <div class="form-group col-lg-3">
+        @Html.TextBox("Search_project", ViewBag.FilterValueProject as string, new { @class = "form-control", placeholder = "Projecto" })
+    </div>
+    <div class="form-group col-lg-3">
+        <input type="submit" value="Buscar" class="btn btn-info" />
+    </div>
+</div>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Code)
+            Codigo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Descripcion
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Project.Name)
+            @Html.ActionLink("Proyecto", "Index", new { Sorting_Order = ViewBag.SortingName })
         </th>
         <th></th>
     </tr>
@@ -49,3 +68,7 @@
     }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
