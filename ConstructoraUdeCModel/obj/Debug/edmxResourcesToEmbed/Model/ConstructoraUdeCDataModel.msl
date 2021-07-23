@@ -37,6 +37,7 @@
     <EntitySetMapping Name="CUSTOMER">
       <EntityTypeMapping TypeName="ConstructoraUdeCModel.CUSTOMER">
         <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="DOCUMENT" ColumnName="DOCUMENT" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />

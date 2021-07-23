@@ -1,0 +1,92 @@
+﻿@model PagedList.IPagedList<ConstructoraUdeC.Models.SalesModule.InfoFinancialModel>
+
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Listado de informacion financiera ";
+}
+
+<h2>Listado de informacion financiera por clientes</h2>
+
+<!--p>
+    @Html.ActionLink("Create New", "Create")
+<p-->
+
+@using (Html.BeginForm("IndexInfoFinancial", "Customer", FormMethod.Get))
+{
+    <div class="form-row">
+        <div class="form-group col-lg-3">
+            @Html.TextBox("Search_Customer", ViewBag.FilterValueCountry as string, new { @class = "form-control", placeholder = "Cliente" })
+        </div>
+        <div class="form-group col-lg-3">
+            <input type="submit" value="Buscar" class="btn btn-info" />
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Cliente", "IndexInfoFinancial", new { Sorting_Order = ViewBag.SortingName })
+        </th>
+        <th>
+            Total Ingresos
+        </th>
+        <th>
+            Datos de trabajo
+        </th>
+        <th>
+            tiempo actual trabajo
+        </th>
+        <th>
+            Referencia familiar
+        </th>
+        <th>
+            Tel. Ref. Familiar
+        </th>
+        <th>
+            Referencia persona
+        </th>
+        <th>
+            Tel. Ref. personal
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncommeTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeCurrentJob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FamiliyRefName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FamilyRefPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonalRefName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonalRefPhone)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EditInfoFinancial", new { id = item.Id }) 
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("IndexInfoFinancial",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))

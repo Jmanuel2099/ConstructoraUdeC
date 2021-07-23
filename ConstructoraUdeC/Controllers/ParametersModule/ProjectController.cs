@@ -70,6 +70,13 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return View(projectList.ToPagedList(No_Of_Page, Size_Of_Page));
         }
 
+        [HttpPost]
+        public JsonResult LoadProjectsByCity(int cityId)
+        {
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            IEnumerable<ProjectModel> ProjectList = mapper.MapperT1T2(capaNegocio.RecordListByCity(cityId).ToList());
+            return new JsonResult { Data = ProjectList };
+        }
         // GET: Project/Create
         public ActionResult Create()
         {
@@ -90,6 +97,7 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             projectModel.CityList = mapperCity.MapperT1T2(dtoCitiesList);
             return View(projectModel);
         }
+
 
         // POST: Project/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 

@@ -8,7 +8,7 @@ using System.Web;
 
 namespace ConstructoraUdeC.Models.SecurityModule
 {
-    public class UserModel: ModelBase
+    public class UserModel : ModelBase
     {
         private int id;
 
@@ -59,7 +59,6 @@ namespace ConstructoraUdeC.Models.SecurityModule
 
         private string password;
         [DisplayName("Contraseña")]
-        [Required]
         [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud maxima de {1} caracteres")]
         public string Password
         {
@@ -68,7 +67,6 @@ namespace ConstructoraUdeC.Models.SecurityModule
         }
         private string newpassword;
         [DisplayName("Nueva contraseña")]
-        [Required]
         [MaxLength(100, ErrorMessage = "El campo {0} puede tener una longitud maxima de {1} caracteres")]
         public string NewPassword
         {
@@ -101,6 +99,30 @@ namespace ConstructoraUdeC.Models.SecurityModule
             set { cityActionList = value; }
         }
 
+        private int countryId;
+        [DisplayName("Pais de accion")]
+        public int CountryId
+        {
+            get { return countryId; }
+            set { countryId = value; }
+        }
+
+        private CountryModel country;
+
+        public CountryModel Country
+        {
+            get { return country; }
+            set { country = value; }
+        }
+
+
+        private IEnumerable<CountryModel> countryList;
+
+        public IEnumerable<CountryModel> CountryList
+        {
+            get { return countryList; }
+            set { countryList = value; }
+        }
 
         private IEnumerable<RoleModel> roles;
 
