@@ -57,6 +57,8 @@
     <Compile Include="DTO\ParametersModule\CountryDTO.cs" />
     <Compile Include="DTO\ParametersModule\ProjectDTO.cs" />
     <Compile Include="DTO\ParametersModule\PropertyDTO.cs" />
+    <Compile Include="DTO\SalesModule\CustomerDTO.cs" />
+    <Compile Include="DTO\SalesModule\InfoFinancialDTO.cs" />
     <Compile Include="DTO\SecurityModule\RoleDTO.cs" />
     <Compile Include="DTO\SecurityModule\UserDTO.cs" />
     <Compile Include="Implementation\ParametersModule\BlockImpController.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Implementation\ParametersModule\CountryImpController.cs" />
     <Compile Include="Implementation\ParametersModule\ProjectImpController.cs" />
     <Compile Include="Implementation\ParametersModule\PropertyImpController.cs" />
+    <Compile Include="Implementation\SalesModule\CustomerImpController.cs" />
     <Compile Include="Implementation\SecurityModule\RoleImpController.cs" />
     <Compile Include="Implementation\SecurityModule\UserImpController.cs" />
     <Compile Include="Mapper\GeneralMapper.cs" />
@@ -72,6 +75,8 @@
     <Compile Include="Mapper\ParametersModule\CountryDTOMapper.cs" />
     <Compile Include="Mapper\ParametersModule\ProjectDTOMapper.cs" />
     <Compile Include="Mapper\ParametersModule\PropertyDTOMapper.cs" />
+    <Compile Include="Mapper\SalesModule\CustomerDTOMapper.cs" />
+    <Compile Include="Mapper\SalesModule\InfoFinancialDTOMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleDTOMapper.cs" />
     <Compile Include="Mapper\SecurityModule\UserDTOMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

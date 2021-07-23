@@ -18,6 +18,9 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
 {
     public class PropertyController : BaseController
     {
+        private CountryImpController capaNegocioCountry = new CountryImpController();
+        private CityImpController capaNegocioCity = new CityImpController();
+        private ProjectImpController capaNegocioProject = new ProjectImpController();
         private BlockImpController capaNegocioBlock = new BlockImpController();
         private PropertyImpController capaNegocio = new PropertyImpController();
 
@@ -92,11 +95,61 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
                 return RedirectToAction("Index", "Home");
             }
             PropertyModel propertyModel = new PropertyModel();
-            IEnumerable<BlockDTO> dtoList = capaNegocioBlock.RecordList(string.Empty);
+            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<CountryDTO> dtoCountryList = capaNegocioCountry.RecordList(string.Empty);
+            propertyModel.CountryList = mapperCountry.MapperT1T2(dtoCountryList);
+            CityModelMapper mapperCity = new CityModelMapper();
+            IEnumerable<CityDTO> dtoCitiesList = new List<CityDTO>();
+            if (dtoCountryList.Count() > 0)
+            {
+                dtoCitiesList = capaNegocioCity.RecordListByCountry(dtoCountryList.First().Id);
+            }
+            propertyModel.CityList = mapperCity.MapperT1T2(dtoCitiesList);
+            ProjectModelMapper mapperProject = new ProjectModelMapper();
+            IEnumerable<ProjectDTO> dtoProjectList = capaNegocioProject.RecordList(string.Empty);
+            if (dtoCitiesList.Count() > 0)
+            {
+                dtoProjectList = capaNegocioProject.RecordListByCity(dtoCitiesList.First().Id);
+            }
+            propertyModel.ProjectList = mapperProject.MapperT1T2(dtoProjectList);
             BlockModelMapper mapper = new BlockModelMapper();
+            IEnumerable<BlockDTO> dtoList = capaNegocioBlock.RecordList(string.Empty);
+            if (dtoList.Count() > 0)
+            {
+                dtoList = capaNegocioBlock.RecordListByProject(dtoProjectList.First().Id);
+            }
             propertyModel.BlockList = mapper.MapperT1T2(dtoList);
             return View(propertyModel);
         }
+
+        /*        public ActionResult Create()
+        {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            BlockModel blockModel = new BlockModel();
+            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<CountryDTO> dtoCountryList = capaNegocioCountry.RecordList(string.Empty);
+            blockModel.CountryList = mapperCountry.MapperT1T2(dtoCountryList);
+            CityModelMapper mapperCity = new CityModelMapper();
+            IEnumerable<CityDTO> dtoCitiesList = new List<CityDTO>();
+            if (dtoCountryList.Count() > 0)
+            {
+                dtoCitiesList = capaNegocioCity.RecordListByCountry(dtoCountryList.First().Id);
+            }
+            blockModel.CityList = mapperCity.MapperT1T2(dtoCitiesList);
+            
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            IEnumerable<ProjectDTO> dtoProjectList = capaNegocioProject.RecordList(string.Empty);
+            if (dtoCitiesList.Count() > 0)
+            {
+                dtoProjectList = capaNegocioProject.RecordListByCity(dtoCountryList.First().Id);
+            }
+            blockModel.ProjectList = mapper.MapperT1T2(dtoProjectList);
+            return View(blockModel);
+        }*/
         // POST: PROPERTies/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.

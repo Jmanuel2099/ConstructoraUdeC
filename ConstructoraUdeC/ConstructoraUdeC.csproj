@@ -142,6 +142,7 @@
     <Compile Include="Controllers\ParametersModule\CountryController.cs" />
     <Compile Include="Controllers\ParametersModule\ProjectController.cs" />
     <Compile Include="Controllers\ParametersModule\PropertyController.cs" />
+    <Compile Include="Controllers\SalesModule\CustomerController.cs" />
     <Compile Include="Controllers\SecurityModule\RoleController.cs" />
     <Compile Include="Controllers\SecurityModule\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -154,6 +155,8 @@
     <Compile Include="Mapper\ParametersModule\CountryModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\ProjectModelMapper.cs" />
     <Compile Include="Mapper\ParametersModule\PropertyModelMapper.cs" />
+    <Compile Include="Mapper\SalesModule\CustomerModelMapper.cs" />
+    <Compile Include="Mapper\SalesModule\InfoFinancialModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\UserModelMapper.cs" />
     <Compile Include="Models\ModelBase.cs" />
@@ -162,6 +165,8 @@
     <Compile Include="Models\ParametersModule\CountryModel.cs" />
     <Compile Include="Models\ParametersModule\ProjectModel.cs" />
     <Compile Include="Models\ParametersModule\PropertyModel.cs" />
+    <Compile Include="Models\SalesModule\CustomerModel.cs" />
+    <Compile Include="Models\SalesModule\InfoFinancialModel.cs" />
     <Compile Include="Models\SecurityModule\LoginModel.cs" />
     <Compile Include="Models\SecurityModule\RoleModel.cs" />
     <Compile Include="Models\SecurityModule\UserModel.cs" />
@@ -219,7 +224,6 @@
     <Content Include="Views\City\Delete.cshtml" />
     <Content Include="Views\City\Edit.cshtml" />
     <Content Include="Views\City\Index.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
@@ -240,6 +244,14 @@
     <Content Include="Views\Property\Delete.cshtml" />
     <Content Include="Views\Property\Edit.cshtml" />
     <Content Include="Views\Property\Index.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\InfoFinancial.cshtml" />
+    <Content Include="Views\Customer\EditInfoFinancial.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\Customer\IndexInfoFinancial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

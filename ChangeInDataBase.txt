@@ -28,4 +28,9 @@ Se le añadio el campo REMOVED a la tabla BLOCK de tipo BIT no permite null
 Se le añadio el campo REMOVED a la tabla PROPERTY de tipo BIT no permite null
     ALTER TABLE PROPERTY
     ADD REMOVED BIT NOT NULL;
+
+Se le añadio el campo REMOVED a la tabla CUSTOMER de tipo BIT no permite null
+    ALTER TABLE PROPERTY
+    ADD REMOVED BIT NOT NULL;
+
 .

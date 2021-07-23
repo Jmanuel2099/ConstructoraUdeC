@@ -197,6 +197,8 @@ C:\Users\Daniel Cuartas\Desktop\Proyecto .net\ConstructoraUdeC\obj\Debug\Constru
 C:\Users\Daniel Cuartas\Desktop\Proyecto .net\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.dll
 C:\Users\Daniel Cuartas\Desktop\Proyecto .net\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.pdb
 C:\Users\jmanu\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\Recaptcha.Web.dll
+C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.csproj.AssemblyReference.cache
+C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.csproj.CoreCompileInputs.cache
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\ConstructoraUdeC.dll.config
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\ConstructoraUdeC.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\ConstructoraUdeC.pdb
@@ -257,6 +259,8 @@ C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\EntityFramewor
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\Newtonsoft.Json.dll
+C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\PagedList.dll
+C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\PagedList.Mvc.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\Recaptcha.Web.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\System.Web.Helpers.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\System.Web.Mvc.dll
@@ -273,6 +277,8 @@ C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\ConstructoraUd
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\ConstructoraUdeCModel.dll.config
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\EntityFramework.xml
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\EntityFramework.SqlServer.xml
+C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\PagedList.xml
+C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\PagedList.Mvc.xml
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\System.Web.Helpers.xml
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\System.Web.Mvc.xml
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\System.Web.Optimization.xml
@@ -292,12 +298,6 @@ C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\es\System.Web.
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\es\System.Web.WebPages.resources.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.csproj.AssemblyReference.cache
-C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.csproj.CoreCompileInputs.cache
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.csproj.CopyComplete
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.dll
 C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\obj\Debug\ConstructoraUdeC.pdb
-C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\PagedList.dll
-C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\PagedList.Mvc.dll
-C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\PagedList.xml
-C:\Users\marth\source\repos\ConstructoraUdeC\ConstructoraUdeC\bin\PagedList.Mvc.xml

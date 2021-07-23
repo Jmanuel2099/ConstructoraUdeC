@@ -24,6 +24,7 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
         private UserImpController capaNegocio = new UserImpController();
         private RoleImpController capaNegocioRol = new RoleImpController();
         private CityImpController capaNegocioCity = new CityImpController();
+        private CountryImpController capaNegocioCountry = new CountryImpController();
 
         // GET: User
         public ActionResult Index(string filter = "")
@@ -45,11 +46,19 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
                 return RedirectToAction("Index", "Home");
             }
             UserModel userModel = new UserModel();
-            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(string.Empty);
-            CityModelMapper mapper = new CityModelMapper();
-            userModel.CityActionList = mapper.MapperT1T2(dtoList);
+            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<CountryDTO> dtoCountryList = capaNegocioCountry.RecordList(string.Empty);
+            userModel.CountryList = mapperCountry.MapperT1T2(dtoCountryList);
+            CityModelMapper cityMapper = new CityModelMapper();
+            IEnumerable<CityDTO> dtoListCities = capaNegocioCity.RecordList(string.Empty);
+            if (dtoCountryList.Count() > 0)
+            {
+                dtoListCities = capaNegocioCity.RecordListByCountry(dtoCountryList.First().Id);
+            }
+            userModel.CityActionList = cityMapper.MapperT1T2(dtoListCities);
             return View(userModel);
         }
+
 
         // POST: User/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
@@ -104,8 +113,17 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
                 return HttpNotFound();
             }
             UserModel userModel = new UserModel();
-            IEnumerable<CityDTO> dtoList = capaNegocioCity.RecordList(String.Empty);
+
+            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<CountryDTO> dtoCountryList = capaNegocioCountry.RecordList(string.Empty);
+            userModel.CountryList = mapperCountry.MapperT1T2(dtoCountryList);
             CityModelMapper mapperCity = new CityModelMapper();
+            IEnumerable<CityDTO> dtoCitiesList = capaNegocioCity.RecordList(String.Empty);
+            if (dtoCountryList.Count() > 0)
+            {
+                dtoCitiesList = capaNegocioCity.RecordListByCountry(dtoCountryList.First().Id);
+            }
+
             UserModelMapper mapper = new UserModelMapper();
             UserModel model = mapper.MapperT1T2(dto);
 
@@ -113,11 +131,49 @@ namespace ConstructoraUdeC.Controllers.SecurityModule
             userModel.LastName = model.LastName;
             userModel.Cellphone = model.Cellphone;
             userModel.Email = model.Email;
-            userModel.CityActionList = mapperCity.MapperT1T2(dtoList);
+            userModel.CityActionList = mapperCity.MapperT1T2(dtoCitiesList);
 
             return View(userModel);
         }
 
+        /*public ActionResult Edit(int? id)
+        {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ProjectDTO dto = capaNegocio.RecordSearch(id.Value);
+            if (dto == null)
+            {
+                return HttpNotFound();
+            }
+            ProjectModel projectModel = new ProjectModel();
+            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<CountryDTO> dtoCountryList = capaNegocioCountry.RecordList(string.Empty);
+            projectModel.CountryList = mapperCountry.MapperT1T2(dtoCountryList);
+            CityModelMapper mapperCity = new CityModelMapper();
+            IEnumerable<CityDTO> dtoCitiesList = capaNegocioCity.RecordList(string.Empty);
+            if (dtoCountryList.Count() > 0)
+            {
+                dtoCitiesList = capaNegocioCity.RecordListByCountry(dtoCountryList.First().Id);
+            }
+            
+            
+            ProjectModelMapper mapper = new ProjectModelMapper();
+            ProjectModel model = mapper.MapperT1T2(dto);
+
+            projectModel.Code = model.Code;
+            projectModel.Name = model.Name;
+            projectModel.Description = model.Description;
+            projectModel.Image = model.Image;
+            projectModel.CityList = mapperCity.MapperT1T2(dtoCitiesList);
+            projectModel.Removed = model.Removed;
+            return View(projectModel);
+        }*/
         // POST: User/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.

@@ -1,0 +1,103 @@
+﻿@model PagedList.IPagedList<ConstructoraUdeC.Models.SalesModule.CustomerModel>
+
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+{
+    <div class="form-row">
+        <div class="form-group col-lg-3">
+            @Html.TextBox("Search_Country", ViewBag.FilterValueCountry as string, new { @class = "form-control", placeholder = "Pais" })
+        </div>
+        <div class="form-group col-lg-3">
+            @Html.TextBox("Search_City", ViewBag.FilterValueCity as string, new { @class = "form-control", placeholder = "Ciudad" })
+        </div>
+        <div class="form-group col-lg-3">
+            <input type="submit" value="Buscar" class="btn btn-info" />
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            Documento
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellidos
+        </th>
+        <th>
+            Cumpleaños
+        </th>
+        <th>
+            Foto
+        </th>
+        <th>
+            Celular
+        </th>
+        <th>
+            Correo
+        </th>
+        <th>
+            Dirrecion
+        </th>
+        <th>
+            @Html.ActionLink("Ciudad", "Index", new { Sorting_Order = ViewBag.SortingName })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Document)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Financiera", "InfoFinancial", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))

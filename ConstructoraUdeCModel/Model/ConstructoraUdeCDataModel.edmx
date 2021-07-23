@@ -49,6 +49,7 @@
           <Property Name="EMAIL" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ADDRESS" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CITY" Type="int" Nullable="false" />
+          <Property Name="REMOVED" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="FINANCIAL_INFORMATION">
           <Key>
@@ -489,6 +490,7 @@
           <NavigationProperty Name="CITY1" Relationship="Self.FK__CUSTOMER__CITY__1DE57479" FromRole="CUSTOMER" ToRole="CITY" />
           <NavigationProperty Name="FINANCIAL_INFORMATION" Relationship="Self.FK__FINANCIAL__CUSTO__20C1E124" FromRole="CUSTOMER" ToRole="FINANCIAL_INFORMATION" />
           <NavigationProperty Name="REQUEST" Relationship="Self.FK__REQUEST__CUSTOME__25869641" FromRole="CUSTOMER" ToRole="REQUEST" />
+          <Property Name="REMOVED" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="FINANCIAL_INFORMATION">
           <Key>
@@ -933,6 +935,7 @@
           <EntitySetMapping Name="CUSTOMER">
             <EntityTypeMapping TypeName="ConstructoraUdeCModel.CUSTOMER">
               <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="REMOVED" ColumnName="REMOVED" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DOCUMENT" ColumnName="DOCUMENT" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />

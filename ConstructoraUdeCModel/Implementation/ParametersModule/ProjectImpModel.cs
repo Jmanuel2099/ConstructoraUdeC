@@ -127,6 +127,18 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
             }
         }
 
+        public IEnumerable<ProjectDbModel> RecordListByCity(int idCity)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.PROJECT.Where(x => !x.REMOVED && x.CITY == idCity).ToList();
+                ProjectModelMapper mapper = new ProjectModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
+
         public IEnumerable<ProjectDbModel> RecordListByCountry(String CountryName)
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
@@ -139,5 +151,16 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
             }
         }
 
+        public IEnumerable<ProjectDbModel> RecordListByCountry(int countryId)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.PROJECT.Where(x => !x.REMOVED && x.CITY1.COUNTRY == countryId).ToList();
+                ProjectModelMapper mapper = new ProjectModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
     }
 }

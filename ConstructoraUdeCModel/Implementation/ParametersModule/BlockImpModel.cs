@@ -125,7 +125,17 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
                 return listFinal.ToList();
             }
         }
+        public IEnumerable<BlockDbModel> RecordListByProject(int projectId)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.BLOCK.Where(x => !x.REMOVED && x.PROJECT == projectId).ToList();
+                BlockModelMapper mapper = new BlockModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
 
+                return listFinal.ToList();
+            }
+        }
         public IEnumerable<BlockDbModel> RecordListByCity(String projectCitytName)
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
@@ -137,11 +147,34 @@ namespace ConstructoraUdeCModel.Implementation.ParametersModule
                 return listFinal.ToList();
             }
         }
+        public IEnumerable<BlockDbModel> RecordListByCity(int projectCitytId)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.BLOCK.Where(x => !x.REMOVED && x.PROJECT1.CITY == projectCitytId).ToList();
+                BlockModelMapper mapper = new BlockModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
         public IEnumerable<BlockDbModel> RecordListByCountry(String projectCountrytName)
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
                 var listaLambda = db.BLOCK.Where(x => !x.REMOVED && x.PROJECT1.CITY1.COUNTRY1.NAME.ToUpper().Contains(projectCountrytName)).ToList();
+                BlockModelMapper mapper = new BlockModelMapper();
+                var listFinal = mapper.MapperT1T2(listaLambda);
+
+                return listFinal.ToList();
+            }
+        }
+
+        public IEnumerable<BlockDbModel> RecordListByCountry(int projectCountrytId)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                var listaLambda = db.BLOCK.Where(x => !x.REMOVED && x.PROJECT1.CITY1.COUNTRY1.ID == projectCountrytId).ToList();
                 BlockModelMapper mapper = new BlockModelMapper();
                 var listFinal = mapper.MapperT1T2(listaLambda);
 

@@ -18,6 +18,8 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
 {
     public class BlockController : BaseController
     {
+        private CityImpController capaNegocioCity = new CityImpController();
+        private CountryImpController capaNegocioCountry = new CountryImpController();
         private ProjectImpController capaNegocioProject = new ProjectImpController();
         private BlockImpController capaNegocio = new BlockImpController();
 
@@ -76,6 +78,14 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return View(blockList.ToPagedList(No_Of_Page, Size_Of_Page));
         }
 
+        [HttpPost]
+        public JsonResult LoadBlockByProject(int blockId)
+        {
+            BlockModelMapper mapper = new BlockModelMapper();
+            IEnumerable<BlockModel> blockList = mapper.MapperT1T2(capaNegocio.RecordListByProject(blockId).ToList());
+            return new JsonResult { Data = blockList };
+        }
+
         // GET: Block/Create
         public ActionResult Create()
         {
@@ -83,10 +93,26 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             {
                 return RedirectToAction("Index", "Home");
             }
+
             BlockModel blockModel = new BlockModel();
-            IEnumerable<ProjectDTO> dtoList = capaNegocioProject.RecordList(string.Empty);
+            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<CountryDTO> dtoCountryList = capaNegocioCountry.RecordList(string.Empty);
+            blockModel.CountryList = mapperCountry.MapperT1T2(dtoCountryList);
+            CityModelMapper mapperCity = new CityModelMapper();
+            IEnumerable<CityDTO> dtoCitiesList = new List<CityDTO>();
+            if (dtoCountryList.Count() > 0)
+            {
+                dtoCitiesList = capaNegocioCity.RecordListByCountry(dtoCountryList.First().Id);
+            }
+            blockModel.CityList = mapperCity.MapperT1T2(dtoCitiesList);
+            
             ProjectModelMapper mapper = new ProjectModelMapper();
-            blockModel.ProjectList = mapper.MapperT1T2(dtoList);
+            IEnumerable<ProjectDTO> dtoProjectList = capaNegocioProject.RecordList(string.Empty);
+            if (dtoCitiesList.Count() > 0)
+            {
+                dtoProjectList = capaNegocioProject.RecordListByCity(dtoCitiesList.First().Id);
+            }
+            blockModel.ProjectList = mapper.MapperT1T2(dtoProjectList);
             return View(blockModel);
         }
 
@@ -126,15 +152,29 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
                 return HttpNotFound();
             }
             BlockModel blockModel = new BlockModel();
-            IEnumerable<ProjectDTO> dtoList = capaNegocioProject.RecordList(string.Empty);
+            CountryModelMapper mapperCountry = new CountryModelMapper();
+            IEnumerable<CountryDTO> dtoCountryList = capaNegocioCountry.RecordList(string.Empty);
+            blockModel.CountryList = mapperCountry.MapperT1T2(dtoCountryList);
+            CityModelMapper mapperCity = new CityModelMapper();
+            IEnumerable<CityDTO> dtoCitiesList = new List<CityDTO>();
+            if (dtoCountryList.Count() > 0)
+            {
+                dtoCitiesList = capaNegocioCity.RecordListByCountry(dtoCountryList.First().Id);
+            }
+            blockModel.CityList = mapperCity.MapperT1T2(dtoCitiesList);
             ProjectModelMapper mapperProject = new ProjectModelMapper();
+            IEnumerable<ProjectDTO> dtoProjectList = capaNegocioProject.RecordList(string.Empty);
+            if (dtoCitiesList.Count() > 0)
+            {
+                dtoProjectList = capaNegocioProject.RecordListByCity(dtoCitiesList.First().Id);
+            }
+            blockModel.ProjectList = mapperProject.MapperT1T2(dtoProjectList);
+
             BlockModelMapper mapper = new BlockModelMapper();
             BlockModel model = mapper.MapperT1T2(dto);
-
             blockModel.Code = model.Code;
             blockModel.Name = model.Name;
             blockModel.Description = model.Description;
-            blockModel.ProjectList = mapperProject.MapperT1T2(dtoList);
             blockModel.Removed = model.Removed;
             return View(blockModel);
         }
