@@ -143,6 +143,7 @@
     <Compile Include="Controllers\ParametersModule\ProjectController.cs" />
     <Compile Include="Controllers\ParametersModule\PropertyController.cs" />
     <Compile Include="Controllers\SalesModule\CustomerController.cs" />
+    <Compile Include="Controllers\SalesModule\RequestController.cs" />
     <Compile Include="Controllers\SecurityModule\RoleController.cs" />
     <Compile Include="Controllers\SecurityModule\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -157,6 +158,8 @@
     <Compile Include="Mapper\ParametersModule\PropertyModelMapper.cs" />
     <Compile Include="Mapper\SalesModule\CustomerModelMapper.cs" />
     <Compile Include="Mapper\SalesModule\InfoFinancialModelMapper.cs" />
+    <Compile Include="Mapper\SalesModule\RequestModelMapper.cs" />
+    <Compile Include="Mapper\SalesModule\StatusRequestModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\UserModelMapper.cs" />
     <Compile Include="Models\ModelBase.cs" />
@@ -167,6 +170,8 @@
     <Compile Include="Models\ParametersModule\PropertyModel.cs" />
     <Compile Include="Models\SalesModule\CustomerModel.cs" />
     <Compile Include="Models\SalesModule\InfoFinancialModel.cs" />
+    <Compile Include="Models\SalesModule\RequestModel.cs" />
+    <Compile Include="Models\SalesModule\StatusRequestModel.cs" />
     <Compile Include="Models\SecurityModule\LoginModel.cs" />
     <Compile Include="Models\SecurityModule\RoleModel.cs" />
     <Compile Include="Models\SecurityModule\UserModel.cs" />
@@ -252,6 +257,10 @@
     <Content Include="Views\Customer\EditInfoFinancial.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\Customer\IndexInfoFinancial.cshtml" />
+    <Content Include="Views\Request\Create.cshtml" />
+    <Content Include="Views\Request\Delete.cshtml" />
+    <Content Include="Views\Request\Edit.cshtml" />
+    <Content Include="Views\Request\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

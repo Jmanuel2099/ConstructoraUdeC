@@ -49,7 +49,7 @@ namespace ConstructoraUdeC.Models.ParametersModule
 
 
         private int projectId;
-        [DisplayName("Proyecto del bloque")]
+        [DisplayName("Proyecto")]
         [Required()]
         public int ProjectId
         {
@@ -82,7 +82,7 @@ namespace ConstructoraUdeC.Models.ParametersModule
         }
 
         private int cityId;
-        [DisplayName("Ciudad proyecto")]
+        [DisplayName("Ciudad")]
         [Required()]
         public int CityId
         {
@@ -107,7 +107,7 @@ namespace ConstructoraUdeC.Models.ParametersModule
         }
 
         private int countryId;
-        [DisplayName("Pais del proyecto")]
+        [DisplayName("Pais ")]
         [Required()]
         public int CountryId
         {

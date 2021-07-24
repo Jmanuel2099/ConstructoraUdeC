@@ -255,7 +255,7 @@ namespace ConstructoraUdeC.Controllers.SalesModule
                     infoModelList = infoModelList.OrderBy(info => info.Customer.Name);
                     break;
             }
-            int Size_Of_Page = 2;
+            int Size_Of_Page = 8;
             int No_Of_Page = (Page_No ?? 1);
             return View(infoModelList.ToPagedList(No_Of_Page, Size_Of_Page));
             

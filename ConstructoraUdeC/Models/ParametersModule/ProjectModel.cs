@@ -56,7 +56,7 @@ namespace ConstructoraUdeC.Models.ParametersModule
         }
 
         private int cityId;
-        [DisplayName("Ciudad proyecto")]
+        [DisplayName("Ciudad")]
         [Required()]
         public int CityId
         {
@@ -89,7 +89,7 @@ namespace ConstructoraUdeC.Models.ParametersModule
         }
 
         private int countryId;
-        [DisplayName("Pais del proyecto")]
+        [DisplayName("Pais")]
         [Required()]
         public int CountryId
         {
