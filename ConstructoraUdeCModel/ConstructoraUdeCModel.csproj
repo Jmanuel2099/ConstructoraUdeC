@@ -58,6 +58,8 @@
     <Compile Include="DbModel\ParametersModule\PropertyDbModel.cs" />
     <Compile Include="DbModel\SalesModule\CustomerDbModel.cs" />
     <Compile Include="DbModel\SalesModule\InfoFinancialDbModel.cs" />
+    <Compile Include="DbModel\SalesModule\RequestDbModel.cs" />
+    <Compile Include="DbModel\SalesModule\StatusRequestDbModel.cs" />
     <Compile Include="DbModel\SecurityModel\RoleDbModel.cs" />
     <Compile Include="DbModel\SecurityModel\UserDbModel.cs" />
     <Compile Include="Implementation\ParametersModule\BlockImpModel.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Implementation\ParametersModule\ProjectImpModel.cs" />
     <Compile Include="Implementation\ParametersModule\PropertyImpModel.cs" />
     <Compile Include="Implementation\SalesModule\CustomerImpModel.cs" />
+    <Compile Include="Implementation\SalesModule\RequestImpModel.cs" />
     <Compile Include="Implementation\SecurityModule\RoleImpModel.cs" />
     <Compile Include="Implementation\SecurityModule\UserImpModel.cs" />
     <Compile Include="Mapper\GeneralMapper.cs" />
@@ -76,6 +79,8 @@
     <Compile Include="Mapper\ParametersModule\PropertyModelMapper.cs" />
     <Compile Include="Mapper\SalesModule\CustomerDbModelMapper.cs" />
     <Compile Include="Mapper\SalesModule\InfoFinancialDbModelMapper.cs" />
+    <Compile Include="Mapper\SalesModule\RequestDbModelMapper.cs" />
+    <Compile Include="Mapper\SalesModule\StatusRequestDbModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\RoleModelMapper.cs" />
     <Compile Include="Mapper\SecurityModule\UserModelMapper.cs" />
     <Compile Include="Model\BLOCK.cs">

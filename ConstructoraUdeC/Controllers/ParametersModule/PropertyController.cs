@@ -52,6 +52,7 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             PropertyModelMapper mapper = new PropertyModelMapper();
             IEnumerable<PropertyModel> propertyList = mapper.MapperT1T2(capaNegocio.RecordList(filter).ToList());
 
+
             if (!String.IsNullOrEmpty(Search_Country) || !String.IsNullOrEmpty(Search_City) ||
                 !String.IsNullOrEmpty(Search_Project) || !String.IsNullOrEmpty(Search_Block))
             {

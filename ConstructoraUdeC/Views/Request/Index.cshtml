@@ -1,0 +1,70 @@
+﻿@model PagedList.IPagedList<ConstructoraUdeC.Models.SalesModule.RequestModel>
+
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Listado de solicitudes";
+}
+
+<h2>Solicitud</h2>
+
+<p>
+    @Html.ActionLink("Crear Solicitud", "Create")
+</p>
+@using (Html.BeginForm("Index", "Request", FormMethod.Get))
+{
+    <div class="form-row">
+        <div class="form-group col-lg-3">
+            @Html.TextBox("Search_Customer", ViewBag.FilterValueCountry as string, new { @class = "form-control", placeholder = "Cliente" })
+        </div>
+        <div class="form-group col-lg-3">
+            <input type="submit" value="Buscar" class="btn btn-info" />
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            Fecha solicitud
+        </th>
+        <th>
+            Oferta
+        </th>
+        <th>
+            @Html.ActionLink("Cliente", "Index", new { Sorting_Order = ViewBag.SortingName })
+        </th>
+        <th>
+            Propiedad
+        </th>
+        <th>
+            Estado
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Offer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Property.Identification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusRequest.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

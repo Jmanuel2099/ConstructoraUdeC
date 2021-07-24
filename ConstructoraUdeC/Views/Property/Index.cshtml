@@ -63,9 +63,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Val)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
+            @if (item.Status == true)
+            {
+                <td>
+                    Vendido
+                </td>
+            }
+            else
+            { 
+                <td>
+                    Disponible  
+                </td>
+            }
+
             <td>
                 @Html.DisplayFor(modelItem => item.Block.Name)
             </td>
