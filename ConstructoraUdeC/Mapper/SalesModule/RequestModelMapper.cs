@@ -39,7 +39,7 @@ namespace ConstructoraUdeC.Mapper.SalesModule
                 Id = input.Id,
                 RequestDate = input.RequestDate,
                 Offer = input.Offer,
-                StatusRequestId = input.StatusRequestId,
+                //StatusRequestId = input.StatusRequestId,
                 CustomerId = input.CustomerId,
                 PropertyId = input.PropertyId
             };

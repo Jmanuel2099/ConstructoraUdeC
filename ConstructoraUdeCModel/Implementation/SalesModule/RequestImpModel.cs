@@ -26,6 +26,7 @@ namespace ConstructoraUdeCModel.Implementation.SalesModule
 
                     RequestDbModelMapper mapper = new RequestDbModelMapper();
                     REQUEST record = mapper.MapperT2T1(dbModel);
+                    record.STATUS_REQUEST = 1;
                     db.REQUEST.Add(record);
                     db.SaveChanges();
                     return 1;
@@ -49,7 +50,8 @@ namespace ConstructoraUdeCModel.Implementation.SalesModule
                     }
                     record.REQUEST_DATE = dbModel.RequestDate;
                     record.OFFER = dbModel.Offer;
-                    record.STATUS_REQUEST = dbModel.StatusRequestId;
+                    record.STATUS_REQUEST = 1;
+                    //record.STATUS_REQUEST = dbModel.StatusRequestId;
                     record.CUSTOMER = dbModel.CustomerId;
                     record.PROPERTY = dbModel.PropertyId;
 
@@ -136,6 +138,30 @@ namespace ConstructoraUdeCModel.Implementation.SalesModule
                     return recordFinal;
                 }
                 return null;
+            }
+        }
+
+        public int changeStatusRequest(int idRequest, int newIdStatusRequest)
+        {
+            using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
+            {
+                try
+                {
+                    var request = db.REQUEST.Where(x => x.ID == idRequest).FirstOrDefault();
+                    if (request == null)
+                    {
+                        return 3;
+                    }
+
+                    request.STATUS_REQUEST = newIdStatusRequest;
+                    db.SaveChanges();
+                    return 1;
+                }
+                catch
+                {
+                    return 2;
+                }
+
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using ConstructoraUdeCController.DTO.SalesModule;
 using ConstructoraUdeCController.Mapper.SalesModule;
+using ConstructoraUdeCController.Services;
 using ConstructoraUdeCModel.DbModel.SalesModule;
 using ConstructoraUdeCModel.Implementation.SalesModule;
 using System;
@@ -69,9 +70,20 @@ namespace ConstructoraUdeCController.Implementation.SalesModule
             {
                 return null;
             }
-
             StatusRequestDTOMapper mapper = new StatusRequestDTOMapper();
             return mapper.MapperT1T2(record);
+        }
+        public int changeStatusRequest(int idRequest, int newIdStatus, string statusName, string toEmail, string toName)
+        {
+            var response = model.changeStatusRequest(idRequest, newIdStatus);
+            if (response == 1)
+            {
+                String content = String.Format("Hola,{0}" +
+                " <br />Su solicitud ha sido {1}. " +
+                "<br /> Cordial saludo. ", toName, statusName );
+                new Notifications().SendEmail("Respuesta a solicitud", content, toName, toEmail);
+            }
+            return response;
         }
     }
 }

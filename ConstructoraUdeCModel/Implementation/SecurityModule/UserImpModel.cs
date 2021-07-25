@@ -224,7 +224,6 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
 
         public int PasswordResset(string email, string newPass)
         {
-
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
                 try
