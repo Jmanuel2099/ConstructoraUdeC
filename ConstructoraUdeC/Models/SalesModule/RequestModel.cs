@@ -1,6 +1,7 @@
 ﻿using ConstructoraUdeC.Models.ParametersModule;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -17,7 +18,7 @@ namespace ConstructoraUdeC.Models.SalesModule
         }
 
         private DateTime requestDate;
-
+        [DisplayName("Fecha de solicitud")]
         public DateTime RequestDate
         {
             get { return requestDate; }
@@ -25,14 +26,14 @@ namespace ConstructoraUdeC.Models.SalesModule
         }
 
         private int offer;
-
+        [DisplayName("Oferta")]
         public int Offer
         {
             get { return offer; }
             set { offer = value; }
         }
         private int statusRequestId;
-
+        [DisplayName("Estado")]
         public int StatusRequestId
         {
             get { return statusRequestId; }
@@ -57,7 +58,7 @@ namespace ConstructoraUdeC.Models.SalesModule
 
 
         private int propertyId;
-
+        [DisplayName("Propiedad")]
         public int PropertyId
         {
             get { return propertyId; }
@@ -82,7 +83,7 @@ namespace ConstructoraUdeC.Models.SalesModule
 
 
         private int customerId;
-
+        [DisplayName("Cliente")]
         public int CustomerId
         {
             get { return customerId; }

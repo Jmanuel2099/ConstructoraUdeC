@@ -15,7 +15,6 @@ namespace ConstructoraUdeCController.Services
             string apiKey = "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";
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("jose.1701722372@ucaldas.edu.co", "Constructora UdeC");
-
             var to = new EmailAddress(toEmail, toName);
             var plainTextContent = content;
             var htmlContent = content;

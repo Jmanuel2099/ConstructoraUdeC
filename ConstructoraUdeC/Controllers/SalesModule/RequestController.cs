@@ -16,6 +16,7 @@ using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCController.Implementation.SalesModule;
 using ConstructoraUdeCModel.Model;
 using PagedList;
+using System.IO;
 
 namespace ConstructoraUdeC.Controllers.SalesModule
 {
@@ -88,7 +89,7 @@ namespace ConstructoraUdeC.Controllers.SalesModule
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RequestDate,Offer,StatusRequestId,PropertyId,CustomerId")] RequestModel model)
+        public ActionResult Create([Bind(Include = "RequestDate,Offer,PropertyId,CustomerId")] RequestModel model)
         {
             if (ModelState.IsValid)
             {
@@ -137,7 +138,7 @@ namespace ConstructoraUdeC.Controllers.SalesModule
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RequestDate,Offer,StatusRequestId,PropertyId,CustomerId")] RequestModel model)
+        public ActionResult Edit([Bind(Include = "Id,RequestDate,Offer,PropertyId,CustomerId")] RequestModel model)
         {
             if (ModelState.IsValid)
             {
@@ -181,6 +182,72 @@ namespace ConstructoraUdeC.Controllers.SalesModule
             return this.ProcessResponse(response, model);
         }
 
+        public ActionResult ChangeStatus(int? id)
+        {
+            if (!this.verificarSesion())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RequestDTO dto = capaNegocio.RecordSearch(id.Value);
+            if (dto == null)
+            {
+                return HttpNotFound();
+            }
+            RequestModel requestModel = new RequestModel();
+            StatusRequestModelMapper statusMapper = new StatusRequestModelMapper();
+            IEnumerable<StatusRequestDTO> dtoStatusList = capaNegocio.RecordListStatus(string.Empty);
+            requestModel.StatusRequestList = statusMapper.MapperT1T2(dtoStatusList);
+            return View(requestModel);
+        }
+        [HttpPost, ActionName("ChangeStatus")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeStatusConfirmed([Bind(Include = "Id,StatusRequestId")] RequestModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                RequestDTO dto = capaNegocio.RecordSearch(model.Id);
+                RequestModelMapper mapper = new RequestModelMapper();
+                RequestModel modelRequest = mapper.MapperT1T2(dto);
+
+                string statusName = modelRequest.StatusRequest.Name;
+                string toEmail = modelRequest.Customer.Email;
+                string toName = modelRequest.Customer.Name;
+                int response = capaNegocio.changeStatusRequest(model.Id, model.StatusRequestId, statusName, toEmail, toName);
+                this.ProcessResponse(response, model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult UploadFile()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult UploadFile(HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
+                    file.SaveAs(_path);
+                }
+                ViewBag.Message = "File Uploaded Successfully!!";
+                return View();
+            }
+            catch
+            {
+                ViewBag.Message = "File upload failed!!";
+                return View();
+            }
+        }
         private ActionResult ProcessResponse(int response, RequestModel model)
         {
             switch (response)

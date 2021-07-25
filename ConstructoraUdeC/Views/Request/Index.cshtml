@@ -44,27 +44,43 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequestDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Offer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Property.Identification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusRequest.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.RequestDate, new { htmlAttributes = new { @class = "form-control", @Type = "date" } })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Offer)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Customer.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Property.Identification)
+    </td>
+    @if (item.StatusRequest.Id == 1)
+    {
+        <td>
+            @Html.ActionLink(item.StatusRequest.Name, "ChangeStatus", new { id = item.Id })
+        </td>
+    }
+
+    @if (item.StatusRequest.Id == 2)
+    {
+        <td>
+            @Html.ActionLink("Archivo", "UploadFile")
+        </td>
+    }
+    @if (item.StatusRequest.Id == 3)
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusRequest.Name)
+        </td>
+    }
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+    </td>
+</tr>
     }
 
 </table>
