@@ -1,0 +1,15 @@
+﻿body{
+    justify-content:center;
+    text-align:center;
+    
+}
+
+.form-horizontal{
+    justify-content:center
+}
+
+#cajon {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}

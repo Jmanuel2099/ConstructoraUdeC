@@ -1,0 +1,14 @@
+﻿#header {
+    background: url(https://decortips.com/es/wp-content/uploads/2017/12/casas-de-playa.jpg)center center / cover no-repeat;
+    border-color:black
+
+}
+
+img{
+    height:350px;
+    width:350px
+}
+#gallery{
+    border-style: double;
+    border-color:black
+}

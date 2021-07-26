@@ -183,7 +183,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Home.css" />
+    <Content Include="Content\Info.css" />
+    <Content Include="Content\Login.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Project.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -257,12 +261,16 @@
     <Content Include="Views\Customer\EditInfoFinancial.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\Customer\IndexInfoFinancial.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Request\Create.cshtml" />
     <Content Include="Views\Request\Delete.cshtml" />
     <Content Include="Views\Request\Edit.cshtml" />
     <Content Include="Views\Request\Index.cshtml" />
     <Content Include="Views\Request\ChangeStatus.cshtml" />
     <Content Include="Views\Request\UploadFile.cshtml" />
+=======
+    <Content Include="Views\Project\Info.cshtml" />
+>>>>>>> dev_daniel
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

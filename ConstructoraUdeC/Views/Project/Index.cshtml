@@ -3,99 +3,110 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" />
 
+
 @{
     ViewBag.Title = "Proyectos";
 }
 
 <h2>Listado de proyectos</h2>
+<div class="container table-bordered">
 
-<p>
-    @Html.ActionLink("Crear un proyecto", "Create")
-</p>
+    @using (Html.BeginForm("Create", "Project", FormMethod.Get))
+    {
+        <div class="form-group  center-block">
+            <input type="submit" value="Crear un proyecto nuevo" class="btn btn-info" />
+        </div>
+    }
 
-@using (Html.BeginForm("Index", "Project", FormMethod.Get))
-{
-<div class="form-row">
-    <div class="form-group col-lg-3">
-        @Html.TextBox("Search_Country", ViewBag.FilterValueCountry as string, new { @class = "form-control", placeholder = "Pais" })
-    </div>
-    <div class="form-group col-lg-3">
-        @Html.TextBox("Search_City", ViewBag.FilterValueCity as string, new { @class = "form-control", placeholder = "Ciudad" })
-    </div>
-    <div class="form-group col-lg-3">
-        <input type="submit" value="Buscar" class="btn btn-info" />
-    </div>
-</div>
-}
 
-<table class="table">
-    <tr>
-        <th>
-            Codigo
-        </th>
-        <th>
-            Nombre
-        </th>
-        <th>
-            descripción
-        </th>
-        <th>
-            @Html.ActionLink("Ciudad", "Index", new { Sorting_Order = ViewBag.SortingName })
 
-        </th>
+    @using (Html.BeginForm("Index", "Project", FormMethod.Get))
+    {
+        <div class="form-row">
+            <div class="form-group col-lg-3">
+                @Html.TextBox("Search_Country", ViewBag.FilterValueCountry as string, new { @class = "form-control", placeholder = "Pais" })
+            </div>
+            <div class="form-group col-lg-3">
+                @Html.TextBox("Search_City", ViewBag.FilterValueCity as string, new { @class = "form-control", placeholder = "Ciudad" })
+            </div>
+            <div class="form-group col-lg-3">
+                <input type="submit" value="Buscar" class="btn btn-info" />
+            </div>
+        </div>
+    }
 
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                Codigo
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                descripción
+            </th>
+            <th>
+                @Html.ActionLink("Ciudad", "Index", new { Sorting_Order = ViewBag.SortingName })
+
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Name)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target=".bd-example-modal-lg">Imagen</button>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+        new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Imagen del proyecto</h5>
+                    </div>
+                    <div class="modal-body">
+                        <img src=@item.Image class="img-thumbnail" alt="Responsive image">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.City.Name)
-            </td>
-            <td>
-                <button type="button" class="btn btn-link" data-toggle="modal" data-target=".bd-example-modal-lg">Imagen</button>
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
-
-</table>
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager(Model, Page_No => Url.Action("Index",
-    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
-
-@foreach (var item in Model)
-{
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Imagen del proyecto</h5>
+                    @Html.DisplayFor(modelItem => item.Image)
                 </div>
-                <div class="modal-body">
-                    <img src=@item.Image class="img-thumbnail" alt="Responsive image">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-
-                @Html.DisplayFor(modelItem => item.Image)
             </div>
         </div>
-    </div>
-}
+
+    }
+</div>

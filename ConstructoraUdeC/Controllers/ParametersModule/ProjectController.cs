@@ -117,6 +117,31 @@ namespace ConstructoraUdeC.Controllers.ParametersModule
             return View(model);
         }
 
+
+        public ActionResult Info(int? id)
+        {
+            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ProjectDTO dto = capaNegocio.RecordSearch(id.Value);
+            if (dto == null)
+            {
+                return HttpNotFound();
+            }
+
+         
+            ProjectModelMapper projectModelMapper = new ProjectModelMapper();
+
+            ProjectModel model = new ProjectModel();
+
+            model = projectModelMapper.MapperT1T2(dto);
+            
+
+
+            return View(model);
+        }
         // GET: Project/Edit/5
         public ActionResult Edit(int? id)
         {
