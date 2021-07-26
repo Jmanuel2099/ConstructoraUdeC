@@ -1,31 +1,53 @@
 ﻿@model IEnumerable<ConstructoraUdeC.Models.ParametersModule.ProjectModel>
+
 <link href="~/Content/Home.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Home Page";
 }
 
-@foreach (var p in Model)
-{
-    
-    
+<section id="header" class="jumbotron text-center ">
+    <h1 class="display-3">Constructora UdeC</h1>
+    <p class="lead">Construyendo sueños</p>
+
+    @using (Html.BeginForm("Login", "User", FormMethod.Get))
+    {
+        <div class="form-group  center-block">
+            <input type="submit" value="Iniciar Sesión" class="btn btn-info" />
+        </div>
+
+    }
 
 
-<div class="container mt-2">
-  
-    <div class="row">
-        <div class="col-md-3 col-sm-6">
-            <div class="card card-block">
-                <h2 class="card-title text-right"><i class="material-icons">@Html.Raw(p.Name)</i></h2>
-                <img src="@Html.Raw(p.Image)">
-                <p class="card-text">@Html.Raw(p.Description)</p>
-                <h5>@Html.ActionLink("Info", "Info","Project", new { id = p.Id },null)</h5>
-                 <br />
+</section>
+
+<div class="container col-lg-12">
+
+    @foreach (var p in Model)
+    {
+
+
+        <div class="card col-lg-4">
+            <img src="@Html.DisplayFor(modelName => p.Image)" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelName => p.Name)</h5>
+                <p class="card-text">@Html.DisplayFor(modelName => p.Description)</p>
+                @using (Html.BeginForm("Info", "Project", new { id = p.Id }, FormMethod.Get))
+                {
+                    <div class="form-group  center-block ">
+                        <input type="submit" value="Detalles" class="btn btn-info center-block" />
+                    </div>
+                }
 
             </div>
         </div>
-        
-    </div>
-
+    }
 </div>
-}
+
+
+
+
+
+
+
+
 
