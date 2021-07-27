@@ -1,15 +1,12 @@
-﻿ using ConstructoraUdeCModel.DbModel.SecurityModel;
+﻿using ConstructoraUdeCModel.DbModel.SecurityModel;
 using ConstructoraUdeCModel.Mapper.ParametersModule;
 using ConstructoraUdeCModel.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCModel.Mapper.SecurityModule
 {
-    public class UserModelMapper: GeneralMapper<SEC_USER, UserDbModel>
+    public class UserModelMapper : GeneralMapper<SEC_USER, UserDbModel>
     {
         public override UserDbModel MapperT1T2(SEC_USER input)
         {

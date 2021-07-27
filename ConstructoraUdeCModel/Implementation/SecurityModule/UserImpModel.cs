@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCModel.Implementation.SecurityModule
 {
@@ -125,7 +123,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
         {
             using (ConstructoraUdeCEntities db = new ConstructoraUdeCEntities())
             {
-                
+
                 var login = (from user in db.SEC_USER
                              where user.EMAIL.ToUpper().Equals(dbModel.Email.ToUpper()) && user.USER_PASSWORD.Equals(dbModel.Password)
                              select user).FirstOrDefault();
@@ -177,7 +175,7 @@ namespace ConstructoraUdeCModel.Implementation.SecurityModule
                     db.SaveChanges();
                     return true;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     return false;
                 }

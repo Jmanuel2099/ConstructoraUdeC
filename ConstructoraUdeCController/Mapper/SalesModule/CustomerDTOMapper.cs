@@ -1,15 +1,11 @@
 ﻿using ConstructoraUdeCController.DTO.SalesModule;
 using ConstructoraUdeCController.Mapper.ParametersModule;
 using ConstructoraUdeCModel.DbModel.SalesModule;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCController.Mapper.SalesModule
 {
-    public class CustomerDTOMapper : GeneralMapper<CustomerDbModel, CustomerDTO >
+    public class CustomerDTOMapper : GeneralMapper<CustomerDbModel, CustomerDTO>
     {
         public override CustomerDTO MapperT1T2(CustomerDbModel input)
         {

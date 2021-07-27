@@ -1,11 +1,7 @@
 ﻿using ConstructoraUdeCModel.DbModel.SalesModule;
 using ConstructoraUdeCModel.Mapper.ParametersModule;
 using ConstructoraUdeCModel.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCModel.Mapper.SalesModule
 {

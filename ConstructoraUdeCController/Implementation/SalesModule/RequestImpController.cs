@@ -5,9 +5,6 @@ using ConstructoraUdeCModel.DbModel.SalesModule;
 using ConstructoraUdeCModel.Implementation.SalesModule;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCController.Implementation.SalesModule
 {
@@ -80,7 +77,7 @@ namespace ConstructoraUdeCController.Implementation.SalesModule
             {
                 String content = String.Format("Hola,{0}" +
                 " <br />Su solicitud ha sido {1}. " +
-                "<br /> Cordial saludo. ", toName, statusName );
+                "<br /> Cordial saludo. ", toName, statusName);
                 new Notifications().SendEmail("Respuesta a solicitud", content, toName, toEmail);
             }
             return response;

@@ -2,11 +2,7 @@
 using ConstructoraUdeCController.Mapper.ParametersModule;
 using ConstructoraUdeCModel.DbModel.ParametersModule;
 using ConstructoraUdeCModel.Implementation.ParametersModule;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCController.Implementation.ParametersModule
 {
@@ -14,7 +10,7 @@ namespace ConstructoraUdeCController.Implementation.ParametersModule
     {
         private CountryImpModel model;
 
-        public CountryImpController() 
+        public CountryImpController()
         {
             model = new CountryImpModel();
         }

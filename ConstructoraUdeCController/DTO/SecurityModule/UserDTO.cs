@@ -1,13 +1,9 @@
 ﻿using ConstructoraUdeCController.DTO.ParametersModule;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCController.DTO.SecurityModule
 {
-    public class UserDTO: DTOBase
+    public class UserDTO : DTOBase
     {
         private int id;
 
