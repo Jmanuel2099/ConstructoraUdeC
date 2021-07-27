@@ -1,14 +1,10 @@
 ﻿using ConstructoraUdeCController.DTO.SalesModule;
 using ConstructoraUdeCModel.DbModel.SalesModule;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCController.Mapper.SalesModule
 {
-    public class InfoFinancialDTOMapper : GeneralMapper<InfoFinancialDbModel,InfoFinancialDTO>
+    public class InfoFinancialDTOMapper : GeneralMapper<InfoFinancialDbModel, InfoFinancialDTO>
     {
         public override InfoFinancialDTO MapperT1T2(InfoFinancialDbModel input)
         {

@@ -1,15 +1,11 @@
 ﻿using ConstructoraUdeCController.DTO.ParametersModule;
 using ConstructoraUdeCController.Implementation.ParametersModule;
 using ConstructoraUdeCModel.DbModel.ParametersModule;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCController.Mapper.ParametersModule
 {
-    public class CityDTOMapper: GeneralMapper<CityDbModel, CityDTO>
+    public class CityDTOMapper : GeneralMapper<CityDbModel, CityDTO>
     {
         private CountryImpController modelCountry = new CountryImpController();
 

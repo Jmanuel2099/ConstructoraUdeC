@@ -1,14 +1,10 @@
 ﻿using ConstructoraUdeCController.DTO.SalesModule;
 using ConstructoraUdeCModel.DbModel.SalesModule;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCController.Mapper.SalesModule
 {
-    public class StatusRequestDTOMapper: GeneralMapper<StatusRequestDbModel, StatusRequestDTO>
+    public class StatusRequestDTOMapper : GeneralMapper<StatusRequestDbModel, StatusRequestDTO>
     {
         public override StatusRequestDTO MapperT1T2(StatusRequestDbModel input)
         {

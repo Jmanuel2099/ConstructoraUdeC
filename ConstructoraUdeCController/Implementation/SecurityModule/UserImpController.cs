@@ -5,9 +5,6 @@ using ConstructoraUdeCModel.DbModel.SecurityModel;
 using ConstructoraUdeCModel.Implementation.SecurityModule;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCController.Implementation.SecurityModule
 {
@@ -74,7 +71,8 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
             UserDbModel dbModel = mapper.MapperT2T1(dto);
             dbModel.Password = new Encrypt().CreateMD5(dbModel.Password);
             var obj = model.Login(dbModel);
-            if (obj == null) {
+            if (obj == null)
+            {
 
                 return null;
             }
@@ -119,7 +117,7 @@ namespace ConstructoraUdeCController.Implementation.SecurityModule
                 "<li>Usuario: {1}</li>" +
                 "<li>Contraseña: {2}</li>" +
                 "</ul>" +
-                "<br /> Cordial saludo. ", toname ,toemail, newPassword);
+                "<br /> Cordial saludo. ", toname, toemail, newPassword);
                 new Notifications().SendEmail("Password changed", content, toname, email);
             }
             return response;

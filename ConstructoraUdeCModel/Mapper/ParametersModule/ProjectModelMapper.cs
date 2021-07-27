@@ -1,14 +1,10 @@
 ﻿using ConstructoraUdeCModel.DbModel.ParametersModule;
 using ConstructoraUdeCModel.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCModel.Mapper.ParametersModule
 {
-    public class ProjectModelMapper: GeneralMapper<PROJECT, ProjectDbModel>
+    public class ProjectModelMapper : GeneralMapper<PROJECT, ProjectDbModel>
     {
         public override ProjectDbModel MapperT1T2(PROJECT input)
         {

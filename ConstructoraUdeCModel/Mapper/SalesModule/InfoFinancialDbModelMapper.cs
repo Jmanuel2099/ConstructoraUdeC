@@ -1,14 +1,10 @@
 ﻿using ConstructoraUdeCModel.DbModel.SalesModule;
 using ConstructoraUdeCModel.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructoraUdeCModel.Mapper.SalesModule
 {
-    public class InfoFinancialDbModelMapper: GeneralMapper<FINANCIAL_INFORMATION, InfoFinancialDbModel>
+    public class InfoFinancialDbModelMapper : GeneralMapper<FINANCIAL_INFORMATION, InfoFinancialDbModel>
     {
         public override InfoFinancialDbModel MapperT1T2(FINANCIAL_INFORMATION input)
         {
